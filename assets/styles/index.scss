@@ -1,2 +1,40 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.message {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.board-square {
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  height: 100px;
+  margin-bottom: -2px;
+  margin-right: -2px;
+  width: 100px;
+}
+
+.board-grid {
+  background-color: #fff;
+  box-sizing: border-box;
+  clear: left;
+  max-height: 300px;
+  margin: 0 auto;
+  max-width: 300px;
+  padding-bottom: 2px;
+}
