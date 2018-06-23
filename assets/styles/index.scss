@@ -2,6 +2,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+$black: #000;
+$white: #fff;
+$red: #f00;
+$yellow: #ff0;
+$cyan: #0ff;
+
 body {
   margin: 0 auto;
   max-width: 800px;
@@ -12,14 +18,31 @@ main {
   max-width: 500px;
 }
 
-.message {
+p {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
   margin: 0 auto;
   text-align: center;
 }
 
+h4 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h5 {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .board-square {
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: $cyan;
+  border: 2px solid $black;
   box-sizing: border-box;
   display: inline-block;
   float: left;
@@ -29,12 +52,23 @@ main {
   width: 100px;
 }
 
+.board-square:hover {
+  background-color: $yellow;
+  cursor: pointer;
+}
+
 .board-grid {
-  background-color: #fff;
-  box-sizing: border-box;
-  clear: left;
+  background-color: $white;
+  border: 2px solid $red;
+  // clear: left;
   max-height: 300px;
   margin: 0 auto;
+  margin-bottom: 10px;
   max-width: 300px;
+  overflow: auto;
   padding-bottom: 2px;
+}
+
+.new-game-area {
+  cursor: pointer;
 }
