@@ -5,9 +5,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $black: #000;
 $white: #fff;
 $red: #f00;
-$yellow: #ff0;
-$cyan: #0ff;
 $green: #0f0;
+$blue: #00f;
+$cyan: #0ff;
+$magenta: #f0f;
+$yellow: #ff0;
 
 body {
   margin: 0 auto;
@@ -26,18 +28,20 @@ p {
 }
 
 h1 {
+  color: $red;
   margin: 0 auto;
   text-align: center;
 }
 
 h4 {
+  color: $magenta;
   margin: 0 auto;
   text-align: center;
 }
 
 h5 {
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -45,6 +49,7 @@ h5 {
   background-color: $cyan;
   border: 2px solid $black;
   box-sizing: border-box;
+  color: $blue;
   display: inline-block;
   float: left;
   font-size: 80px;
@@ -67,7 +72,7 @@ h5 {
   border: 2px solid $green;
   // clear: left;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   max-height: 300px;
   max-width: 300px;
   overflow: auto;
@@ -79,5 +84,6 @@ h5 {
 }
 
 span {
+  color: $black;
   font-size: 40px;
 }
