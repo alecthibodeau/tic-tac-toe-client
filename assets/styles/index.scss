@@ -7,6 +7,7 @@ $white: #fff;
 $red: #f00;
 $yellow: #ff0;
 $cyan: #0ff;
+$green: #0f0;
 
 body {
   margin: 0 auto;
@@ -52,18 +53,18 @@ h5 {
   width: 100px;
 }
 
-.board-square:hover {
-  background-color: $yellow;
-  cursor: pointer;
-}
+// .board-square:hover {
+//   background-color: $yellow;
+//   cursor: pointer;
+// }
 
 .board-grid {
   background-color: $white;
-  border: 2px solid $red;
+  border: 2px solid $green;
   // clear: left;
-  max-height: 300px;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  max-height: 300px;
   max-width: 300px;
   overflow: auto;
   padding-bottom: 2px;
