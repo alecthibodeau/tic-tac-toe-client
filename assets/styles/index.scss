@@ -29,6 +29,7 @@ p {
 
 h1 {
   color: $black;
+  font-size: 32px;
   margin: 0 auto;
   text-align: center;
 }
@@ -86,7 +87,7 @@ h5 {
 
 span {
   color: $magenta;
-  font-size: 40px;
+  font-size: 30px;
 
   // &:hover {
   //   color: $yellow;
