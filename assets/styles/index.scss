@@ -28,18 +28,19 @@ p {
 }
 
 h1 {
-  color: $red;
+  color: $black;
   margin: 0 auto;
   text-align: center;
 }
 
 h4 {
-  color: $magenta;
+  color: $black;
   margin: 0 auto;
   text-align: center;
 }
 
 h5 {
+  color: $black;
   margin: 0 auto;
   margin-bottom: 10px;
   text-align: center;
@@ -49,7 +50,7 @@ h5 {
   background-color: $cyan;
   border: 2px solid $black;
   box-sizing: border-box;
-  color: $blue;
+  color: $black;
   display: inline-block;
   float: left;
   font-size: 80px;
@@ -84,6 +85,11 @@ h5 {
 }
 
 span {
-  color: $black;
+  color: $green;
   font-size: 40px;
+
+  &:hover {
+    color: $yellow;
+    cursor: pointer;
+  }
 }

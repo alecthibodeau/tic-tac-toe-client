@@ -15,10 +15,8 @@
 
 const newGame = function () {
   turnCounter = 0
-  console.log('Got to new game.')
+  console.log('New game is ready.')
   document.querySelector('#game-board').innerHTML = ''
-  document.getElementById('new-game').style.color = '0ff' // This is for resetting link color after the click has occurred so it doesn't remain in the hover state
-  // squaresInPlay = []
   createBoard()
 }
 
@@ -26,7 +24,10 @@ let playerPiece
 let turnCounter = 0
 
 const squaresCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
-const squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+// const squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+const playerXMoves = []
+const playerOMoves = []
 
 const onMouseOver = function (event) {
   event.target.style.backgroundColor = '#ff0' // yellow
@@ -38,26 +39,35 @@ const onMouseOut = function (event) {
   event.target.style.cursor = 'default'
 }
 
+// const checkForMatch = {
+//   for (let i = 0; ; i < playerXMoves.length; i++) {
+// }
+
 const clickSquare = function () {
-  if (turnCounter % 2 === 0) {
-    playerPiece = 'x'
-  } else {
-    playerPiece = 'o'
+  turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
+  if (playerPiece === 'x') {
+    playerXMoves.push(squaresCoord[this.getAttribute('data-id')])
+    document.querySelector('#' + this.getAttribute('id')).style.color = '#f00'
+  } else if (playerPiece === 'o') {
+    playerOMoves.push(squaresCoord[this.getAttribute('data-id')])
+    document.querySelector('#' + this.getAttribute('id')).style.color = '#00f'
   }
-  console.log(`User selected ${playerPiece} on square ${this.getAttribute('data-id')}`)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
   document.getElementById(this.getAttribute('id')).removeEventListener('click', clickSquare)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseout', onMouseOut)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#0ff'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
+  console.log(`User selected ${playerPiece.toUpperCase()} on square ${this.getAttribute('data-id')}`)
+  console.log(`Player X's moves are : ${playerXMoves}`)
+  console.log(`Player O's moves are : ${playerOMoves}`)
+  console.log(`Number of Player X's moves: ${playerXMoves.length}`)
+  console.log(`Number of Player O's moves: ${playerOMoves.length}`)
   turnCounter++
-  // squaresInPlay.push(squares[squareId].rank);
   // this.setAttribute('src', squares[squareId].squareImage);
-  // if (squaresInPlay.length === 3) {
-  // checkForMatch();
-// }
-  // document.getElementsByClassName('board-square').addEventListener('click', clickSingleO)
+  // if (playerXMoves.length >= 3) {
+  //   checkForMatch()
+  // }
 }
 
 const createBoard = function () {
