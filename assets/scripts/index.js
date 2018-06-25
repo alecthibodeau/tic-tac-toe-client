@@ -19,8 +19,8 @@ let playerXMoves = []
 let playerOMoves = []
 let playerPiece = null
 let winValue = null
-let squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-const squaresCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
+let cells = ['', '', '', '', '', '', '', '', '']
+const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
 
 const onMouseOver = function (event) {
   event.target.style.backgroundColor = '#fbde84' // rainbow-yellow
@@ -35,44 +35,45 @@ const onMouseOut = function (event) {
 const endNotice = function () {
   over = true
   console.log(`Is game REALLY over? ${over}`)
+  console.log(`Win value: ${winValue}`)
   for (let i = 0; i <= 8; i++) {
-    document.getElementById('square-' + i).removeEventListener('click', clickSquare)
-    document.getElementById('square-' + i).removeEventListener('mouseover', onMouseOver)
+    document.getElementById('cell-' + i).removeEventListener('click', clickcell)
+    document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
   }
   setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
 }
 
 const checkForMatch = function () {
-  if ((playerXMoves.length === 5) && (playerOMoves.length === 4)) {
+  // top row win
+  if ((cells[0] !== '') && (cells[0] === cells[1]) && (cells[0] === cells[2])) {
+    winValue = cells[0]
+  // middle row win
+  } else if ((cells[3] !== '') && (cells[3] === cells[4]) && (cells[3] === cells[5])) {
+    winValue = cells[3]
+  // bottom row win
+  } else if ((cells[6] !== '') && (cells[6] === cells[7]) && (cells[6] === cells[8])) {
+    winValue = cells[6]
+  // left column win
+  } else if ((cells[0] !== '') && (cells[0] === cells[3]) && (cells[0] === cells[6])) {
+    winValue = cells[0]
+  // center column win
+  } else if ((cells[1] !== '') && (cells[1] === cells[4]) && (cells[1] === cells[7])) {
+    winValue = cells[1]
+    // right column win
+  } else if ((cells[2] !== '') && (cells[2] === cells[5]) && (cells[2] === cells[8])) {
+    winValue = cells[2]
+    // downward diagonal win
+  } else if ((cells[0] !== '') && (cells[0] === cells[4]) && (cells[0] === cells[8])) {
+    winValue = cells[0]
+    // upward diagonal win
+  } else if ((cells[2] !== '') && (cells[2] === cells[4]) && (cells[2] === cells[6])) {
+    winValue = cells[2]
+    // draw
+  } else if (playerXMoves.length + playerOMoves.length === 9) {
     document.querySelector('#new-game').innerHTML = `IT'S A DRAW!`
     console.log('It\'s a draw!')
     endNotice()
     return
-  // top row win
-  } else if ((squaresIndex[0] === squaresIndex[1]) && (squaresIndex[0] === squaresIndex[2])) {
-    winValue = squaresIndex[0]
-  // middle row win
-  } else if ((squaresIndex[3] === squaresIndex[4]) && (squaresIndex[3] === squaresIndex[5])) {
-    winValue = squaresIndex[3]
-  // bottom row win
-  } else if ((squaresIndex[6] === squaresIndex[7]) && (squaresIndex[6] === squaresIndex[8])) {
-    winValue = squaresIndex[6]
-  // left column win
-  } else if ((squaresIndex[0] === squaresIndex[3]) && (squaresIndex[0] === squaresIndex[6])) {
-    winValue = squaresIndex[0]
-  // center column win
-  } else if ((squaresIndex[1] === squaresIndex[4]) && (squaresIndex[1] === squaresIndex[7])) {
-    winValue = squaresIndex[1]
-    // right column win
-  } else if ((squaresIndex[2] === squaresIndex[5]) && (squaresIndex[2] === squaresIndex[8])) {
-    winValue = squaresIndex[2]
-    // downward diagonal win
-  } else if ((squaresIndex[0] === squaresIndex[4]) && (squaresIndex[0] === squaresIndex[8])) {
-    winValue = squaresIndex[0]
-    // upward diagonal win
-  } else if ((squaresIndex[2] === squaresIndex[4]) && (squaresIndex[2] === squaresIndex[6])) {
-    winValue = squaresIndex[2]
-    // draw
   }
   if ((winValue === 'x') || (winValue === 'o')) {
     if (winValue === 'x') {
@@ -86,32 +87,32 @@ const checkForMatch = function () {
   }
 }
 
-const clickSquare = function () {
+const clickcell = function () {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  squaresIndex[this.getAttribute('data-id')] = playerPiece
+  cells[this.getAttribute('data-id')] = playerPiece
   if (playerPiece === 'x') {
-    playerXMoves.push(squaresCoord[this.getAttribute('data-id')])
+    playerXMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#f27089'
   } else if (playerPiece === 'o') {
-    playerOMoves.push(squaresCoord[this.getAttribute('data-id')])
+    playerOMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#74a6cf'
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
-  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickSquare)
+  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickcell)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
-  console.log(`User selected ${playerPiece.toUpperCase()} on square ${this.getAttribute('data-id')}`)
+  console.log(`User selected ${playerPiece.toUpperCase()} on cell ${this.getAttribute('data-id')}`)
   console.log(`Player X's moves are : ${playerXMoves}`)
   console.log(`Player O's moves are : ${playerOMoves}`)
   console.log(`Number of Player X's moves: ${playerXMoves.length}`)
   console.log(`Number of Player O's moves: ${playerOMoves.length}`)
-  console.log(`Square index: ${this.getAttribute('data-id')}`)
+  console.log(`cell index: ${this.getAttribute('data-id')}`)
   console.log(`Win value: ${winValue}`)
-  console.log(`Cells array: ${squaresIndex}`)
+  console.log(`Cells array: ${cells}`)
   console.log(`Game is over? ${over}`)
   turnCounter++
-  // this.setAttribute('src', squares[squareId].squareImage);
+  // this.setAttribute('src', cells[cellId].cellImage);
   if (playerXMoves.length >= 3) {
     checkForMatch()
   }
@@ -124,19 +125,19 @@ const newGame = function () {
   playerOMoves = []
   playerPiece = null
   winValue = null
-  squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  cells = ['', '', '', '', '', '', '', '', '']
   document.querySelector('#game-board').innerHTML = ''
   document.querySelector('#game-board').style.borderColor = '#9ac479'
-  for (let i = 0; i < squaresCoord.length; i++) {
-    const squareElement = document.createElement('div')
-    // squareElement.innerHTML = i
-    squareElement.setAttribute('class', 'board-square')
-    squareElement.setAttribute('data-id', i)
-    squareElement.setAttribute('id', 'square-' + i)
-    squareElement.addEventListener('mouseover', onMouseOver)
-    squareElement.addEventListener('mouseout', onMouseOut)
-    squareElement.addEventListener('click', clickSquare)
-    document.getElementById('game-board').appendChild(squareElement)
+  for (let i = 0; i < cellsCoord.length; i++) {
+    const cellElement = document.createElement('div')
+    // cellElement.innerHTML = i
+    cellElement.setAttribute('class', 'board-cell')
+    cellElement.setAttribute('data-id', i)
+    cellElement.setAttribute('id', 'cell-' + i)
+    cellElement.addEventListener('mouseover', onMouseOver)
+    cellElement.addEventListener('mouseout', onMouseOut)
+    cellElement.addEventListener('click', clickcell)
+    document.getElementById('game-board').appendChild(cellElement)
   }
   document.getElementById('new-game').addEventListener('click', newGame)
   console.log('Board created. New game is ready.')
