@@ -17,11 +17,11 @@ let over = false
 let turnCounter = 0
 let playerXMoves = []
 let playerOMoves = []
-let squaresIndexNumber
+let cellsIndexNumber
 let playerPiece
 let winValue = null
-const squaresCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
-let squaresIndex = ['', '', '', '', '', '', '', '', '']
+const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
+let cellsIndex = ['', '', '', '', '', '', '', '', '']
 
 const onMouseOver = function (event) {
   event.target.style.backgroundColor = '#fbde84' // rainbow-yellow
@@ -38,8 +38,8 @@ const endNotice = function () {
   console.log(`Is game over? ${over}`)
   console.log(`Win value is ${winValue}`)
   for (let i = 0; i <= 8; i++) {
-    document.getElementById('square-' + i).removeEventListener('click', clickSquare)
-    document.getElementById('square-' + i).removeEventListener('mouseover', onMouseOver)
+    document.getElementById('cell-' + i).removeEventListener('click', clickCell)
+    document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
   }
   setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
 }
@@ -53,29 +53,29 @@ const checkForMatch = function () {
     endNotice()
     return
   // top row win
-  } else if ((squaresIndex[0] === squaresIndex[1]) && (squaresIndex[0] === squaresIndex[2])) {
-    winValue = squaresIndex[0]
+  } else if ((cellsIndex[0] === cellsIndex[1]) && (cellsIndex[0] === cellsIndex[2])) {
+    winValue = cellsIndex[0]
   // middle row win
-  } else if ((squaresIndex[3] === squaresIndex[4]) && (squaresIndex[3] === squaresIndex[5])) {
-    winValue = squaresIndex[3]
+  } else if ((cellsIndex[3] === cellsIndex[4]) && (cellsIndex[3] === cellsIndex[5])) {
+    winValue = cellsIndex[3]
   // bottom row win
-  } else if ((squaresIndex[6] === squaresIndex[7]) && (squaresIndex[6] === squaresIndex[8])) {
-    winValue = squaresIndex[6]
+  } else if ((cellsIndex[6] === cellsIndex[7]) && (cellsIndex[6] === cellsIndex[8])) {
+    winValue = cellsIndex[6]
   // left column win
-  } else if ((squaresIndex[0] === squaresIndex[3]) && (squaresIndex[0] === squaresIndex[6])) {
-    winValue = squaresIndex[0]
+  } else if ((cellsIndex[0] === cellsIndex[3]) && (cellsIndex[0] === cellsIndex[6])) {
+    winValue = cellsIndex[0]
   // center column win
-  } else if ((squaresIndex[1] === squaresIndex[4]) && (squaresIndex[1] === squaresIndex[7])) {
-    winValue = squaresIndex[1]
+  } else if ((cellsIndex[1] === cellsIndex[4]) && (cellsIndex[1] === cellsIndex[7])) {
+    winValue = cellsIndex[1]
     // right column win
-  } else if ((squaresIndex[2] === squaresIndex[5]) && (squaresIndex[2] === squaresIndex[8])) {
-    winValue = squaresIndex[2]
+  } else if ((cellsIndex[2] === cellsIndex[5]) && (cellsIndex[2] === cellsIndex[8])) {
+    winValue = cellsIndex[2]
     // downward diagonal win
-  } else if ((squaresIndex[0] === squaresIndex[4]) && (squaresIndex[0] === squaresIndex[8])) {
-    winValue = squaresIndex[0]
+  } else if ((cellsIndex[0] === cellsIndex[4]) && (cellsIndex[0] === cellsIndex[8])) {
+    winValue = cellsIndex[0]
     // upward diagonal win
-  } else if ((squaresIndex[2] === squaresIndex[4]) && (squaresIndex[2] === squaresIndex[6])) {
-    winValue = squaresIndex[2]
+  } else if ((cellsIndex[2] === cellsIndex[4]) && (cellsIndex[2] === cellsIndex[6])) {
+    winValue = cellsIndex[2]
   }
   if ((winValue === 'x') || (winValue === 'o')) {
     if (winValue === 'x') {
@@ -89,29 +89,29 @@ const checkForMatch = function () {
   }
 }
 
-const clickSquare = function () {
+const clickCell = function () {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  squaresIndexNumber = this.getAttribute('data-id')
-  squaresIndex[squaresIndexNumber] = playerPiece
+  cellsIndexNumber = this.getAttribute('data-id')
+  cellsIndex[cellsIndexNumber] = playerPiece
   if (playerPiece === 'x') {
-    playerXMoves.push(squaresCoord[this.getAttribute('data-id')])
+    playerXMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#f27089'
   } else if (playerPiece === 'o') {
-    playerOMoves.push(squaresCoord[this.getAttribute('data-id')])
+    playerOMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#74a6cf'
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
-  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickSquare)
+  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickCell)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
-  console.log(`User selected ${playerPiece.toUpperCase()} on square ${this.getAttribute('data-id')}`)
+  console.log(`User selected ${playerPiece.toUpperCase()} on cell ${this.getAttribute('data-id')}`)
   console.log(`Player X's moves are : ${playerXMoves}`)
   console.log(`Player O's moves are : ${playerOMoves}`)
   console.log(`Number of Player X's moves: ${playerXMoves.length}`)
   console.log(`Number of Player O's moves: ${playerOMoves.length}`)
-  console.log(`Square index: ${squaresIndexNumber}`)
-  console.log(`Game cells array: ${squaresIndex}`)
+  console.log(`Cell index: ${cellsIndexNumber}`)
+  console.log(`Game cells array: ${cellsIndex}`)
   console.log(`Is game over? ${over}`)
   turnCounter++
   // this.setAttribute('src', squares[squareId].squareImage);
@@ -125,19 +125,19 @@ const newGame = function () {
   playerXMoves = []
   playerOMoves = []
   winValue = null
-  squaresIndex = ['', '', '', '', '', '', '', '', '']
+  cellsIndex = ['', '', '', '', '', '', '', '', '']
   document.querySelector('#game-board').innerHTML = ''
   document.querySelector('#game-board').style.borderColor = '#9ac479'
-  for (let i = 0; i <= squaresIndex.length; i++) {
-    const squareElement = document.createElement('div')
-    // squareElement.innerHTML = i
-    squareElement.setAttribute('class', 'board-square')
-    squareElement.setAttribute('data-id', i)
-    squareElement.setAttribute('id', 'square-' + i)
-    squareElement.addEventListener('mouseover', onMouseOver)
-    squareElement.addEventListener('mouseout', onMouseOut)
-    squareElement.addEventListener('click', clickSquare)
-    document.getElementById('game-board').appendChild(squareElement)
+  for (let i = 0; i <= cellsIndex.length; i++) {
+    const cellElement = document.createElement('div')
+    // cellElement.innerHTML = i
+    cellElement.setAttribute('class', 'board-cell')
+    cellElement.setAttribute('data-id', i)
+    cellElement.setAttribute('id', 'cell-' + i)
+    cellElement.addEventListener('mouseover', onMouseOver)
+    cellElement.addEventListener('mouseout', onMouseOut)
+    cellElement.addEventListener('click', clickCell)
+    document.getElementById('game-board').appendChild(cellElement)
   }
   document.getElementById('new-game').addEventListener('click', newGame)
   console.log('Board created. New game is ready.')
