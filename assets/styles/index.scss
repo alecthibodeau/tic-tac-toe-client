@@ -1,5 +1,6 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
+// @import url('https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet');
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 $black: #000;
@@ -10,8 +11,23 @@ $blue: #00f;
 $cyan: #0ff;
 $magenta: #f0f;
 $yellow: #ff0;
+$rainbow-red: #f27089;
+$rainbow-orange: #fca778;
+$rainbow-yellow: #fbde84;
+$rainbow-green: #9ac479;
+$rainbow-blue: #74a6cf;
+$grass-green: #b8d77d;
+$panda-purple: #9f86b0;
+$dolphin-pink: #f9a2b6;
+$sky-blue: #a7c5df;
+$cloud-white: #f7f0e3;
+$lines-brown: #3a2328;
+$cone-brown: #d2a480;
+$sauce-brown: #a7705e;
+$stem-green: #358d65;
 
 body {
+  background-color: $white;
   margin: 0 auto;
   max-width: 800px;
 }
@@ -28,32 +44,37 @@ p {
 }
 
 h1 {
-  color: $black;
-  font-size: 32px;
+  color: $rainbow-green;
+  font-size: 28px;
+  font-weight: normal;
   margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 15px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 h4 {
-  color: $black;
+  color: $lines-brown;
   margin: 0 auto;
   text-align: center;
 }
 
 h5 {
-  color: $black;
+  color: $lines-brown;
   margin: 0 auto;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .board-square {
-  background-color: $cyan;
-  border: 2px solid $black;
+  background-color: $cloud-white;
+  border: 2px solid $lines-brown;
   // box-sizing: border-box;
-  color: $black;
+  color: $lines-brown;
   display: inline-block;
   float: left;
+  // font-family: 'Varela Round', sans-serif;
   font-size: 80px;
   height: 100px;
   line-height: 93px;
@@ -70,8 +91,8 @@ h5 {
 // }
 
 .board-grid {
-  background-color: $white;
-  border: 4px solid $green;
+  background-color: $cloud-white;
+  border: 4px solid $rainbow-green;
   // clear: left;
   margin: 0 auto;
   margin-bottom: 5px;
@@ -86,8 +107,8 @@ h5 {
 }
 
 span {
-  color: $magenta;
-  font-size: 30px;
+  color: $rainbow-orange;
+  font-size: 28px;
 
   // &:hover {
   //   color: $yellow;

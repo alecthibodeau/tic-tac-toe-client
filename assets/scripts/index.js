@@ -34,12 +34,12 @@ const newGame = function () {
 }
 
 const onMouseOver = function (event) {
-  event.target.style.backgroundColor = '#ff0' // yellow
+  event.target.style.backgroundColor = '#fbde84' // rainbow-yellow
   event.target.style.cursor = 'pointer'
 }
 
 const onMouseOut = function (event) {
-  event.target.style.backgroundColor = '#0ff' // cyan
+  event.target.style.backgroundColor = '#f7f0e3' // cloud-white
   event.target.style.cursor = 'default'
 }
 
@@ -93,10 +93,10 @@ const checkForMatch = function () {
     drawNotice()
   }
   if (winValue === 'x') {
-    document.querySelector('#game-board').style.borderColor = '#f00'
+    document.querySelector('#game-board').style.borderColor = '#f27089'
     winNotice()
   } else if (winValue === 'o') {
-    document.querySelector('#game-board').style.borderColor = '#00f'
+    document.querySelector('#game-board').style.borderColor = '#74a6cf'
     winNotice()
   }
 }
@@ -107,15 +107,15 @@ const clickSquare = function () {
   squaresIndex[squaresIndexNumber] = playerPiece
   if (playerPiece === 'x') {
     playerXMoves.push(squaresCoord[this.getAttribute('data-id')])
-    document.querySelector('#' + this.getAttribute('id')).style.color = '#f00'
+    document.querySelector('#' + this.getAttribute('id')).style.color = '#f27089'
   } else if (playerPiece === 'o') {
     playerOMoves.push(squaresCoord[this.getAttribute('data-id')])
-    document.querySelector('#' + this.getAttribute('id')).style.color = '#00f'
+    document.querySelector('#' + this.getAttribute('id')).style.color = '#74a6cf'
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
   document.getElementById(this.getAttribute('id')).removeEventListener('click', clickSquare)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
-  document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#0ff'
+  document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
   console.log(`User selected ${playerPiece.toUpperCase()} on square ${this.getAttribute('data-id')}`)
   console.log(`Player X's moves are : ${playerXMoves}`)
@@ -132,7 +132,7 @@ const clickSquare = function () {
 }
 
 const createBoard = function () {
-  document.querySelector('#game-board').style.borderColor = '#0f0'
+  document.querySelector('#game-board').style.borderColor = '#9ac479'
   for (let i = 0; i < squaresCoord.length; i++) {
     const squareElement = document.createElement('div')
     // squareElement.innerHTML = i
