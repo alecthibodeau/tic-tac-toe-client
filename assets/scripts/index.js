@@ -19,9 +19,9 @@ let playerXMoves = []
 let playerOMoves = []
 let cellsIndexNumber
 let playerPiece
-let winValue = null
-const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
+let winValue = 'potato'
 let cellsIndex = ['', '', '', '', '', '', '', '', '']
+const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
 
 const onMouseOver = function (event) {
   event.target.style.backgroundColor = '#fbde84' // rainbow-yellow
@@ -36,9 +36,8 @@ const onMouseOut = function (event) {
 const endNotice = function () {
   over = true
   console.log(`Is game over? ${over}`)
-  console.log(`Win value is ${winValue}`)
   for (let i = 0; i <= 8; i++) {
-    document.getElementById('cell-' + i).removeEventListener('click', clickCell)
+    document.getElementById('cell-' + i).removeEventListener('click', clickcell)
     document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
   }
   setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
@@ -76,6 +75,8 @@ const checkForMatch = function () {
     // upward diagonal win
   } else if ((cellsIndex[2] === cellsIndex[4]) && (cellsIndex[2] === cellsIndex[6])) {
     winValue = cellsIndex[2]
+  } else {
+    winValue = 'potato'
   }
   if ((winValue === 'x') || (winValue === 'o')) {
     if (winValue === 'x') {
@@ -89,10 +90,9 @@ const checkForMatch = function () {
   }
 }
 
-const clickCell = function () {
+const clickcell = function () {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  cellsIndexNumber = this.getAttribute('data-id')
-  cellsIndex[cellsIndexNumber] = playerPiece
+  cellsIndex[this.getAttribute('data-id')] = playerPiece
   if (playerPiece === 'x') {
     playerXMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#f27089'
@@ -101,7 +101,7 @@ const clickCell = function () {
     document.querySelector('#' + this.getAttribute('id')).style.color = '#74a6cf'
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
-  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickCell)
+  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickcell)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
@@ -110,21 +110,22 @@ const clickCell = function () {
   console.log(`Player O's moves are : ${playerOMoves}`)
   console.log(`Number of Player X's moves: ${playerXMoves.length}`)
   console.log(`Number of Player O's moves: ${playerOMoves.length}`)
-  console.log(`Cell index: ${cellsIndexNumber}`)
+  console.log(`cell index: ${cellsIndexNumber}`)
   console.log(`Game cells array: ${cellsIndex}`)
   console.log(`Is game over? ${over}`)
   turnCounter++
-  // this.setAttribute('src', squares[squareId].squareImage);
+  // this.setAttribute('src', cells[cellId].cellImage);
   if (playerXMoves.length >= 3) {
     checkForMatch()
   }
 }
 
 const newGame = function () {
+  over = false
   turnCounter = 0
   playerXMoves = []
   playerOMoves = []
-  winValue = null
+  winValue = 'potato'
   cellsIndex = ['', '', '', '', '', '', '', '', '']
   document.querySelector('#game-board').innerHTML = ''
   document.querySelector('#game-board').style.borderColor = '#9ac479'
@@ -136,7 +137,7 @@ const newGame = function () {
     cellElement.setAttribute('id', 'cell-' + i)
     cellElement.addEventListener('mouseover', onMouseOver)
     cellElement.addEventListener('mouseout', onMouseOut)
-    cellElement.addEventListener('click', clickCell)
+    cellElement.addEventListener('click', clickcell)
     document.getElementById('game-board').appendChild(cellElement)
   }
   document.getElementById('new-game').addEventListener('click', newGame)
