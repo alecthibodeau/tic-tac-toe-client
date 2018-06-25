@@ -67,7 +67,7 @@ h5 {
   text-align: center;
 }
 
-.board-cell {
+.board-square {
   background-color: $cloud-white;
   border: 2px solid $lines-brown;
   // box-sizing: border-box;
@@ -85,7 +85,7 @@ h5 {
   width: 100px;
 }
 
-// .board-cell:hover {
+// .board-square:hover {
 //   background-color: $yellow;
 //   cursor: pointer;
 // }
