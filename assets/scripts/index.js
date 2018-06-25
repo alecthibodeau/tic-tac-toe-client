@@ -13,6 +13,7 @@
 //   $('#square-0-0').on('click', squareEvents.onClickSquare)
 // })
 
+let over = false
 let turnCounter = 0
 let playerXMoves = []
 let playerOMoves = []
@@ -20,18 +21,7 @@ let squaresIndexNumber
 let playerPiece
 let winValue = null
 const squaresCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
-let squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-
-const newGame = function () {
-  turnCounter = 0
-  playerXMoves = []
-  playerOMoves = []
-  winValue = null
-  squaresIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  console.log('New game is ready.')
-  document.querySelector('#game-board').innerHTML = ''
-  createBoard()
-}
+let squaresIndex = ['', '', '', '', '', '', '', '', '']
 
 const onMouseOver = function (event) {
   event.target.style.backgroundColor = '#fbde84' // rainbow-yellow
@@ -43,18 +33,10 @@ const onMouseOut = function (event) {
   event.target.style.cursor = 'default'
 }
 
-const winNotice = function () {
-  console.log(`Player ${winValue.toUpperCase()} wins!`)
-  document.querySelector('#new-game').innerHTML = `PLAYER ${winValue.toUpperCase()} WINS!`
-  for (let i = 0; i <= 8; i++) {
-    document.getElementById('square-' + i).removeEventListener('click', clickSquare)
-    document.getElementById('square-' + i).removeEventListener('mouseover', onMouseOver)
-  }
-  setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
-}
-
-const drawNotice = function () {
-  document.querySelector('#new-game').innerHTML = `IT'S A DRAW!`
+const endNotice = function () {
+  over = true
+  console.log(`Is game over? ${over}`)
+  console.log(`Win value is ${winValue}`)
   for (let i = 0; i <= 8; i++) {
     document.getElementById('square-' + i).removeEventListener('click', clickSquare)
     document.getElementById('square-' + i).removeEventListener('mouseover', onMouseOver)
@@ -63,8 +45,15 @@ const drawNotice = function () {
 }
 
 const checkForMatch = function () {
+  console.log(`Win value is ${winValue}`)
+  // draw
+  if ((playerXMoves.length === 5) && (playerOMoves.length === 4)) {
+    document.querySelector('#new-game').innerHTML = `IT'S A DRAW!`
+    console.log('It\'s a draw!')
+    endNotice()
+    return
   // top row win
-  if ((squaresIndex[0] === squaresIndex[1]) && (squaresIndex[0] === squaresIndex[2])) {
+  } else if ((squaresIndex[0] === squaresIndex[1]) && (squaresIndex[0] === squaresIndex[2])) {
     winValue = squaresIndex[0]
   // middle row win
   } else if ((squaresIndex[3] === squaresIndex[4]) && (squaresIndex[3] === squaresIndex[5])) {
@@ -87,17 +76,16 @@ const checkForMatch = function () {
     // upward diagonal win
   } else if ((squaresIndex[2] === squaresIndex[4]) && (squaresIndex[2] === squaresIndex[6])) {
     winValue = squaresIndex[2]
-    // draw
-  } else if ((playerXMoves.length === 5) && (playerOMoves.length === 4)) {
-    console.log('It\'s a draw!')
-    drawNotice()
   }
-  if (winValue === 'x') {
-    document.querySelector('#game-board').style.borderColor = '#f27089'
-    winNotice()
-  } else if (winValue === 'o') {
-    document.querySelector('#game-board').style.borderColor = '#74a6cf'
-    winNotice()
+  if ((winValue === 'x') || (winValue === 'o')) {
+    if (winValue === 'x') {
+      document.querySelector('#game-board').style.borderColor = '#f27089'
+    } else if (winValue === 'o') {
+      document.querySelector('#game-board').style.borderColor = '#74a6cf'
+    }
+    console.log(`Player ${winValue.toUpperCase()} wins!`)
+    document.querySelector('#new-game').innerHTML = `PLAYER ${winValue.toUpperCase()} WINS!`
+    endNotice()
   }
 }
 
@@ -123,7 +111,8 @@ const clickSquare = function () {
   console.log(`Number of Player X's moves: ${playerXMoves.length}`)
   console.log(`Number of Player O's moves: ${playerOMoves.length}`)
   console.log(`Square index: ${squaresIndexNumber}`)
-  console.log(squaresIndex)
+  console.log(`Game cells array: ${squaresIndex}`)
+  console.log(`Is game over? ${over}`)
   turnCounter++
   // this.setAttribute('src', squares[squareId].squareImage);
   if (playerXMoves.length >= 3) {
@@ -131,9 +120,15 @@ const clickSquare = function () {
   }
 }
 
-const createBoard = function () {
+const newGame = function () {
+  turnCounter = 0
+  playerXMoves = []
+  playerOMoves = []
+  winValue = null
+  squaresIndex = ['', '', '', '', '', '', '', '', '']
+  document.querySelector('#game-board').innerHTML = ''
   document.querySelector('#game-board').style.borderColor = '#9ac479'
-  for (let i = 0; i < squaresCoord.length; i++) {
+  for (let i = 0; i <= squaresIndex.length; i++) {
     const squareElement = document.createElement('div')
     // squareElement.innerHTML = i
     squareElement.setAttribute('class', 'board-square')
@@ -145,7 +140,7 @@ const createBoard = function () {
     document.getElementById('game-board').appendChild(squareElement)
   }
   document.getElementById('new-game').addEventListener('click', newGame)
-  console.log('Board created.')
+  console.log('Board created. New game is ready.')
 }
 
-createBoard()
+newGame()
