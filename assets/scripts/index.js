@@ -17,10 +17,9 @@ let over = false
 let turnCounter = 0
 let playerXMoves = []
 let playerOMoves = []
-let cellsIndexNumber
 let playerPiece
 let winValue = 'potato'
-let cellsIndex = ['', '', '', '', '', '', '', '', '']
+let cells = ['', '', '', '', '', '', '', '', '']
 const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
 
 const onMouseOver = function (event) {
@@ -52,29 +51,29 @@ const checkForMatch = function () {
     endNotice()
     return
   // top row win
-  } else if ((cellsIndex[0] === cellsIndex[1]) && (cellsIndex[0] === cellsIndex[2])) {
-    winValue = cellsIndex[0]
+  } else if ((cells[0] === cells[1]) && (cells[0] === cells[2])) {
+    winValue = cells[0]
   // middle row win
-  } else if ((cellsIndex[3] === cellsIndex[4]) && (cellsIndex[3] === cellsIndex[5])) {
-    winValue = cellsIndex[3]
+  } else if ((cells[3] === cells[4]) && (cells[3] === cells[5])) {
+    winValue = cells[3]
   // bottom row win
-  } else if ((cellsIndex[6] === cellsIndex[7]) && (cellsIndex[6] === cellsIndex[8])) {
-    winValue = cellsIndex[6]
+  } else if ((cells[6] === cells[7]) && (cells[6] === cells[8])) {
+    winValue = cells[6]
   // left column win
-  } else if ((cellsIndex[0] === cellsIndex[3]) && (cellsIndex[0] === cellsIndex[6])) {
-    winValue = cellsIndex[0]
+  } else if ((cells[0] === cells[3]) && (cells[0] === cells[6])) {
+    winValue = cells[0]
   // center column win
-  } else if ((cellsIndex[1] === cellsIndex[4]) && (cellsIndex[1] === cellsIndex[7])) {
-    winValue = cellsIndex[1]
+  } else if ((cells[1] === cells[4]) && (cells[1] === cells[7])) {
+    winValue = cells[1]
     // right column win
-  } else if ((cellsIndex[2] === cellsIndex[5]) && (cellsIndex[2] === cellsIndex[8])) {
-    winValue = cellsIndex[2]
+  } else if ((cells[2] === cells[5]) && (cells[2] === cells[8])) {
+    winValue = cells[2]
     // downward diagonal win
-  } else if ((cellsIndex[0] === cellsIndex[4]) && (cellsIndex[0] === cellsIndex[8])) {
-    winValue = cellsIndex[0]
+  } else if ((cells[0] === cells[4]) && (cells[0] === cells[8])) {
+    winValue = cells[0]
     // upward diagonal win
-  } else if ((cellsIndex[2] === cellsIndex[4]) && (cellsIndex[2] === cellsIndex[6])) {
-    winValue = cellsIndex[2]
+  } else if ((cells[2] === cells[4]) && (cells[2] === cells[6])) {
+    winValue = cells[2]
   } else {
     winValue = 'potato'
   }
@@ -92,7 +91,7 @@ const checkForMatch = function () {
 
 const clickcell = function () {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  cellsIndex[this.getAttribute('data-id')] = playerPiece
+  cells[this.getAttribute('data-id')] = playerPiece
   if (playerPiece === 'x') {
     playerXMoves.push(cellsCoord[this.getAttribute('data-id')])
     document.querySelector('#' + this.getAttribute('id')).style.color = '#f27089'
@@ -110,14 +109,12 @@ const clickcell = function () {
   console.log(`Player O's moves are : ${playerOMoves}`)
   console.log(`Number of Player X's moves: ${playerXMoves.length}`)
   console.log(`Number of Player O's moves: ${playerOMoves.length}`)
-  console.log(`cell index: ${cellsIndexNumber}`)
-  console.log(`Game cells array: ${cellsIndex}`)
+  console.log(`cell index: ${this.getAttribute('data-id')}`)
+  console.log(`Game cells array: ${cells}`)
   console.log(`Is game over? ${over}`)
   turnCounter++
   // this.setAttribute('src', cells[cellId].cellImage);
-  if (playerXMoves.length >= 3) {
-    checkForMatch()
-  }
+  checkForMatch()
 }
 
 const newGame = function () {
@@ -126,10 +123,10 @@ const newGame = function () {
   playerXMoves = []
   playerOMoves = []
   winValue = 'potato'
-  cellsIndex = ['', '', '', '', '', '', '', '', '']
+  cells = ['', '', '', '', '', '', '', '', '']
   document.querySelector('#game-board').innerHTML = ''
   document.querySelector('#game-board').style.borderColor = '#9ac479'
-  for (let i = 0; i <= cellsIndex.length; i++) {
+  for (let i = 0; i <= cells.length; i++) {
     const cellElement = document.createElement('div')
     // cellElement.innerHTML = i
     cellElement.setAttribute('class', 'board-cell')
