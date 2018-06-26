@@ -102,12 +102,15 @@ h5 {
   padding-bottom: 2px;
 }
 
-.new-game-area {
-  cursor: pointer;
+.border {
+  border: 3px solid $black;
+  margin: 20px;
+  padding: 20px;
 }
 
-span {
+.new-game-area {
   color: $rainbow-orange;
+  cursor: pointer;
   font-size: 28px;
 
   // &:hover {

@@ -13,6 +13,12 @@
 //   $('#square-0-0').on('click', squareEvents.onClickSquare)
 // })
 
+// const authEvents = require('../../curl-scripts/events')
+//
+// $(() => {
+//   authEvents.addHandlers()
+// })
+
 let over = false
 let turnCounter = 0
 let playerXMoves = []
