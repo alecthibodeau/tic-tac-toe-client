@@ -85,10 +85,18 @@ h5 {
   width: 100px;
 }
 
-// .board-square:hover {
-//   background-color: $yellow;
-//   cursor: pointer;
-// }
+.board-cell:not(.played):hover {
+  background-color: $rainbow-yellow;
+  cursor: pointer;
+}
+
+.board-cell.played.x {
+  color: $rainbow-red;
+}
+
+.board-cell.played.o {
+  color: $rainbow-blue;
+}
 
 .board-grid {
   background-color: $cloud-white;
@@ -100,6 +108,14 @@ h5 {
   max-width: 304px;
   overflow: auto;
   padding-bottom: 2px;
+
+  &.x-won {
+    border: 4px solid $rainbow-red;
+  }
+
+  &.o-won {
+    border: 4px solid $rainbow-blue;
+  }
 }
 
 .border {
