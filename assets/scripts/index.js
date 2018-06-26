@@ -37,43 +37,28 @@ const endNotice = function () {
   console.log(`Is game REALLY over? ${over}`)
   console.log(`Win value: ${winValue}`)
   for (let i = 0; i <= 8; i++) {
-    document.getElementById('cell-' + i).removeEventListener('click', clickcell)
+    document.getElementById('cell-' + i).removeEventListener('click', clickCell)
     document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
   }
   setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
 }
 
 const checkForMatch = function () {
-  // top row win
-  if ((cells[0] !== '') && (cells[0] === cells[1]) && (cells[0] === cells[2])) {
-    winValue = cells[0]
-  // middle row win
-  } else if ((cells[3] !== '') && (cells[3] === cells[4]) && (cells[3] === cells[5])) {
-    winValue = cells[3]
-  // bottom row win
-  } else if ((cells[6] !== '') && (cells[6] === cells[7]) && (cells[6] === cells[8])) {
-    winValue = cells[6]
-  // left column win
-  } else if ((cells[0] !== '') && (cells[0] === cells[3]) && (cells[0] === cells[6])) {
-    winValue = cells[0]
-  // center column win
-  } else if ((cells[1] !== '') && (cells[1] === cells[4]) && (cells[1] === cells[7])) {
-    winValue = cells[1]
-    // right column win
-  } else if ((cells[2] !== '') && (cells[2] === cells[5]) && (cells[2] === cells[8])) {
-    winValue = cells[2]
-    // downward diagonal win
-  } else if ((cells[0] !== '') && (cells[0] === cells[4]) && (cells[0] === cells[8])) {
-    winValue = cells[0]
-    // upward diagonal win
-  } else if ((cells[2] !== '') && (cells[2] === cells[4]) && (cells[2] === cells[6])) {
-    winValue = cells[2]
-    // draw
-  } else if (playerXMoves.length + playerOMoves.length === 9) {
-    document.querySelector('#new-game').innerHTML = `IT'S A DRAW!`
-    console.log('It\'s a draw!')
-    endNotice()
-    return
+  for (let i = 0; i <= 6; i = i + 3) {
+    if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
+      winValue = cells[i] // rows win
+      console.log('rows win')
+    }
+  }
+  for (let i = 0; i <= 2; i = i + 1) {
+    if ((cells[i] !== '') && (cells[i] === cells[i + 3]) && (cells[i] === cells[i + 6])) {
+      winValue = cells[i] // columns win
+      console.log('columns win')
+    }
+  }
+  if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
+    winValue = cells[4] // diagonals win
+    console.log('diagonals win')
   }
   if ((winValue === 'x') || (winValue === 'o')) {
     if (winValue === 'x') {
@@ -83,11 +68,15 @@ const checkForMatch = function () {
     }
     console.log(`Player ${winValue.toUpperCase()} wins!`)
     document.querySelector('#new-game').innerHTML = `PLAYER ${winValue.toUpperCase()} WINS!`
+    return endNotice()
+  } else if (playerXMoves.length + playerOMoves.length === 9) {
+    document.querySelector('#new-game').innerHTML = `IT'S A DRAW!`
+    console.log(`It's a draw!`)
     endNotice()
   }
 }
 
-const clickcell = function () {
+const clickCell = function () {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
   cells[this.getAttribute('data-id')] = playerPiece
   if (playerPiece === 'x') {
@@ -98,7 +87,7 @@ const clickcell = function () {
     document.querySelector('#' + this.getAttribute('id')).style.color = '#74a6cf'
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
-  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickcell)
+  document.getElementById(this.getAttribute('id')).removeEventListener('click', clickCell)
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
@@ -113,7 +102,7 @@ const clickcell = function () {
   console.log(`Game is over? ${over}`)
   turnCounter++
   // this.setAttribute('src', cells[cellId].cellImage);
-  if (playerXMoves.length >= 3) {
+  if (playerXMoves.length + playerOMoves.length >= 5) {
     checkForMatch()
   }
 }
@@ -136,7 +125,7 @@ const newGame = function () {
     cellElement.setAttribute('id', 'cell-' + i)
     cellElement.addEventListener('mouseover', onMouseOver)
     cellElement.addEventListener('mouseout', onMouseOut)
-    cellElement.addEventListener('click', clickcell)
+    cellElement.addEventListener('click', clickCell)
     document.getElementById('game-board').appendChild(cellElement)
   }
   document.getElementById('new-game').addEventListener('click', newGame)
