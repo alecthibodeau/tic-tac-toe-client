@@ -83,19 +83,23 @@ h5 {
   text-align: center;
   vertical-align: middle;
   width: 100px;
-}
 
-.board-cell:not(.played):hover {
-  background-color: $rainbow-yellow;
-  cursor: pointer;
-}
+  &.board-cell:not(.played):hover {
+    background-color: $rainbow-yellow;
+    cursor: pointer;
+  }
 
-.board-cell.played.x {
-  color: $rainbow-red;
-}
+  &.board-cell.played {
+    &.x {
+      color: $rainbow-red;
+      cursor: default;
+    }
 
-.board-cell.played.o {
-  color: $rainbow-blue;
+    &.o {
+      color: $rainbow-blue;
+      cursor: default;
+    }
+  }
 }
 
 .board-grid {

@@ -32,8 +32,12 @@ $(() => {
     over = true
     console.log(`Is game REALLY over? ${over}`)
     console.log(`Win value: ${winValue}`)
-    for (let i = 0; i <= 8; i++) {
-    }
+    $('.board-cell').off('click', clickCell)
+    $('.board-cell').addClass('game-over')
+    // for (let i = 0; i <= 8; i++) {
+    //   document.getElementById('cell-' + i).removeEventListener('click', clickCell)
+    //   document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
+    // }
     setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
   }
 
@@ -108,18 +112,11 @@ $(() => {
     winValue = null
     cells = ['', '', '', '', '', '', '', '', '']
     document.querySelector('#game-board').innerHTML = ''
-    // document.querySelector('#game-board').style.borderColor = '#9ac479'
     for (let i = 0; i < cellsCoord.length; i++) {
       const cellElement = document.createElement('div')
-      // cellElement.innerHTML = i
       cellElement.setAttribute('class', 'board-cell')
       cellElement.setAttribute('data-id', i)
       cellElement.setAttribute('id', 'cell-' + i)
-
-      // do these in CSS
-      // cellElement.addEventListener('mouseover', onMouseOver)
-      // cellElement.addEventListener('mouseout', onMouseOut)
-
       // this should go in games/events.js and be immported here for use
       // as a listnere callback
       // $('.board-cell').addEventListener('click', clickCell)
