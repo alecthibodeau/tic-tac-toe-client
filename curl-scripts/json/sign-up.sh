@@ -11,5 +11,5 @@ curl "https://tic-tac-toe-wdi.herokuapp.com/sign-up" \
       "password_confirmation": "'"${PASSWORD_CONFIRMATION}"'"
     }
   }'
-
+# EMAIL="gogogo@gogogo.com" PASSWORD="password" PASSWORD_CONFIRMATION="password" sh curl-scripts/json/sign-up.sh
 echo

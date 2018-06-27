@@ -10,5 +10,5 @@ curl "https://tic-tac-toe-wdi.herokuapp.com/sign-in" \
       "password": "'"${PASSWORD}"'"
     }
   }'
-
+#EMAIL="gogogo@gogogo.com" PASSWORD="1234pass" sh curl-scripts/json/sign-in.sh
 echo

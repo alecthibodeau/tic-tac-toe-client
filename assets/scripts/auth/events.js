@@ -5,18 +5,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
-// Nate's example starts here:
-const onCreateExample = function (event) {
-  event.preventDefault()
-  console.log('onCreateExample ran!')
-
-  const data = getFormFields(event.target)
-  api.create(data)
-    .then(ui.onCreateSuccess)
-    .catch(ui.signUpFailure) // Thie line not correct?
-}
-// Nate's example ends here
-
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('sign up ran!')
