@@ -1,7 +1,7 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
-// @import url('https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet');
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 $black: #000;
 $white: #fff;
@@ -74,7 +74,7 @@ h5 {
   color: $lines-brown;
   display: inline-block;
   float: left;
-  // font-family: 'Varela Round', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   font-size: 80px;
   height: 100px;
   line-height: 93px;
