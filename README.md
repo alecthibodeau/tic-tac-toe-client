@@ -1,4 +1,4 @@
-# Tic-tac-toe game project
+# Tic-tac-toe Game Project
 
 ## Summary
 
@@ -23,7 +23,7 @@ Players can play on the same desktop or mobile device, alternating who clicks on
 
 - As a game player who has just completed a game, I want to know where to click so that I can play a new game.
 
-## Wireframes
+## Wireframe
 ![Tic-tac-toe Wireframe](https://i.imgur.com/lebsgBj.jpg)
 
 ## Future Features
