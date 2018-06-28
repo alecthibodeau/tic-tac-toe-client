@@ -1,72 +1,29 @@
-# browser-template
+# Tic-tac-toe game project
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+## Summary
 
-## Installation
+I built this game as my initial Web Development Immersive (WDI) course project at General Assembly. The primary programs I used were HTML5, Sass and JavaScript, with some Bootstrap.
 
-1. [Download](../../archive/master.zip) this template.
-1. Move to the `projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `tic-tac-toe-game` with the name of
-    your project.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
+Technical Specifications
+- Custom game engine
+- Single page application
 
-## Structure
+## Features
+Players can play on the same desktop or mobile device, alternating who clicks on which squares. The game visually notifies which side won, or if the game ended in a draw. When a player wins, the game board's border color changes to the color of that player's pieces.
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+## User Stories
+- As a visitor to the game's website, I need to see the game presented clearly so that I know how to start playing.
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`config/environment.js`](config/environment.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+- As a game player starting a new game, I need to be aware of who the other player is so that I know which one of us plays the first move.
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+- As a game player during gameplay, I want to see confirmation on whose move it is so that I know whether to select a square or wait for the other player.
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+- As a game player at the end of a game, I want to see the final board with the winning player identified so that I know who won the game.
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+- As a game player who has just completed a game, I want to know where to click so that I can play a new game.
 
-## Tasks
+## Wireframes
+![Tic-tac-toe Wireframe](https://i.imgur.com/lebsgBj.jpg)
 
-Developers should run these often!
-
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt test`: runs any automated tests, depends on `grunt build`
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+## Future Features
+I would like to add functionality so that a user can sign up with an account and interact with an API.
