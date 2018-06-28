@@ -21,31 +21,26 @@ const onMouseOut = function (event) {
 
 const endNotice = function () {
   over = true
-  console.log(`Is game REALLY over? ${over}`)
-  console.log(`Win value: ${winValue}`)
+  console.log(`Is game over? ${over}`)
   for (let i = 0; i <= 8; i++) {
     document.getElementById('cell-' + i).removeEventListener('click', clickCell)
     document.getElementById('cell-' + i).removeEventListener('mouseover', onMouseOver)
   }
-  setTimeout(function () { document.querySelector('#new-game').innerHTML = 'NEW GAME' }, 5000)
 }
 
 const checkForMatch = function () {
   for (let i = 0; i <= 6; i = i + 3) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
       winValue = cells[i] // rows win
-      console.log('rows win')
     }
   }
   for (let i = 0; i <= 2; i = i + 1) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 3]) && (cells[i] === cells[i + 6])) {
       winValue = cells[i] // columns win
-      console.log('columns win')
     }
   }
   if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
     winValue = cells[4] // diagonals win
-    console.log('diagonals win')
   }
   if ((winValue === 'x') || (winValue === 'o')) {
     if (winValue === 'x') {
@@ -53,14 +48,14 @@ const checkForMatch = function () {
     } else if (winValue === 'o') {
       document.querySelector('#game-board').style.borderColor = '#74a6cf'
     }
-    console.log(`Player ${winValue.toUpperCase()} wins!`)
+    console.log(`PLAYER ${winValue.toUpperCase()} WINS!`)
     document.querySelector('#game-status').innerHTML = `PLAYER ${winValue.toUpperCase()} WINS!`
     document.querySelector('#game-status').style.color = '#358d65'
     return endNotice()
   } else if (playerXMoves.length + playerOMoves.length === 9) {
     document.querySelector('#game-status').innerHTML = `IT'S A DRAW!`
     document.querySelector('#game-status').style.color = '#358d65'
-    console.log(`It's a draw!`)
+    console.log(`IT'S A DRAW!`)
     endNotice()
   }
 }
@@ -84,15 +79,9 @@ const clickCell = function () {
   document.getElementById(this.getAttribute('id')).removeEventListener('mouseover', onMouseOver)
   document.querySelector('#' + this.getAttribute('id')).style.backgroundColor = '#f7f0e3'
   document.querySelector('#' + this.getAttribute('id')).style.cursor = 'default'
-  console.log(`User selected ${playerPiece.toUpperCase()} on cell ${this.getAttribute('data-id')}`)
-  console.log(`Player X's moves are : ${playerXMoves}`)
-  console.log(`Player O's moves are : ${playerOMoves}`)
-  console.log(`Number of Player X's moves: ${playerXMoves.length}`)
-  console.log(`Number of Player O's moves: ${playerOMoves.length}`)
-  console.log(`cell index: ${this.getAttribute('data-id')}`)
-  console.log(`Win value: ${winValue}`)
+  console.log(`Player ${playerPiece.toUpperCase()} selected cell ${this.getAttribute('data-id')}`)
   console.log(`Cells array: ${cells}`)
-  console.log(`Game is over? ${over}`)
+  console.log(`Is game over? ${over}`)
   turnCounter++
   if (playerXMoves.length + playerOMoves.length >= 5) {
     checkForMatch()

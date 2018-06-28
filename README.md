@@ -7,6 +7,7 @@ I built this game as my initial Web Development Immersive (WDI) course project a
 Technical Specifications
 - Custom game engine
 - Single page application
+- Multiple games, one at a time
 
 ## Features
 Players can play on the same desktop or mobile device, alternating who clicks on which squares. The game visually notifies which side won, or if the game ended in a draw. When a player wins, the game board's border color changes to the color of that player's pieces.
@@ -26,4 +27,4 @@ Players can play on the same desktop or mobile device, alternating who clicks on
 ![Tic-tac-toe Wireframe](https://i.imgur.com/lebsgBj.jpg)
 
 ## Future Features
-I would like to add functionality so that a user can sign up with an account and interact with an API.
+I would like to add functionality so that a user can sign up with an account and interact with an API for data sharing.
