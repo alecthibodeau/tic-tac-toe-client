@@ -16,6 +16,7 @@
 // const authEvents = require('../../curl-scripts/events')
 //
 const authEvents = require('./auth/events')
+
 $(() => {
   authEvents.addHandlers()
 
