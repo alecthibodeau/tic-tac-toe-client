@@ -19,16 +19,10 @@
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/events')
 
-const newGameClick = function (e) {
-  e.preventDefault()
-  gameEvents.newGame()
-  $('.board-cell').on('click', gameEvents.onClickCell)
-}
-
 // On document ready
 $(() => {
   authEvents.addHandlers()
   gameEvents.newGame()
   $('.board-cell').on('click', gameEvents.onClickCell)
-  $('#new-game').on('click', newGameClick)
+  $('#new-game').on('click', gameEvents.onClickNewGame)
 })

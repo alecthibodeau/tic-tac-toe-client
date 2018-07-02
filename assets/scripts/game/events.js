@@ -7,7 +7,6 @@ let playerOMoves = []
 let playerPiece = null
 let winValue = null
 let cells = ['', '', '', '', '', '', '', '', '']
-const cellsCoord = [[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
 
 const endNotice = function (event) {
   over = true
@@ -57,10 +56,10 @@ const onClickCell = function (event) {
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
   cells[this.getAttribute('data-id')] = playerPiece
   if (playerPiece === 'x') {
-    playerXMoves.push(cellsCoord[this.getAttribute('data-id')])
+    playerXMoves.push(playerPiece)
     $(this).addClass('x')
   } else if (playerPiece === 'o') {
-    playerOMoves.push(cellsCoord[this.getAttribute('data-id')])
+    playerOMoves.push(playerPiece)
     $(this).addClass('o')
   }
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece.toUpperCase()
@@ -81,6 +80,12 @@ const onClickCell = function (event) {
   }
 }
 
+const onClickNewGame = function (event) {
+  event.preventDefault()
+  newGame()
+  $('.board-cell').on('click', onClickCell)
+}
+
 const newGame = function (event) {
   // event.preventDefault()
   over = false
@@ -90,6 +95,8 @@ const newGame = function (event) {
   playerPiece = null
   winValue = null
   cells = ['', '', '', '', '', '', '', '', '']
+  $('.board-grid').removeClass('x-won')
+  $('.board-grid').removeClass('o-won')
   document.querySelector('#game-board').innerHTML = ''
   for (let i = 0; i < cells.length; i++) {
     const cellElement = document.createElement('div')
@@ -103,7 +110,8 @@ const newGame = function (event) {
 
 module.exports = {
   newGame,
-  onClickCell
+  onClickCell,
+  onClickNewGame
 }
 
 // event listeners which bind handlers to events on elements
