@@ -45,6 +45,7 @@ p {
 
 h1 {
   color: $rainbow-green;
+  font-family: 'Varela Round', sans-serif;
   font-size: 28px;
   font-weight: normal;
   margin: 0 auto;
@@ -93,11 +94,13 @@ h5 {
     &.x {
       color: $rainbow-red;
       cursor: default;
+      text-transform: uppercase;
     }
 
     &.o {
       color: $rainbow-blue;
       cursor: default;
+      text-transform: uppercase;
     }
   }
 }
@@ -124,13 +127,36 @@ h5 {
 }
 
 .border {
-  border: 3px solid $black;
+  border: 3px solid $rainbow-green;
   margin: 20px;
   padding: 20px;
 }
 
 .new-game-area {
   color: $rainbow-orange;
+  font-family: 'Varela Round', sans-serif;
   cursor: pointer;
   font-size: 28px;
+  text-transform: uppercase;
+}
+
+legend {
+  color: $rainbow-orange;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+input {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+input[type='submit'] {
+  background-color: $rainbow-yellow;
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 7px;
 }
