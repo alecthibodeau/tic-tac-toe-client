@@ -58,15 +58,8 @@ const onClickCell = function (event) {
 }
 
 const onClickNewGame = function (event) {
+  $('.board-grid').removeClass(`${winValue}-won`).addClass('playable')
   event.preventDefault()
-  newGame()
-  $('.board-grid').addClass('playable')
-  $('.board-cell').on('click', onClickCell)
-}
-
-const newGame = function (event) {
-  $('.board-grid').removeClass(`${winValue}-won`)
-  $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes')
   over = false
   turnCounter = 0
   winValue = null
@@ -79,12 +72,12 @@ const newGame = function (event) {
     cellElement.setAttribute('id', 'cell-' + i)
     document.getElementById('game-board').appendChild(cellElement)
   }
+  $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes').addClass('playable')
+  $('.board-cell').on('click', onClickCell)
   console.log('Board created. New game is ready.')
 }
 
 module.exports = {
-  newGame,
-  onClickCell,
   onClickNewGame
 }
 

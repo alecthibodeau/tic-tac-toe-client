@@ -18,13 +18,11 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   $('#message').css('background-color', 'green')
-  $('.change-password-panel').addClass('authorized')
-  $('.sign-out-panel').addClass('authorized')
-  $('.board-grid').addClass('playable')
-  $('.new-game-area').addClass('playable')
-  $('.game-status-area').addClass('playable')
   $('.sign-up-panel').addClass('signed-in')
   $('.sign-in-panel').addClass('signed-in')
+  $('.change-password-panel').addClass('authorized')
+  $('.sign-out-panel').addClass('authorized')
+  $('.new-game-area').addClass('playable')
   setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signInSuccess ran. Data is :', data)
   store.user = data.user
