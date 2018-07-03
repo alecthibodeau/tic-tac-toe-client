@@ -60,6 +60,13 @@ const onClickCell = function (event) {
   if (turnCounter >= 5) {
     checkForMatch()
   }
+  api.updateGame(gameData, this.getAttribute('data-id'), playerPiece, over)
+    .then((result) => {
+      console.log(result)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 const onClickNewGame = function (event) {
