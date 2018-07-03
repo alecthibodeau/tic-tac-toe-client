@@ -16,7 +16,7 @@ const gameNotice = function () {
     $('.board-grid').addClass(`${winValue}-won`)
     $('.game-status-area').text(`player ${winValue} wins!`).addClass('game-result')
     return endState()
-  } else if (turnCounter === 9) {
+  } else {
     $('.game-status-area').text(`it's a draw!`).addClass('game-result')
     endState()
   }
@@ -43,6 +43,8 @@ const checkForMatch = function (event) {
   }
   if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
     winValue = cells[4] // diagonals win
+    over = true
+  } else if (turnCounter === 9) { // draw
     over = true
   }
   api.updateGame(gameData, cellsIndex, playerPiece, over)
