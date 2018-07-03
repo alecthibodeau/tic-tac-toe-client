@@ -9,20 +9,18 @@ let cells = ['', '', '', '', '', '', '', '', '']
 const gameNotice = function () {
   if ((winValue === 'x') || (winValue === 'o')) {
     $('.board-grid').addClass(`${winValue}-won`)
-    document.querySelector('#new-game').innerHTML = `player ${winValue} wins!`
-    return endNotice()
+    $('.game-status-area').text(`player ${winValue} wins!`).addClass('game-result')
+    return endState()
   } else if (turnCounter === 9) {
-    document.querySelector('#new-game').innerHTML = `it's a draw!`
-    endNotice()
+    $('.game-status-area').text(`it's a draw!`).addClass('game-result')
+    endState()
   }
 }
 
-const endNotice = function () {
+const endState = function () {
   over = true
-  // console.log(`Is game REALLY over? ${over}`)
-  $('.board-cell').off('click', onClickCell)
-  $('.board-cell').addClass('game-over')
-  setTimeout(function () { document.querySelector('#new-game').innerHTML = 'new game' }, 5000)
+  console.log(`Is game REALLY over? ${over}`)
+  $('.board-cell').off('click', onClickCell).addClass('game-over')
 }
 
 const checkForMatch = function (event) {
@@ -45,10 +43,9 @@ const checkForMatch = function (event) {
 const onClickCell = function (event) {
   event.preventDefault()
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
+  turnCounter % 2 !== 0 ? $('#game-status').text('player x goes').removeClass('o') : $('#game-status').text('player o goes').addClass('o')
   cells[this.getAttribute('data-id')] = playerPiece
-  $(this).addClass(`${playerPiece}`)
-  $(this).addClass('played')
-  $(this).unbind('click', onClickCell)
+  $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
   console.log(`cell index: ${this.getAttribute('data-id')}`)
   console.log(`Win value: ${winValue}`)
@@ -63,11 +60,13 @@ const onClickCell = function (event) {
 const onClickNewGame = function (event) {
   event.preventDefault()
   newGame()
+  $('.board-grid').addClass('playable')
   $('.board-cell').on('click', onClickCell)
 }
 
 const newGame = function (event) {
   $('.board-grid').removeClass(`${winValue}-won`)
+  $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes')
   over = false
   turnCounter = 0
   winValue = null

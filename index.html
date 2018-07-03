@@ -17,12 +17,13 @@
         <div class='board-grid' id='game-board'>
         </div>
         <div>
-          <p><span class='new-game-area' id='new-game'>new game</span></p>
+          <p class='game-status-area' id='game-status'>player x goes</p>
+          <p class='new-game-area' id='new-game'>new game</p>
         </div>
 
-      <p id="message">API Token Authentication</p>
+      <p class='auth-message' id="message">API Token Authentication</p>
         <div>
-          <form id="sign-up" class="border">
+          <form id="sign-up" class="sign-up-panel">
             <fieldset>
               <legend>Sign up</legend>
               <input type="text" name="credentials[email]" placeholder="Email">
@@ -31,7 +32,7 @@
               <input type="submit" value="Sign up">
             </fieldset>
           </form>
-          <form id="sign-in" class="border">
+          <form id="sign-in" class="sign-in-panel">
             <fieldset>
               <legend>Sign in</legend>
               <input type="text" name="credentials[email]" placeholder="Email">
@@ -39,7 +40,7 @@
               <input type="submit" value="Sign in">
             </fieldset>
           </form>
-          <form id="change-password" class="border">
+          <form id="change-password" class="change-password-panel">
             <fieldset>
               <legend>Change password</legend>
               <input type="password" name="passwords[old]" placeholder="Old Password">
@@ -47,10 +48,10 @@
               <input type="submit" value="Change password">
             </fieldset>
           </form>
-          <form id="sign-out" class="border">
+          <form id="sign-out" class="sign-out-panel">
             <fieldset>
               <legend>Sign out</legend>
-              <input type="submit" value="Sign Out">
+              <input type="submit" value="Sign Out" class="sign-out-button">
             </fieldset>
           </form>
         </div>
