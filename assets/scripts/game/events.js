@@ -1,5 +1,10 @@
 'use strict'
 
+const api = require('./api')
+const store = require('../store')
+
+let gameData = null
+
 let over = false
 let turnCounter = 0
 let playerPiece = null
@@ -75,6 +80,15 @@ const onClickNewGame = function (event) {
   $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes').addClass('playable')
   $('.board-cell').on('click', onClickCell)
   console.log('Board created. New game is ready.')
+
+  api.createGame()
+    .then((result) => {
+      console.log(result)
+      gameData = result
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 module.exports = {
