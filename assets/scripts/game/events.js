@@ -4,7 +4,7 @@ const api = require('./api')
 const store = require('../store')
 
 let gameData = null
-
+let cellsIndex = null
 let over = false
 let turnCounter = 0
 let playerPiece = null
@@ -32,41 +32,45 @@ const checkForMatch = function (event) {
   for (let i = 0; i <= 6; i = i + 3) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
       winValue = cells[i] // rows win
+      over = true
     }
   }
   for (let i = 0; i <= 2; i = i + 1) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 3]) && (cells[i] === cells[i + 6])) {
       winValue = cells[i] // columns win
+      over = true
     }
   }
   if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
     winValue = cells[4] // diagonals win
+    over = true
   }
-  gameNotice()
-}
-
-const onClickCell = function (event) {
-  event.preventDefault()
-  turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  turnCounter % 2 !== 0 ? $('#game-status').text('player x goes').removeClass('o') : $('#game-status').text('player o goes').addClass('o')
-  cells[this.getAttribute('data-id')] = playerPiece
-  $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
-  document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
-  console.log(`cell index: ${this.getAttribute('data-id')}`)
-  console.log(`Win value: ${winValue}`)
-  console.log(`Cells array: ${cells}`)
-  console.log(`Game is over? ${over}`)
-  turnCounter++
-  if (turnCounter >= 5) {
-    checkForMatch()
-  }
-  api.updateGame(gameData, this.getAttribute('data-id'), playerPiece, over)
+  api.updateGame(gameData, cellsIndex, playerPiece, over)
     .then((result) => {
       console.log(result)
     })
     .catch((err) => {
       console.log(err)
     })
+  if (over === true) {
+    gameNotice()
+  }
+}
+
+const onClickCell = function (event) {
+  event.preventDefault()
+  cellsIndex = this.getAttribute('data-id')
+  turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
+  turnCounter % 2 !== 0 ? $('#game-status').text('player x goes').removeClass('o') : $('#game-status').text('player o goes').addClass('o')
+  cells[cellsIndex] = playerPiece
+  $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
+  document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
+  console.log(`cell index: ${cellsIndex}`)
+  console.log(`Win value: ${winValue}`)
+  console.log(`Cells array: ${cells}`)
+  console.log(`Game is over? ${over}`)
+  turnCounter++
+  checkForMatch()
 }
 
 const onClickNewGame = function (event) {
