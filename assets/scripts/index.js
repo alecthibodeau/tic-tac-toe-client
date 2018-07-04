@@ -21,8 +21,6 @@ const gameEvents = require('./game/events')
 
 // On document ready
 $(() => {
-  authEvents.addHandlers()
-  // gameEvents.newGame()
-  // $('.board-cell').on('click', gameEvents.onClickCell)
-  $('#new-game').on('click', gameEvents.onClickNewGame)
+  authEvents.addAuthHandlers()
+  gameEvents.addGameHandlers()
 })

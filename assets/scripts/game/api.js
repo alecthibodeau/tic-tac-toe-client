@@ -27,17 +27,16 @@ const createGame = function () {
   })
 }
 
-// Alec's initial PATCH attempt…
 const updateGame = function (gameData, index, value, over) {
   console.log(index, value, over)
 
   const game = {
-    'game': { // Need to find a way to define these values OR import 'game' as an object
+    'game': {
       'cell': {
         'index': index,
         'value': value
       },
-      'over': over // possibly data.game.over
+      'over': over
     }
   }
   console.log(store.user.id)

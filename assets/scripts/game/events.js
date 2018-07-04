@@ -1,64 +1,17 @@
 'use strict'
 
 const api = require('./api')
-const store = require('../store')
+const logic = require('./logic')
 
-let gameData = null
-let cellsIndex = null
 let over = false
 let turnCounter = 0
+let gameData = null
+let cellsIndex = null
 let playerPiece = null
 let winValue = null
 let cells = ['', '', '', '', '', '', '', '', '']
 
-const gameNotice = function () {
-  if ((winValue === 'x') || (winValue === 'o')) {
-    $('.board-grid').addClass(`${winValue}-won`)
-    $('.game-status-area').text(`player ${winValue} wins!`).addClass('game-result')
-    return endState()
-  } else {
-    $('.game-status-area').text(`it's a draw!`).addClass('game-result')
-    endState()
-  }
-}
-
-const endState = function () {
-  over = true
-  console.log(`Is game REALLY over? ${over}`)
-  $('.board-cell').off('click', onClickCell).addClass('game-over')
-}
-
-const checkForMatch = function (event) {
-  for (let i = 0; i <= 6; i = i + 3) {
-    if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
-      winValue = cells[i] // rows win
-      over = true
-    }
-  }
-  for (let i = 0; i <= 2; i = i + 1) {
-    if ((cells[i] !== '') && (cells[i] === cells[i + 3]) && (cells[i] === cells[i + 6])) {
-      winValue = cells[i] // columns win
-      over = true
-    }
-  }
-  if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
-    winValue = cells[4] // diagonals win
-    over = true
-  } else if (turnCounter === 9) { // draw
-    over = true
-  }
-  api.updateGame(gameData, cellsIndex, playerPiece, over)
-    .then((result) => {
-      console.log(result)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  if (over === true) {
-    gameNotice()
-  }
-}
-
+// Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
@@ -72,7 +25,7 @@ const onClickCell = function (event) {
   console.log(`Cells array: ${cells}`)
   console.log(`Game is over? ${over}`)
   turnCounter++
-  checkForMatch()
+  logic.checkForMatch(cells, winValue, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
 
 const onClickNewGame = function (event) {
@@ -82,7 +35,7 @@ const onClickNewGame = function (event) {
   turnCounter = 0
   winValue = null
   cells = ['', '', '', '', '', '', '', '', '']
-  document.querySelector('#game-board').innerHTML = ''
+  $('#game-board').html('')
   for (let i = 0; i < cells.length; i++) {
     const cellElement = document.createElement('div')
     cellElement.setAttribute('class', 'board-cell')
@@ -104,8 +57,12 @@ const onClickNewGame = function (event) {
     })
 }
 
+const addGameHandlers = () => {
+  $('#new-game').on('click', onClickNewGame)
+}
+
 module.exports = {
-  onClickNewGame
+  addGameHandlers
 }
 
 // event listeners which bind handlers to events on elements
