@@ -6,9 +6,11 @@ const logic = require('./logic')
 let over = false
 let turnCounter = 0
 let gameData = null
+let overGamesAll = null
 let cellsIndex = null
 let playerPiece = null
 let winValue = null
+let statsOverGames = null
 let cells = ['', '', '', '', '', '', '', '', '']
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
@@ -57,8 +59,28 @@ const onClickNewGame = function (event) {
     })
 }
 
+const onRetrieveOverGames = function () {
+  api.retrieveOverGames()
+    .then((result) => {
+      statsOverGames = result
+      console.log(statsOverGames)
+      console.log(over)
+      // $('#stats-games-over').html(over)
+      document.getElementById('stats-games-over').innerHTML = statsOverGames.games[0].cells
+      // for (let i = 0; i < statsOverGames.length; i++) {
+      //   overGamesAll = document.createElement('div')
+      //   document.getElementById('stats-games-over').innerHTML = statsOverGames.games[i].cells
+      //   document.getElementById('stats-games-over').appendChild(overGamesAll)
+      // }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
+  $('#retrieve-games').on('click', onRetrieveOverGames)
 }
 
 module.exports = {

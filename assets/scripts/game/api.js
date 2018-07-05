@@ -54,7 +54,18 @@ const updateGame = function (gameData, index, value, over) {
   })
 }
 
+const retrieveOverGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createGame,
-  updateGame
+  updateGame,
+  retrieveOverGames
 }
