@@ -6,12 +6,18 @@ const logic = require('./logic')
 let over = false
 let turnCounter = 0
 let gameData = null
-let overGamesAll = null
 let cellsIndex = null
 let playerPiece = null
 let winValue = null
-let statsOverGames = null
 let cells = ['', '', '', '', '', '', '', '', '']
+
+let gamesList = ''
+
+const statsOverGames = {
+  games: {
+    cells: null
+  }
+}
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
@@ -62,16 +68,15 @@ const onClickNewGame = function (event) {
 const onRetrieveOverGames = function () {
   api.retrieveOverGames()
     .then((result) => {
-      statsOverGames = result
+      const statsOverGames = result
       console.log(statsOverGames)
       console.log(over)
-      // $('#stats-games-over').html(over)
-      document.getElementById('stats-games-over').innerHTML = statsOverGames.games[0].cells
-      // for (let i = 0; i < statsOverGames.length; i++) {
-      //   overGamesAll = document.createElement('div')
-      //   document.getElementById('stats-games-over').innerHTML = statsOverGames.games[i].cells
-      //   document.getElementById('stats-games-over').appendChild(overGamesAll)
-      // }
+      for (let i = 0; i < statsOverGames.games.length; i++) {
+        const overGamesElement = document.createElement('div')
+        overGamesElement.setAttribute('id', 'stats-games-over-' + i)
+        document.getElementById('stats-games-over').appendChild(overGamesElement)
+        document.getElementById('stats-games-over-' + i).innerHTML = statsOverGames.games[i].cells
+      }
     })
     .catch((err) => {
       console.log(err)
