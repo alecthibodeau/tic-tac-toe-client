@@ -37,11 +37,11 @@ const onClickNewGame = function (event) {
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
   for (let i = 0; i < cells.length; i++) {
-    const cellElement = document.createElement('div')
-    cellElement.setAttribute('class', 'board-cell')
-    cellElement.setAttribute('data-id', i)
-    cellElement.setAttribute('id', 'cell-' + i)
-    document.getElementById('game-board').appendChild(cellElement)
+    const elementCell = document.createElement('div')
+    elementCell.setAttribute('class', 'board-cell')
+    elementCell.setAttribute('data-id', i)
+    elementCell.setAttribute('id', 'cell-' + i)
+    document.getElementById('game-board').appendChild(elementCell)
   }
   $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes').addClass('playable')
   $('.board-cell').on('click', onClickCell)
@@ -58,17 +58,29 @@ const onClickNewGame = function (event) {
 }
 
 const onRetrieveOverGames = function () {
+  let xStatsWins = null
+  let oStatsWins = null
+  let drawGames = null
   api.retrieveOverGames()
     .then((result) => {
       const statsOverGames = result
       console.log(statsOverGames)
       console.log(over)
       for (let i = 0; i < statsOverGames.games.length; i++) {
-        const overGamesElement = document.createElement('div')
-        overGamesElement.setAttribute('id', 'stats-games-over-' + i)
-        document.getElementById('stats-games-over').appendChild(overGamesElement)
-        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + ' &nbsp|&nbsp Result: ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') + ' &nbsp|&nbsp Moves: ' + statsOverGames.games[i].cells
+        const elementGamesOver = document.createElement('div')
+        elementGamesOver.setAttribute('id', 'stats-games-over-' + i)
+        elementGamesOver.setAttribute('class', 'states-games-over-element')
+        document.getElementById('stats-games-over').appendChild(elementGamesOver)
+        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') + ' with these moves: ' + statsOverGames.games[i].cells
+        if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'X won') {
+          xStatsWins = (xStatsWins + 1)
+        } else if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'O won') {
+          oStatsWins = (oStatsWins + 1)
+        } else {
+          drawGames = (drawGames + 1)
+        }
       }
+      document.getElementById('stats-sum-games-over').innerHTML = `Games X has won: ${xStatsWins} | Games O has won: ${oStatsWins} | Draws: ${drawGames}`
     })
     .catch((err) => {
       console.log(err)
