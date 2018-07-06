@@ -11,14 +11,6 @@ let playerPiece = null
 let winValue = null
 let cells = ['', '', '', '', '', '', '', '', '']
 
-let gamesList = ''
-
-const statsOverGames = {
-  games: {
-    cells: null
-  }
-}
-
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
   event.preventDefault()
@@ -75,7 +67,7 @@ const onRetrieveOverGames = function () {
         const overGamesElement = document.createElement('div')
         overGamesElement.setAttribute('id', 'stats-games-over-' + i)
         document.getElementById('stats-games-over').appendChild(overGamesElement)
-        document.getElementById('stats-games-over-' + i).innerHTML = statsOverGames.games[i].cells
+        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + ' &nbsp|&nbsp Result: ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') + ' &nbsp|&nbsp Moves: ' + statsOverGames.games[i].cells
       }
     })
     .catch((err) => {
