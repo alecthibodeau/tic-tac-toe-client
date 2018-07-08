@@ -15,49 +15,63 @@
       <main>
         <h1 class='message'>Alec's Tic-Tac-Toe</h1>
         <div class='board-grid' id='game-board'>
+          <p class='initial-message'>sign up / sign in to play</p>
+          <p class='initial-new-game'>signed in successfully</p>
         </div>
         <div>
-          <p class='game-status-area' id='game-status'>player x goes</p>
+          <p class='game-status-area' id='game-status'>player x's turn</p>
           <p class='new-game-area' id='new-game'>new game</p>
         </div>
 
-      <p class='auth-message' id="message">API Token Authentication</p>
+        <div class="starting-buttons">
+          <input type="submit" class="big-button" id="nav-sign-up" value="sign up">
+          <input type="submit" class="big-button" id="nav-sign-in" value="sign in">
+        </div>
+        <div class="gaming-buttons">
+          <input type="submit" class="big-button" id="nav-change-password" value="change password">
+          <input type="submit" class="big-button" id="nav-game-stats" value="game stats">
+          <input type="submit" class="big-button" id="nav-sign-out" value="sign out">
+          <!-- <input type="submit" value="sign up">
+          <input type="submit" value="sign up"> -->
+        </div>
+
+        <p class='auth-message' id="message">API Token Authentication</p>
         <div>
           <form id="sign-up" class="sign-up-panel">
             <fieldset>
-              <legend>Sign up</legend>
+              <p class="form-title">Sign up</p>
               <input type="text" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password">
               <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-              <input type="submit" value="Sign up">
+              <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
           <form id="sign-in" class="sign-in-panel">
             <fieldset>
-              <legend>Sign in</legend>
+              <p class="form-title">Sign in</p>
               <input type="text" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password">
-              <input type="submit" value="Sign in">
+              <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
           <form id="change-password" class="change-password-panel">
             <fieldset>
-              <legend>Change password</legend>
+              <p class="form-title">Change password</p>
               <input type="password" name="passwords[old]" placeholder="Old Password">
               <input type="password" name="passwords[new]" placeholder="New Password">
-              <input type="submit" value="Change password">
+              <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
           <form id="sign-out" class="sign-out-panel">
             <fieldset>
-              <legend>Sign out</legend>
-              <input type="submit" value="Sign Out" class="sign-out-button">
+              <p class="form-title">Sign out</p>
+              <input type="submit" value="Sign Out" class="form-button" class="sign-out-button">
             </fieldset>
           </form>
         </div>
-        <div>
+        <!-- <div>
           <input id="retrieve-games" type="submit" value="Retrieve Games" class="sign-out-button">
-        </div>
+        </div> -->
 
         <div id="stats-sum-games-over"></div>
         <div id="stats-games-over"></div>

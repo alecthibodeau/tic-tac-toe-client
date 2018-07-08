@@ -23,4 +23,5 @@ const gameEvents = require('./game/events')
 $(() => {
   authEvents.addAuthHandlers()
   gameEvents.addGameHandlers()
+  gameEvents.createGameBoard()
 })

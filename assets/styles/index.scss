@@ -69,6 +69,42 @@ h5 {
   text-align: center;
 }
 
+.initial-message {
+  color: $rainbow-orange;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  height: 150px;
+  left: 50%;
+  line-height: 40px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  user-select: none; // This makes each x and o non-highlightable by the cursor
+  width: 150px;
+}
+
+.initial-new-game {
+  color: $rainbow-orange;
+  display: none;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  height: 100px;
+  left: 50%;
+  line-height: 40px;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  // user-select: none; // This makes each x and o non-highlightable by the cursor
+  width: 250px;
+}
+
 .board-cell {
   background-color: $cloud-white;
   border: 2px solid $lines-brown;
@@ -86,7 +122,7 @@ h5 {
   vertical-align: middle;
   width: 100px;
 
-  &:not(.played):not(.game-over):hover {
+  &:not(.page-load):not(.played):not(.game-over):hover {
     background-color: $rainbow-yellow;
     cursor: pointer;
   }
@@ -104,24 +140,26 @@ h5 {
       text-transform: uppercase;
     }
   }
+
+  &.page-load {
+    border: 0;
+    display: hidden;
+  }
 }
 
 .board-grid {
   background-color: $cloud-white;
   border: 4px solid $rainbow-green;
   // clear: left;
-  display: none;
   margin: 0 auto;
   margin-bottom: 5px;
   max-height: 304px;
   max-width: 304px;
   overflow: auto;
   padding-bottom: 2px;
+  position: relative;
   user-select: none; // This makes each x and o non-highlightable by the cursor
-
-  &.playable {
-    display: block;
-  }
+  vertical-align: middle;
 
   &.x-won {
     border: 4px solid $rainbow-red;
@@ -130,12 +168,6 @@ h5 {
   &.o-won {
     border: 4px solid $rainbow-blue;
   }
-}
-
-form {
-  border: 3px solid $rainbow-green;
-  margin: 20px;
-  padding: 20px;
 }
 
 .game-status-area {
@@ -186,60 +218,115 @@ form {
   user-select: none; // This makes each x and o non-highlightable by the cursor
 }
 
-legend {
-  color: $rainbow-orange;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 20px;
-  text-transform: uppercase;
+.starting-buttons {
+  margin: 0 auto;
+  max-height: 150px;
+  max-width: 300px;
+  overflow: auto;
 }
 
-input {
-  color: $lines-brown;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
+.gaming-buttons {
+  margin: 0 auto;
+  max-height: 150px;
+  max-width: 300px;
+  overflow: auto;
 }
 
-input[type='submit'] {
+.big-button {
   background-color: $rainbow-yellow;
   border: 0;
   border-radius: 5px;
+  color: $lines-brown;
+  display: block;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 18px;
+  margin: 10px auto 10px;
+  max-height: 60px;
+  max-width: 80%;
   padding: 3px 7px;
+  // position: relative;
+  // right: 50%;
+  text-transform: uppercase;
 
   &:focus {
     outline: 0;
   }
 }
 
-.sign-up-panel {
-  display: block;
+form {
+  border: 3px solid $sky-blue;
+  margin: 5px auto;
+  max-height: 200px;
+  max-width: 300px;
+  overflow: auto;
+  padding: 10px 20px;
+}
 
-  &.signed-in {
-    display: none;
+.form-title {
+  color: $rainbow-orange;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+fieldset {
+  margin: auto;
+}
+
+input {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12px;
+  margin: 3px auto;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.form-button {
+  background-color: $rainbow-yellow;
+  border: 0;
+  border-radius: 5px;
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12px;
+  padding: 3px 7px;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: 0;
   }
 }
 
-.sign-in-panel {
-  display: block;
-
-  &.signed-in {
-    display: none;
-  }
-}
-
-.change-password-panel {
-  display: none;
-
-  &.authorized {
-    display: block;
-  }
-}
-
-.sign-out-panel {
-  display: none;
-
-  &.authorized {
-    // border: 0;
-    display: block;
-  }
-}
+// .sign-up-panel {
+//   display: block;
+//
+//   &.signed-in {
+//     display: none;
+//   }
+// }
+//
+// .sign-in-panel {
+//   display: block;
+//
+//   &.signed-in {
+//     display: none;
+//   }
+// }
+//
+// .change-password-panel {
+//   display: none;
+//
+//   &.authorized {
+//     display: block;
+//   }
+// }
+//
+// .sign-out-panel {
+//   display: none;
+//
+//   &.authorized {
+//     // border: 0;
+//     display: block;
+//   }
+// }

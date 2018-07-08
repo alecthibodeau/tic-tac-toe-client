@@ -8,7 +8,6 @@ let turnCounter = 0
 let gameData = null
 let cellsIndex = null
 let playerPiece = null
-let winValue = null
 let cells = ['', '', '', '', '', '', '', '', '']
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
@@ -16,26 +15,19 @@ const onClickCell = function (event) {
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  turnCounter % 2 !== 0 ? $('#game-status').text('player x goes').removeClass('o') : $('#game-status').text('player o goes').addClass('o')
+  turnCounter % 2 !== 0 ? $('#game-status').text(`player x's turn`).removeClass('o') : $('#game-status').text(`player o's turn`).addClass('o')
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
   console.log(`cell index: ${cellsIndex}`)
-  console.log(`Win value: ${winValue}`)
+  // console.log(`Win value: ${winValue}`)
   console.log(`Cells array: ${cells}`)
   console.log(`Game is over? ${over}`)
   turnCounter++
-  logic.checkForMatch(cells, winValue, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
 
-const onClickNewGame = function (event) {
-  $('.board-grid').removeClass(`${winValue}-won`).addClass('playable')
-  event.preventDefault()
-  over = false
-  turnCounter = 0
-  winValue = null
-  cells = ['', '', '', '', '', '', '', '', '']
-  $('#game-board').html('')
+const createGameBoard = function () {
   for (let i = 0; i < cells.length; i++) {
     const elementCell = document.createElement('div')
     elementCell.setAttribute('class', 'board-cell')
@@ -43,9 +35,23 @@ const onClickNewGame = function (event) {
     elementCell.setAttribute('id', 'cell-' + i)
     document.getElementById('game-board').appendChild(elementCell)
   }
-  $('.game-status-area').removeClass('game-result').removeClass('o').text('player x goes').addClass('playable')
-  $('.board-cell').on('click', onClickCell)
-  console.log('Board created. New game is ready.')
+  $('.board-cell').addClass('page-load')
+  console.log('Board created.')
+}
+
+const onClickNewGame = function (event) {
+  event.preventDefault()
+  over = false
+  turnCounter = 0
+  cells = ['', '', '', '', '', '', '', '', '']
+  $('#game-board').html('')
+  createGameBoard()
+  $('.board-grid').removeClass('x-won').removeClass('o-won')
+  $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
+  $('.board-cell').on('click', onClickCell).removeClass('page-load').removeClass('played').removeClass('game-over')
+  $('.initial-new-game').css('display', 'none')
+  $('.game-status-area').addClass('playable')
+  console.log('New game is ready.')
 
   api.createGame()
     .then((result) => {
@@ -58,6 +64,7 @@ const onClickNewGame = function (event) {
 }
 
 const onRetrieveOverGames = function () {
+  event.preventDefault()
   let xStatsWins = null
   let oStatsWins = null
   let drawGames = null
@@ -90,9 +97,35 @@ const onRetrieveOverGames = function () {
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
   $('#retrieve-games').on('click', onRetrieveOverGames)
+  $('#sign-up').hide()
+  $('#sign-in').hide()
+  $('#change-password').hide()
+  $('#sign-out').hide()
+
+  $('#nav-change-password').hide()
+  $('#nav-game-stats').hide()
+  $('#nav-sign-out').hide()
+
+  $('#nav-sign-up').on('click', function () {
+    $('#sign-up').slideToggle(200)
+    $('#sign-in').hide({ direction: 'down' })
+  })
+  $('#nav-sign-in').on('click', function () {
+    $('#sign-in').slideToggle(200)
+    $('#sign-up').hide({ direction: 'down' })
+  })
+  $('#nav-change-password').on('click', function () {
+    $('#change-password').slideToggle(200)
+  })
+  $('#nav-sign-out').on('click', function () {
+    $('#sign-out').slideToggle(200)
+  })
+  // $('#game-board').html('')
+  // $('.initial-new-game').on('click', onClickNewGame)
 }
 
 module.exports = {
+  createGameBoard,
   addGameHandlers
 }
 

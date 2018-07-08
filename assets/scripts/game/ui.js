@@ -9,6 +9,8 @@ const gameNotice = function (winValue, over, onClickCell) {
   }
   console.log(`Is game REALLY over? ${over}`)
   $('.board-cell').off('click', onClickCell).addClass('game-over')
+  console.log(`Local win value at game's end: ${winValue}`)
+  console.log(`Over at game's end: ${over}`)
 }
 
 module.exports = {

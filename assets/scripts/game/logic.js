@@ -3,7 +3,8 @@
 const api = require('./api')
 const ui = require('./ui')
 
-const checkForMatch = function (cells, winValue, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell) {
+const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell) {
+  let winValue = null
   for (let i = 0; i <= 6; i = i + 3) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
       winValue = cells[i] // rows win

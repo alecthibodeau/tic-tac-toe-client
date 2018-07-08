@@ -16,14 +16,22 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Signed in successfully')
-  $('#message').css('background-color', 'green')
-  $('.sign-up-panel').addClass('signed-in')
-  $('.sign-in-panel').addClass('signed-in')
-  $('.change-password-panel').addClass('authorized')
-  $('.sign-out-panel').addClass('authorized')
+  // $('#message').text('Signed in successfully')
+  // $('#message').css('background-color', 'green')
+  // $('.sign-up-panel').addClass('signed-in')
+  // $('.sign-in-panel').addClass('signed-in')
+  // $('.change-password-panel').addClass('authorized')
+  // $('.sign-out-panel').addClass('authorized')
+  $('.initial-message').css('display', 'none')
+  $('.initial-new-game').css('display', 'block')
   $('.new-game-area').addClass('playable')
-  setTimeout(function () { $('#message').text('') }, 5000)
+  $('#nav-sign-up').hide()
+  $('#nav-sign-in').hide()
+  $('#nav-change-password').show()
+  $('#nav-game-stats').show()
+  $('#nav-sign-out').show()
+  $('#sign-in').slideToggle(200)
+  // setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signInSuccess ran. Data is :', data)
   store.user = data.user
   // store is an empty object: store = {}. We'll fill it with information. See store.js
