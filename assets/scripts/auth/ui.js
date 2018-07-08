@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const gameEvents = require('../game/ui.js')
+const boardEvents = require('../game/events.js')
 
 const signUpSuccess = function (data) {
   $('#modalTitleSignUp').text('Signed up successfully').css('color', '#9ac479')
@@ -77,7 +78,9 @@ const changePasswordFailure = function (error) {
   console.log('changePasswordFailure ran. Error is :', error)
 }
 
-const signOutSuccess = function (onClickCell, onClickResetSession) {
+const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickCell) {
+  const preGame = true
+  boardEvents.animateGameBoard(preGame)
   gameEvents.onClickResetSession()
   $('#modalTitleSignOut').text('Signed out successfully').css('color', '#9ac479')
   $('#nav-sign-up').show()
@@ -85,7 +88,7 @@ const signOutSuccess = function (onClickCell, onClickResetSession) {
   $('#nav-change-password').hide()
   $('#nav-game-stats').hide()
   $('#nav-sign-out').hide()
-  $('.board-cell').off('click', onClickCell).addClass('pre-game').addClass('played').addClass('game-over').html('')
+  $('.board-cell').off('click', onClickCell).addClass('played').addClass('game-over').html('')
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('playable')
   $('.game-session-area').removeClass('playable')

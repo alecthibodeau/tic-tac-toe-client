@@ -27,7 +27,19 @@ const onClickCell = function (event) {
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
 
-const createGameBoard = function () {
+const animateGameBoard = function (preGame) {
+  if (preGame === true) {
+    for (let i = 0; i < 9; i++) {
+      if (i % 2 === 0) {
+        $(`#cell-${i}`).addClass('pre-game')
+      } else if (i % 2 !== 0) {
+        setTimeout(function () { $(`#cell-${i}`).addClass('pre-game') }, 1000)
+      }
+    }
+  }
+}
+
+const createGameBoard = function (preGame) {
   for (let i = 0; i < cells.length; i++) {
     const elementCell = document.createElement('div')
     elementCell.setAttribute('class', 'board-cell')
@@ -35,17 +47,21 @@ const createGameBoard = function () {
     elementCell.setAttribute('id', 'cell-' + i)
     document.getElementById('game-board').appendChild(elementCell)
   }
-  $('.board-cell').addClass('pre-game').addClass('played').addClass('game-over')
+  $('.board-cell').addClass('played').addClass('game-over') // PUT PREGAME BACK HERE
   // console.log('Board created.')
+  if (preGame === true) {
+    animateGameBoard(preGame)
+  }
 }
 
-const onClickNewGame = function (event) {
+const onClickNewGame = function (event, preGame) {
   event.preventDefault()
+  preGame = false
   over = false
   turnCounter = 0
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
-  createGameBoard()
+  createGameBoard(preGame)
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('played').removeClass('game-over')
@@ -114,6 +130,7 @@ const addGameHandlers = () => {
 
 module.exports = {
   createGameBoard,
+  animateGameBoard,
   addGameHandlers
 }
 

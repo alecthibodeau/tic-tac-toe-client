@@ -19,11 +19,13 @@
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/events')
 
+const preGame = true
+
 // On document ready
 $(() => {
   authEvents.addAuthHandlers()
   gameEvents.addGameHandlers()
-  gameEvents.createGameBoard()
+  gameEvents.createGameBoard(preGame)
   // Code to reset modal fields to default upon close…
   $('body').on('hidden.bs.modal', '.modal', function () {
     $(this).find('input[type="text"],input[type="email"],input[type="password"],textarea,select').each(function () {

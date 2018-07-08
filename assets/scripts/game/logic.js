@@ -51,9 +51,6 @@ const checkStatsForMatch = function (cells, statsWinValue) {
   if ((cells[4] !== '') && (((cells[0] === cells[4]) && (cells[0] === cells[8])) || ((cells[2] === cells[4]) && (cells[2] === cells[6])))) {
     statsWinValue = cells[4].toUpperCase() + ' won'// diagonals win
   }
-  // } else if ((winValue !== 'x') || (winValue !== 'o')) { // draw
-  //   winValue = 'draw'
-  // }
   return statsWinValue
 }
 
