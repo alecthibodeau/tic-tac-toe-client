@@ -35,7 +35,7 @@ const createGameBoard = function () {
     elementCell.setAttribute('id', 'cell-' + i)
     document.getElementById('game-board').appendChild(elementCell)
   }
-  $('.board-cell').addClass('page-load')
+  $('.board-cell').addClass('pre-game').addClass('played').addClass('game-over')
   console.log('Board created.')
 }
 
@@ -48,7 +48,7 @@ const onClickNewGame = function (event) {
   createGameBoard()
   $('.board-grid').removeClass('x-won').removeClass('o-won')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
-  $('.board-cell').on('click', onClickCell).removeClass('page-load').removeClass('played').removeClass('game-over')
+  $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('played').removeClass('game-over')
   $('.initial-new-game').css('display', 'none')
   $('.game-status-area').addClass('playable')
   console.log('New game is ready.')
@@ -87,7 +87,7 @@ const onRetrieveOverGames = function () {
           drawGames = (drawGames + 1)
         }
       }
-      document.getElementById('stats-sum-games-over').innerHTML = `Games X has won: ${xStatsWins} | Games O has won: ${oStatsWins} | Draws: ${drawGames}`
+      document.getElementById('stats-sum-games-over').innerHTML = `X has won ${xStatsWins} games | O has won ${oStatsWins} games | Draws: ${drawGames}`
     })
     .catch((err) => {
       console.log(err)

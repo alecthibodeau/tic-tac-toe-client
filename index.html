@@ -10,13 +10,15 @@
       <!-- Do not add `script` tags-->
       <script src='public/vendor.js' type='text/javascript' charset='utf-8' defer></script>
       <script src='public/application.js' type='text/javascript' charset='utf-8' defer></script>
+
     </head>
+
     <body>
       <main>
         <h1 class='message'>Alec's Tic-Tac-Toe</h1>
         <div class='board-grid' id='game-board'>
-          <p class='initial-message'>sign up / sign in to play</p>
-          <p class='initial-signed-in'>signed in successfully</p>
+          <!-- <p class='initial-message'>sign up / sign in to play</p>
+          <p class='initial-signed-in'>signed in successfully</p> -->
 
           <div>
             <!-- <form id="sign-up" class="sign-up-panel">
@@ -61,8 +63,6 @@
         <div class="starting-buttons">
           <input class="big-button" id="nav-sign-up" value="sign up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
           <input class="big-button" id="nav-sign-in" value="sign in" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
-        </div>
-        <div class="gaming-buttons">
           <input class="big-button" id="nav-change-password" value="change password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
           <input class="big-button" id="nav-game-stats" value="game stats" type="button" class="btn btn-primary" data-toggle="modal" data-target="#gameStatsModal">
           <input class="big-button" id="nav-sign-out" value="sign out" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signOutModal">
@@ -70,7 +70,7 @@
           <input type="submit" value="sign up"> -->
         </div>
 
-        <p class='auth-message' id="message">API Token Authentication</p>
+        <!-- <p class='auth-message' id="message">API Token Authentication</p> -->
 
         <!-- <div>
           <input id="retrieve-games" type="submit" value="Retrieve Games" class="sign-out-button">
@@ -86,20 +86,19 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <!-- <div class="modal-header"> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalTitleChangePassword">Sign Up</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignUp">Sign Up</h4>
           <!-- </div>
           <div class="modal-body"> -->
-            <form id="sign-up" class="sign-up-panel">
-              <fieldset>
-                <!-- <p class="form-title">Sign up</p> -->
-                <input type="text" name="credentials[email]" placeholder="Email">
-                <input type="password" name="credentials[password]" placeholder="Password">
-                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-                <input type="submit" class="form-button" value="submit">
-              </fieldset>
-            </form>
-          </div>
+          <form id="sign-up" class="sign-up-panel">
+            <fieldset>
+              <!-- <p class="form-title">Sign up</p> -->
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" class="form-button" value="submit">
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -110,19 +109,18 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <!-- <div class="modal-header"> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalTitleSignIn">Sign In</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignIn">Sign In</h4>
           <!-- </div>
           <div class="modal-body"> -->
-            <form id="sign-in" class="sign-in-panel">
-              <fieldset>
-                <!-- <p class="form-title">Sign in</p> -->
-                <input type="text" name="credentials[email]" placeholder="Email">
-                <input type="password" name="credentials[password]" placeholder="Password">
-                <input type="submit" class="form-button" value="submit">
-              </fieldset>
-            </form>
-          </div>
+          <form id="sign-in" class="sign-in-panel">
+            <fieldset>
+              <!-- <p class="form-title">Sign in</p> -->
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="submit" class="form-button" value="submit">
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -133,19 +131,18 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <!-- <div class="modal-header"> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalTitleChangePassword">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleChangePassword">Change Password</h4>
           <!-- </div>
           <div class="modal-body"> -->
-            <form id="change-password" class="change-password-panel">
-              <fieldset>
-                <!-- <p class="form-title">Change password</p> -->
-                <input type="password" name="passwords[old]" placeholder="Old Password">
-                <input type="password" name="passwords[new]" placeholder="New Password">
-                <input type="submit" class="form-button" value="submit">
-              </fieldset>
-            </form>
-          </div>
+          <form id="change-password" class="change-password-panel">
+            <fieldset>
+              <!-- <p class="form-title">Change password</p> -->
+              <input type="password" name="passwords[old]" placeholder="Old Password">
+              <input type="password" name="passwords[new]" placeholder="New Password">
+              <input type="submit" class="form-button" value="submit">
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
@@ -156,15 +153,12 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <!-- <div class="modal-header"> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalTitleChangePassword">Game Stats</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleGameStats">Game Stats</h4>
           <!-- </div>
           <div class="modal-body"> -->
-
-           <div id="stats-sum-games-over" class="stats-div"></div>
-           <div id="stats-games-over" class="stats-div"></div>
-
-          </div>
+          <div id="stats-sum-games-over" class="stats-div"></div>
+          <div id="stats-games-over" class="stats-div"></div>
         </div>
       </div>
     </div>
@@ -175,11 +169,10 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <!-- <div class="modal-header"> -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalTitleChangePassword">Sign Out</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignOut">Sign Out</h4>
           <!-- </div>
           <div class="modal-body"> -->
-          </div>
         </div>
       </div>
     </div>

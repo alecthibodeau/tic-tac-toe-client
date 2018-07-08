@@ -24,4 +24,11 @@ $(() => {
   authEvents.addAuthHandlers()
   gameEvents.addGameHandlers()
   gameEvents.createGameBoard()
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    $(this).find('input[type="text"],input[type="email"],input[type="password"],textarea,select').each(function () {
+      if (this.defaultValue !== '' || this.value !== this.defaultValue) {
+        this.value = this.defaultValue
+      } else { this.value = '' }
+    })
+  })
 })

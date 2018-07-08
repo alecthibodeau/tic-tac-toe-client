@@ -16,15 +16,7 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  // $('#message').text('Signed in successfully')
-  // $('#message').css('background-color', 'green')
-  // $('.sign-up-panel').addClass('signed-in')
-  // $('.sign-in-panel').addClass('signed-in')
-  // $('.change-password-panel').addClass('authorized')
-  // $('.sign-out-panel').addClass('authorized')
-  // $('.initial-message').css('display', 'none')
-  // $('.initial-signed-in').css('display', 'block')
-  $('#modalTitleSignIn').text('Signed in successfully')
+  $('#modalTitleSignIn').text('Signed in successfully').css('color', '#9ac479')
   $('.new-game-area').addClass('playable')
   $('#nav-sign-up').hide()
   $('#nav-sign-in').hide()
@@ -33,55 +25,101 @@ const signInSuccess = function (data) {
   $('#nav-sign-out').show()
   $('#sign-in').slideToggle(200)
 
-  setTimeout(function () { $('#signInModal').modal('hide') }, 3000)
+  setTimeout(function () {
+    $('#signInModal').modal('hide')
+    $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')
+    $('#sign-in').show()
+  }, 3000)
 
-  // setTimeout("$('#myModal').modal('hide');",3000);
+  // $('#message').text('Signed in successfully')
+  // $('#message').css('background-color', 'green')
   // setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signInSuccess ran. Data is :', data)
+
   store.user = data.user
   // store is an empty object: store = {}. We'll fill it with information. See store.js
 }
 
 const signInFailure = function (error) {
-  $('#message').text('Error on sign in')
-  $('#message').css('background-color', 'red')
+  $('#modalTitleSignIn').text('Error on sign in. Try again.').css('color', '#f27089')
+  setTimeout(function () {
+    // $('#signInModal').modal('hide')
+    $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')
+    // $('#sign-in').show(1)
+  }, 5000)
+
+  // $('#message').text('Error on sign in')
+  // $('#message').css('background-color', 'red')
   console.log('signInFailure ran. Error is :', error)
 }
 
 const changePasswordSuccess = function (data) {
-  $('#message').text('Changed password successfully')
-  $('#message').css('background-color', 'green')
-  setTimeout(function () { $('#message').text('') }, 5000)
+  // $('#message').text('Changed password successfully')
+  // $('#message').css('background-color', 'green')
+  // setTimeout(function () { $('#message').text('') }, 5000)
+  $('#modalTitleChangePassword').text('Changed password successfully').css('color', '#9ac479')
+  $('#change-password').slideToggle(200)
+  setTimeout(function () {
+    $('#changePasswordModal').modal('hide')
+    $('#modalTitleChangePassword').text('Change password').css('color', '#fca778')
+    $('#change-password').show()
+  }, 3000)
+
   console.log('changePasswordSuccess ran and nothing was returned :', data)
 }
 
 const changePasswordFailure = function (error) {
-  $('#message').text('Error on change password')
-  $('#message').css('background-color', 'red')
+  // $('#message').text('Error on change password')
+  // $('#message').css('background-color', 'red')
+  $('#modalTitleChangePassword').text('Error on change password. Try again.').css('color', '#f27089')
+  setTimeout(function () {
+    // $('#changePasswordModal').modal('hide')
+    $('#modalTitleChangePassword').text('Change password').css('color', '#fca778')
+    // $('#change-password').show(1)
+  }, 5000)
   console.log('changePasswordFailure ran. Error is :', error)
 }
 
 const signOutSuccess = function () {
-  $('#modalTitleSignOut').text('Signed out successfully')
+  $('#modalTitleSignOut').text('Signed out successfully').css('color', '#9ac479')
+
+  // $('#sign-in').slideToggle(200)
+  $('.board-cell').addClass('pre-game').addClass('played').addClass('game-over').html('')
   // $('#message').text('Signed out successfully')
   // $('#message').css('background-color', 'green')
-  $('.change-password-panel').removeClass('authorized')
-  $('.sign-out-panel').removeClass('authorized')
-  $('.board-grid').removeClass('playable')
+  // $('.change-password-panel').removeClass('authorized')
+  // $('.sign-out-panel').removeClass('authorized')
+  $('.board-grid').removeClass('playable').css('background-color', '#9ac479')
   $('.new-game-area').removeClass('playable')
   $('.game-status-area').removeClass('playable')
-  $('.sign-up-panel').removeClass('signed-in')
-  $('.sign-in-panel').removeClass('signed-in')
+  // $('.sign-up-panel').removeClass('signed-in')
+  // $('.sign-in-panel').removeClass('signed-in')
+
+  $('#nav-sign-up').show()
+  $('#nav-sign-in').show()
+  $('#nav-change-password').hide()
+  $('#nav-game-stats').hide()
+  $('#nav-sign-out').hide()
+
+  setTimeout(function () {
+    $('#signOutModal').modal('hide')
+    $('#modalTitleSignOut').text('Sign out').css('color', '#fca778')
+  }, 3000)
+
   setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signOutSuccess ran and nothing was returned!')
-  store.user = null
 
-  setTimeout(function () { $('#signInModal').modal('hide') }, 3000)
+  store.user = null
 }
 
 const signOutFailure = function (error) {
-  $('#message').text('Error on sign Out')
-  $('#message').css('background-color', 'red')
+  $('#modalTitleSignOut').text('Error on sign out. Try again').css('color', '#f27089')
+  setTimeout(function () {
+    $('#signOutModal').modal('hide')
+    $('#modalTitleSignOut').text('Sign out').css('color', '#fca778')
+  }, 3000)
+  // $('#message').text('Error on sign Out')
+  // $('#message').css('background-color', 'red')
   console.log('signOutFailure ran. Error is :', error)
 }
 
