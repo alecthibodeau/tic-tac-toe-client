@@ -16,7 +16,42 @@
         <h1 class='message'>Alec's Tic-Tac-Toe</h1>
         <div class='board-grid' id='game-board'>
           <p class='initial-message'>sign up / sign in to play</p>
-          <p class='initial-new-game'>signed in successfully</p>
+          <p class='initial-signed-in'>signed in successfully</p>
+
+          <div>
+            <!-- <form id="sign-up" class="sign-up-panel">
+              <fieldset>
+                <p class="form-title">Sign up</p>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                <input type="submit" class="form-button" value="submit">
+              </fieldset>
+            </form> -->
+            <!-- <form id="sign-in" class="sign-in-panel">
+              <fieldset>
+                <p class="form-title">Sign in</p>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="submit" class="form-button" value="submit">
+              </fieldset>
+            </form> -->
+            <!-- <form id="change-password" class="change-password-panel">
+              <fieldset>
+                <p class="form-title">Change password</p>
+                <input type="password" name="passwords[old]" placeholder="Old Password">
+                <input type="password" name="passwords[new]" placeholder="New Password">
+                <input type="submit" class="form-button" value="submit">
+              </fieldset>
+            </form> -->
+            <!-- <form id="sign-out" class="sign-out-panel">
+              <fieldset>
+                <p class="form-title">Sign out</p>
+                <input type="submit" value="Sign Out" class="form-button">
+              </fieldset>
+            </form> -->
+          </div>
+
         </div>
         <div>
           <p class='game-status-area' id='game-status'>player x's turn</p>
@@ -24,51 +59,20 @@
         </div>
 
         <div class="starting-buttons">
-          <input type="submit" class="big-button" id="nav-sign-up" value="sign up">
-          <input type="submit" class="big-button" id="nav-sign-in" value="sign in">
+          <input class="big-button" id="nav-sign-up" value="sign up" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+          <input class="big-button" id="nav-sign-in" value="sign in" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
         </div>
         <div class="gaming-buttons">
-          <input type="submit" class="big-button" id="nav-change-password" value="change password">
-          <input type="submit" class="big-button" id="nav-game-stats" value="game stats">
+          <input class="big-button" id="nav-change-password" value="change password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+          <!-- <input type="submit" class="big-button" id="nav-change-password" value="change password"> -->
+          <input class="big-button" id="nav-game-stats" value="game stats" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
           <input type="submit" class="big-button" id="nav-sign-out" value="sign out">
           <!-- <input type="submit" value="sign up">
           <input type="submit" value="sign up"> -->
         </div>
 
         <p class='auth-message' id="message">API Token Authentication</p>
-        <div>
-          <form id="sign-up" class="sign-up-panel">
-            <fieldset>
-              <p class="form-title">Sign up</p>
-              <input type="text" name="credentials[email]" placeholder="Email">
-              <input type="password" name="credentials[password]" placeholder="Password">
-              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-              <input type="submit" class="form-button" value="submit">
-            </fieldset>
-          </form>
-          <form id="sign-in" class="sign-in-panel">
-            <fieldset>
-              <p class="form-title">Sign in</p>
-              <input type="text" name="credentials[email]" placeholder="Email">
-              <input type="password" name="credentials[password]" placeholder="Password">
-              <input type="submit" class="form-button" value="submit">
-            </fieldset>
-          </form>
-          <form id="change-password" class="change-password-panel">
-            <fieldset>
-              <p class="form-title">Change password</p>
-              <input type="password" name="passwords[old]" placeholder="Old Password">
-              <input type="password" name="passwords[new]" placeholder="New Password">
-              <input type="submit" class="form-button" value="submit">
-            </fieldset>
-          </form>
-          <form id="sign-out" class="sign-out-panel">
-            <fieldset>
-              <p class="form-title">Sign out</p>
-              <input type="submit" value="Sign Out" class="form-button" class="sign-out-button">
-            </fieldset>
-          </form>
-        </div>
+
         <!-- <div>
           <input id="retrieve-games" type="submit" value="Retrieve Games" class="sign-out-button">
         </div> -->
@@ -77,5 +81,76 @@
         <div id="stats-games-over"></div>
 
       </main>
+
+    <!-- Sign Up Modal Begins -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- <div class="modal-header"> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modalTitleChangePassword">Sign Up</h4>
+          <!-- </div>
+          <div class="modal-body"> -->
+            <form id="sign-up" class="sign-up-panel">
+              <fieldset>
+                <!-- <p class="form-title">Sign up</p> -->
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                <input type="submit" class="form-button" value="submit">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sign Up Modal Ends -->
+
+        <!-- Sign In Modal Begins -->
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <!-- <div class="modal-header"> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalTitleSignIn">Sign In</h4>
+              <!-- </div>
+              <div class="modal-body"> -->
+                <form id="sign-in" class="sign-in-panel">
+                  <fieldset>
+                    <!-- <p class="form-title">Sign in</p> -->
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="submit" class="form-button" value="submit">
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Sign In Modal Ends -->
+
+    <!-- Change Password Modal Begins -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- <div class="modal-header"> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modalTitleChangePassword">Change Password</h4>
+          <!-- </div>
+          <div class="modal-body"> -->
+            <form id="change-password" class="change-password-panel">
+              <fieldset>
+                <!-- <p class="form-title">Change password</p> -->
+                <input type="password" name="passwords[old]" placeholder="Old Password">
+                <input type="password" name="passwords[new]" placeholder="New Password">
+                <input type="submit" class="form-button" value="submit">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Change Password Modal Ends -->
+
     </body>
 </html>

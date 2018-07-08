@@ -97,25 +97,28 @@ const onRetrieveOverGames = function () {
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
   $('#retrieve-games').on('click', onRetrieveOverGames)
-  $('#sign-up').hide()
-  $('#sign-in').hide()
-  $('#change-password').hide()
-  $('#sign-out').hide()
+  // $('#sign-up').hide()
+  // $('#sign-in').hide()
+  // $('#change-password').hide()
+  // $('#sign-out').hide()
 
   $('#nav-change-password').hide()
   $('#nav-game-stats').hide()
   $('#nav-sign-out').hide()
 
   $('#nav-sign-up').on('click', function () {
-    $('#sign-up').slideToggle(200)
-    $('#sign-in').hide({ direction: 'down' })
+    $('.initial-message').hide()
+    // $('#sign-up').slideToggle(200)
+    // $('#sign-in').hide({ direction: 'down' })
   })
   $('#nav-sign-in').on('click', function () {
-    $('#sign-in').slideToggle(200)
-    $('#sign-up').hide({ direction: 'down' })
+    $('.initial-message').hide()
+    // $('#sign-in').slideToggle(200)
+    // $('#sign-up').hide({ direction: 'down' })
   })
   $('#nav-change-password').on('click', function () {
-    $('#change-password').slideToggle(200)
+    $('.initial-signed-in').hide()
+    // $('#change-password').slideToggle(200)
   })
   $('#nav-sign-out').on('click', function () {
     $('#sign-out').slideToggle(200)

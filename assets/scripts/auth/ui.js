@@ -22,8 +22,9 @@ const signInSuccess = function (data) {
   // $('.sign-in-panel').addClass('signed-in')
   // $('.change-password-panel').addClass('authorized')
   // $('.sign-out-panel').addClass('authorized')
+  $('#modalTitleSignIn').text('Signed in successfully')
   $('.initial-message').css('display', 'none')
-  $('.initial-new-game').css('display', 'block')
+  $('.initial-signed-in').css('display', 'block')
   $('.new-game-area').addClass('playable')
   $('#nav-sign-up').hide()
   $('#nav-sign-in').hide()
@@ -31,6 +32,10 @@ const signInSuccess = function (data) {
   $('#nav-game-stats').show()
   $('#nav-sign-out').show()
   $('#sign-in').slideToggle(200)
+
+  setTimeout(function () { $('#signInModal').modal('hide') }, 3000)
+
+  // setTimeout("$('#myModal').modal('hide');",3000);
   // setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signInSuccess ran. Data is :', data)
   store.user = data.user

@@ -87,7 +87,7 @@ h5 {
   width: 150px;
 }
 
-.initial-new-game {
+.initial-signed-in {
   color: $rainbow-orange;
   display: none;
   font-family: 'Varela Round', sans-serif;
@@ -174,7 +174,7 @@ h5 {
   color: $rainbow-red;
   cursor: default;
   display: none;
-  font-size: 28px;
+  font-size: 30px;
   margin: 0 auto;
   text-align: center;
   text-transform: uppercase;
@@ -253,16 +253,17 @@ h5 {
   }
 }
 
-form {
-  border: 3px solid $sky-blue;
-  margin: 5px auto;
-  max-height: 200px;
-  max-width: 300px;
-  overflow: auto;
-  padding: 10px 20px;
-}
+// form {
+//   background-color: $cloud-white;
+//   border: 3px solid $sky-blue;
+//   margin: 5px auto;
+//   max-height: 200px;
+//   max-width: 290px;
+//   overflow: auto;
+//   padding: 10px 20px;
+// }
 
-.form-title {
+.modal-title {
   color: $rainbow-orange;
   font-family: 'Varela Round', sans-serif;
   font-size: 20px;
@@ -278,9 +279,15 @@ input {
   color: $lines-brown;
   font-family: 'Varela Round', sans-serif;
   font-size: 12px;
-  margin: 3px auto;
+  // margin-left: 5%;
+  // margin-right: 5%;
+  margin: 2% 5%;
   text-transform: uppercase;
-  width: 100%;
+  width: 90%;
+}
+
+.modal-content {
+  padding: 3%;
 }
 
 .form-button {
