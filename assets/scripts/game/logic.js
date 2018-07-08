@@ -25,7 +25,7 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
   }
   api.updateGame(gameData, cellsIndex, playerPiece, over)
     .then((result) => {
-      console.log(result)
+      // console.log(result)
     })
     .catch((err) => {
       console.log(err)

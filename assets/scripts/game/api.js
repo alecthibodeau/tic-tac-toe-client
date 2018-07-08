@@ -15,8 +15,8 @@ const createGame = function () {
       'player_o': null
     }
   }
-  console.log(store.user.id)
-  console.log(store.user.email)
+  // console.log(store.user.id)
+  // console.log(store.user.email)
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
@@ -28,7 +28,7 @@ const createGame = function () {
 }
 
 const updateGame = function (gameData, index, value, over) {
-  console.log(index, value, over)
+  // console.log(index, value, over)
 
   const game = {
     'game': {
@@ -39,9 +39,9 @@ const updateGame = function (gameData, index, value, over) {
       'over': over
     }
   }
-  console.log(store.user.id)
-  console.log(store.user.email)
-  console.log(gameData.game.id)
+  // console.log(store.user.id)
+  // console.log(store.user.email)
+  // console.log(gameData.game.id)
 
   return $.ajax({
     url: config.apiUrl + '/games/' + gameData.game.id,

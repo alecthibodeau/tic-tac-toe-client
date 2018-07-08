@@ -19,10 +19,10 @@ const onClickCell = function (event) {
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
-  console.log(`cell index: ${cellsIndex}`)
+  // console.log(`cell index: ${cellsIndex}`)
   // console.log(`Win value: ${winValue}`)
-  console.log(`Cells array: ${cells}`)
-  console.log(`Game is over? ${over}`)
+  // console.log(`Cells array: ${cells}`)
+  // console.log(`Game is over? ${over}`)
   turnCounter++
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
@@ -36,7 +36,7 @@ const createGameBoard = function () {
     document.getElementById('game-board').appendChild(elementCell)
   }
   $('.board-cell').addClass('pre-game').addClass('played').addClass('game-over')
-  console.log('Board created.')
+  // console.log('Board created.')
 }
 
 const onClickNewGame = function (event) {
@@ -46,17 +46,15 @@ const onClickNewGame = function (event) {
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
   createGameBoard()
-  // $('body').addClass('game-on')
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('played').removeClass('game-over')
-  $('.initial-new-game').css('display', 'none')
   $('.game-status-area').addClass('playable')
-  console.log('New game is ready.')
-
+  $('.game-session-area').addClass('playable')
+  // console.log('New game is ready.')
   api.createGame()
     .then((result) => {
-      console.log(result)
+      // console.log(result)
       gameData = result
     })
     .catch((err) => {
@@ -72,8 +70,8 @@ const onRetrieveOverGames = function () {
   api.retrieveOverGames()
     .then((result) => {
       const statsOverGames = result
-      console.log(statsOverGames)
-      console.log(over)
+      // console.log(statsOverGames)
+      // console.log(over)
       for (let i = 0; i < statsOverGames.games.length; i++) {
         const elementGamesOver = document.createElement('div')
         elementGamesOver.setAttribute('id', 'stats-games-over-' + i)
@@ -99,7 +97,7 @@ const onRetrieveOverGames = function () {
       }
       const totalGamesPlayed = xStatsWins + oStatsWins + drawGames
       document.getElementById('stats-total-games-over').innerHTML = `Total games played: ${totalGamesPlayed}`
-      document.getElementById('stats-sum-games-over').innerHTML = `Player X has won ${xStatsWins} games | Player O has won ${oStatsWins} games | Draws: ${drawGames}`
+      document.getElementById('stats-sum-games-over').innerHTML = `Player X has won ${xStatsWins} games, Player O has won ${oStatsWins} games, Draws: ${drawGames} games`
     })
     .catch((err) => {
       console.log(err)
@@ -108,36 +106,10 @@ const onRetrieveOverGames = function () {
 
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
-  // $('#retrieve-games').on('click', onRetrieveOverGames)
   $('#nav-game-stats').on('click', onRetrieveOverGames)
-  // $('#sign-up').hide()
-  // $('#sign-in').hide()
-  // $('#change-password').hide()
-  // $('#sign-out').hide()
-
   $('#nav-change-password').hide()
   $('#nav-game-stats').hide()
   $('#nav-sign-out').hide()
-
-  $('#nav-sign-up').on('click', function () {
-    $('.initial-message').hide()
-    // $('#sign-up').slideToggle(200)
-    // $('#sign-in').hide({ direction: 'down' })
-  })
-  $('#nav-sign-in').on('click', function () {
-    $('.initial-message').hide()
-    // $('#sign-in').slideToggle(200)
-    // $('#sign-up').hide({ direction: 'down' })
-  })
-  $('#nav-change-password').on('click', function () {
-    $('.initial-signed-in').hide()
-    // $('#change-password').slideToggle(200)
-  })
-  $('#nav-sign-out').on('click', function () {
-    $('#sign-out').slideToggle(200)
-  })
-  // $('#game-board').html('')
-  // $('.initial-new-game').on('click', onClickNewGame)
 }
 
 module.exports = {
