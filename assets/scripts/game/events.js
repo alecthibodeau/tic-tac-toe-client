@@ -46,7 +46,8 @@ const onClickNewGame = function (event) {
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
   createGameBoard()
-  $('.board-grid').removeClass('x-won').removeClass('o-won')
+  // $('body').addClass('game-on')
+  $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('played').removeClass('game-over')
   $('.initial-new-game').css('display', 'none')
@@ -87,7 +88,18 @@ const onRetrieveOverGames = function () {
           drawGames = (drawGames + 1)
         }
       }
-      document.getElementById('stats-sum-games-over').innerHTML = `X has won ${xStatsWins} games | O has won ${oStatsWins} games | Draws: ${drawGames}`
+      if (xStatsWins === null) {
+        xStatsWins = 0
+      }
+      if (oStatsWins === null) {
+        oStatsWins = 0
+      }
+      if (drawGames === null) {
+        drawGames = 0
+      }
+      const totalGamesPlayed = xStatsWins + oStatsWins + drawGames
+      document.getElementById('stats-total-games-over').innerHTML = `Total games played: ${totalGamesPlayed}`
+      document.getElementById('stats-sum-games-over').innerHTML = `Player X has won ${xStatsWins} games | Player O has won ${oStatsWins} games | Draws: ${drawGames}`
     })
     .catch((err) => {
       console.log(err)
