@@ -22,9 +22,9 @@ const signInSuccess = function (data) {
   // $('.sign-in-panel').addClass('signed-in')
   // $('.change-password-panel').addClass('authorized')
   // $('.sign-out-panel').addClass('authorized')
+  // $('.initial-message').css('display', 'none')
+  // $('.initial-signed-in').css('display', 'block')
   $('#modalTitleSignIn').text('Signed in successfully')
-  $('.initial-message').css('display', 'none')
-  $('.initial-signed-in').css('display', 'block')
   $('.new-game-area').addClass('playable')
   $('#nav-sign-up').hide()
   $('#nav-sign-in').hide()
@@ -62,8 +62,9 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function () {
-  $('#message').text('Signed out successfully')
-  $('#message').css('background-color', 'green')
+  $('#modalTitleSignOut').text('Signed out successfully')
+  // $('#message').text('Signed out successfully')
+  // $('#message').css('background-color', 'green')
   $('.change-password-panel').removeClass('authorized')
   $('.sign-out-panel').removeClass('authorized')
   $('.board-grid').removeClass('playable')
@@ -74,6 +75,8 @@ const signOutSuccess = function () {
   setTimeout(function () { $('#message').text('') }, 5000)
   console.log('signOutSuccess ran and nothing was returned!')
   store.user = null
+
+  setTimeout(function () { $('#signInModal').modal('hide') }, 3000)
 }
 
 const signOutFailure = function (error) {
