@@ -78,7 +78,7 @@ const onRetrieveOverGames = function () {
         elementGamesOver.setAttribute('id', 'stats-games-over-' + i)
         elementGamesOver.setAttribute('class', 'states-games-over-element')
         document.getElementById('stats-games-over').appendChild(elementGamesOver)
-        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') + ' with these moves: ' + statsOverGames.games[i].cells
+        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells
         if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'X won') {
           xStatsWins = (xStatsWins + 1)
         } else if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'O won') {
@@ -96,7 +96,8 @@ const onRetrieveOverGames = function () {
 
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
-  $('#retrieve-games').on('click', onRetrieveOverGames)
+  // $('#retrieve-games').on('click', onRetrieveOverGames)
+  $('#nav-game-stats').on('click', onRetrieveOverGames)
   // $('#sign-up').hide()
   // $('#sign-in').hide()
   // $('#change-password').hide()
