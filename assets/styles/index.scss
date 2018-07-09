@@ -1,0 +1,341 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+$five-percent-gray: #f2f2f2;
+$six-percent-gray: #f0f0f0;
+$thirty-percent-gray: #b3b3b3;
+$fifty-percent-gray: #7f7f7f;
+$black: #000;
+$white: #fff;
+$red: #f00;
+$green: #0f0;
+$blue: #00f;
+$cyan: #0ff;
+$magenta: #f0f;
+$yellow: #ff0;
+$rainbow-red: #f27089;
+$rainbow-orange: #fca778;
+$rainbow-yellow: #fbde84;
+$rainbow-yellow-light: rgba(249, 216, 113, 0.15);
+$rainbow-green: #9ac479;
+$rainbow-blue: #74a6cf;
+$grass-green: #b8d77d;
+$grass-green-light: rgba(171, 209, 106, 0.1);
+$panda-purple: #9f86b0;
+$dolphin-pink: #f9a2b6;
+$sky-blue: #a7c5df;
+$cloud-white: #f7f0e3;
+$lines-brown: #3a2328;
+$stem-green: #358d65;
+
+@keyframes colorchange {
+  0% { background: $sky-blue; }
+  25% { background: $rainbow-orange; }
+  50% { background: $grass-green; }
+  75% { background: $rainbow-orange; }
+  100% { background: $sky-blue; }
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */ {
+  0% { background: $sky-blue; }
+  25% { background: $rainbow-orange; }
+  50% { background: $grass-green; }
+  75% { background: $rainbow-orange; }
+  100% { background: $sky-blue; }
+}
+
+body {
+  background-color: $white;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+h1 {
+  color: $rainbow-green;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+h4 {
+  color: $lines-brown;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h5 {
+  color: $lines-brown;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.board-cell {
+  background-color: $rainbow-yellow-light;
+  border: 2px solid $lines-brown;
+  color: $lines-brown;
+  display: inline-block;
+  float: left;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 80px;
+  height: 100px;
+  line-height: 105px;
+  margin-bottom: -2px;
+  margin-right: -2px;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+  width: 100px;
+
+  &:not(.pre-game):not(.played):not(.game-over):hover {
+    background-color: $rainbow-yellow;
+    cursor: pointer;
+  }
+
+  &.played {
+    &.x {
+      color: $rainbow-red;
+      cursor: default;
+      text-transform: uppercase;
+    }
+
+    &.o {
+      color: $rainbow-blue;
+      cursor: default;
+      text-transform: uppercase;
+    }
+  }
+
+  &.pre-game {
+    animation: colorchange 10s infinite;
+    -webkit-animation: colorchange 10s infinite;
+  }
+}
+
+.board-grid {
+  background-color: $white;
+  border: 4px solid $rainbow-green;
+  // clear: left;
+  margin: 0 auto;
+  max-height: 304px;
+  max-width: 304px;
+  overflow: auto;
+  padding-bottom: 2px;
+  position: relative;
+  user-select: none; // This makes each x and o non-highlightable by the cursor
+  vertical-align: middle;
+}
+
+p {
+  text-align: center;
+}
+
+.game-status-area {
+  color: $rainbow-red;
+  cursor: default;
+  display: none;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 28px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: 5px;
+  user-select: none;
+
+  &.playable {
+    display: block;
+  }
+
+  &.x {
+    color: $rainbow-red;
+  }
+
+  &.o {
+    color: $rainbow-blue;
+  }
+
+  &.game-result {
+    color: $stem-green;
+  }
+}
+
+.game-session-area {
+  display: none;
+  margin: 0 auto;
+
+  &.playable {
+    display: block;
+  }
+}
+
+.session-stats {
+  color: $lines-brown;
+  cursor: default;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  height: 20px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  user-select: none;
+  vertical-align: baseline;
+}
+
+.reset-session {
+  background-color: $stem-green;
+  border-radius: 5px;
+  color: $cloud-white;
+  cursor: pointer;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12px;
+  height: 20px;
+  left: 4px;
+  margin: 0 auto;
+  padding: 3px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -2px;
+  user-select: none;
+  vertical-align: baseline;
+  width: 80px;
+}
+
+.new-game-area {
+  color: $rainbow-orange;
+  cursor: pointer;
+  display: none;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 28px;
+  margin: 0 auto;
+  position: relative;
+  text-transform: uppercase;
+  top: 5px;
+
+  &.playable {
+    display: inline;
+  }
+}
+
+.starting-buttons {
+  margin: 0 auto;
+  max-height: 150px;
+  max-width: 300px;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+
+.gaming-buttons {
+  margin: 0 auto;
+  max-height: 150px;
+  max-width: 300px;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+  top: -10px;
+}
+
+.big-button {
+  background-color: $rainbow-yellow;
+  border: 0;
+  border-radius: 5px;
+  color: $lines-brown;
+  display: block;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 18px;
+  margin: 0 auto 10px;
+  max-height: 60px;
+  max-width: 80%;
+  padding: 3px 7px;
+  // position: relative;
+  // right: 50%;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.modal-title {
+  color: $rainbow-orange;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+  pointer-events: none;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+fieldset {
+  margin: auto;
+}
+
+input {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  margin: 2% 5%;
+  width: 90%;
+}
+
+.modal-content {
+  padding: 3%;
+}
+
+.form-button {
+  background-color: $rainbow-yellow;
+  border: 0;
+  border-radius: 5px;
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  padding: 3px 7px;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.total-stats-div {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 18px;
+  margin: 10px auto;
+  text-align: center;
+  width: 85%;
+}
+
+.sum-stats-div {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 14px;
+  margin: 10px auto;
+  text-align: center;
+  width: 85%;
+}
+
+.games-stats-div {
+  color: $lines-brown;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 14px;
+  margin: 10px auto;
+  overflow: auto;
+  width: 60%;
+}
