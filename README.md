@@ -1,72 +1,34 @@
-# browser-template
+# Tic-Tac-Toe Game Project
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+## Summary
 
-## Installation
+I built this game as my initial Web Development Immersive (WDI) course project at General Assembly. The primary programs I used were HTML5, CSS/Sass and JavaScript, with some Bootstrap for work with modals.
 
-1. [Download](../../archive/master.zip) this template.
-1. Move to the `projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `tic-tac-toe-game` with the name of
-    your project.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
+Technical Specifications
+- Custom game engine
+- Single page application
+- Multiple games, one at a time
+- jQuery for DOM manipulation and event handling
+- AJAX for interacting with a provided API
 
-## Structure
+## Features
+Players can play on the same desktop or mobile device, alternating who clicks on which squares. The game visually notifies which side won, or if the game ended in a draw. When a player wins, the game board's border color changes to the color of that player's pieces.
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+## User Stories
+- As a visitor to the game's website, I need to see how to authenticate (sign up and sign in) so that I can access the game.
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`config/environment.js`](config/environment.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+- As a signed-in player I need to know what my options are so that I can either start playing a game, change my password, get game stats or sign out.
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+- As a signed-in player I need to know how to start a new game so that I can begin playing.
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+- As a game player during gameplay, I want to see confirmation on whose move it is so that I know whether to select a square or wait for the other player to move.
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+- As a game player at the end of a game, I want to see the final board with the winning player identified so that I know who won the game.
 
-## Tasks
+- As a game player who has just completed a game, I want to know where to click so that I can play a new game.
 
-Developers should run these often!
+## Wireframe
+![Tic-tac-toe Wireframe](https://i.imgur.com/lebsgBj.jpg)
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt test`: runs any automated tests, depends on `grunt build`
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+## Future Features
+I would like to add an AI component, so that a signed-in user can play against the computer.
