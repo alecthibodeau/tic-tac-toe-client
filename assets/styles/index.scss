@@ -123,6 +123,10 @@ h5 {
     animation: colorchange 10s infinite;
     -webkit-animation: colorchange 10s infinite;
   }
+
+  &.starting-blue {
+    background-color: $sky-blue;
+  }
 }
 
 .board-grid {
