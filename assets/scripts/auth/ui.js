@@ -93,6 +93,8 @@ const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickC
   $('.game-status-area').removeClass('playable')
   $('.game-session-area').removeClass('playable')
   $('.new-game-area').removeClass('playable')
+  $('#stats-total-games-over').html('Loading…')
+  $('#stats-sum-games-over').html('')
   $('#stats-games-over').html('')
   setTimeout(function () {
     $('#signOutModal').modal('hide')

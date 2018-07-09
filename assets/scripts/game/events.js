@@ -80,12 +80,13 @@ const onClickNewGame = function (event, preGame) {
 
 const onRetrieveOverGames = function () {
   event.preventDefault()
+  let statsOverGames = null
   let xStatsWins = null
   let oStatsWins = null
   let drawGames = null
   api.retrieveOverGames()
     .then((result) => {
-      const statsOverGames = result
+      statsOverGames = result
       // console.log(statsOverGames)
       // console.log(over)
       for (let i = 0; i < statsOverGames.games.length; i++) {
@@ -113,7 +114,7 @@ const onRetrieveOverGames = function () {
       }
       const totalGamesPlayed = xStatsWins + oStatsWins + drawGames
       document.getElementById('stats-total-games-over').innerHTML = `Total games played: ${totalGamesPlayed}`
-      document.getElementById('stats-sum-games-over').innerHTML = `Player X has won ${xStatsWins} games, Player O has won ${oStatsWins} games, Draws: ${drawGames} games`
+      document.getElementById('stats-sum-games-over').innerHTML = `Player X wins: ${xStatsWins}, Player O wins: ${oStatsWins}, Draws: ${drawGames}`
     })
     .catch((err) => {
       console.log(err)
