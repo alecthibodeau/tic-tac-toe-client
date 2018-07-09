@@ -29,6 +29,7 @@ const onClickCell = function (event) {
 
 const animateGameBoard = function (preGame) {
   if (preGame === true) {
+    $('.board-cell').addClass('starting-blue')
     for (let i = 0; i < 9; i++) {
       if (i % 2 === 0) {
         $(`#cell-${i}`).addClass('pre-game')
@@ -64,7 +65,7 @@ const onClickNewGame = function (event, preGame) {
   createGameBoard(preGame)
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
-  $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('played').removeClass('game-over')
+  $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
   $('.game-status-area').addClass('playable')
   $('.game-session-area').addClass('playable')
   // console.log('New game is ready.')
