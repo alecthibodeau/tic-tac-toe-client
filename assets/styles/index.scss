@@ -137,6 +137,14 @@ h5 {
   position: relative;
   user-select: none; // This makes each x and o non-highlightable by the cursor
   vertical-align: middle;
+
+  &.x-won {
+    border: 4px solid $rainbow-red;
+  }
+
+  &.o-won {
+    border: 4px solid $rainbow-blue;
+  }
 }
 
 p {
