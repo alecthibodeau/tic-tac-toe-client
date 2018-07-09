@@ -28,8 +28,6 @@ $dolphin-pink: #f9a2b6;
 $sky-blue: #a7c5df;
 $cloud-white: #f7f0e3;
 $lines-brown: #3a2328;
-$cone-brown: #d2a480;
-$sauce-brown: #a7705e;
 $stem-green: #358d65;
 
 @keyframes colorchange {
@@ -57,12 +55,6 @@ body {
 main {
   margin: 0 auto;
   max-width: 500px;
-}
-
-p {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 h1 {
@@ -94,7 +86,6 @@ h5 {
 .board-cell {
   background-color: $rainbow-yellow-light;
   border: 2px solid $lines-brown;
-  // box-sizing: border-box;
   color: $lines-brown;
   display: inline-block;
   float: left;
@@ -154,6 +145,10 @@ h5 {
   &.o-won {
     border: 4px solid $rainbow-blue;
   }
+}
+
+p {
+  text-align: center;
 }
 
 .game-status-area {
@@ -261,7 +256,7 @@ h5 {
   overflow: auto;
   padding: 0;
   position: relative;
-  top: -10px;
+  top: 0;
 }
 
 .big-button {
@@ -350,5 +345,5 @@ input {
   font-size: 14px;
   margin: 10px auto;
   overflow: auto;
-  width: 60%;
+  width: 70%;
 }
