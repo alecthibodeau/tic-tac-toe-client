@@ -9,6 +9,7 @@ const signUpSuccess = function (data) {
   $('#sign-up').slideToggle(200)
   setTimeout(function () {
     $('#signUpModal').modal('hide')
+    $('#sign-up').show()
     $('#modalTitleSignUp').text('Sign up').css('color', '#fca778')
   }, 3000)
   // $('#message').text('Signed up successfully')
