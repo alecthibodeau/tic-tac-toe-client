@@ -48,8 +48,8 @@
           <form id="sign-up" class="sign-up-panel">
             <fieldset>
               <input type="email" name="credentials[email]" placeholder="Email">
-              <input type="password" name="credentials[password]" placeholder="Password">
-              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" autocomplete="off">
               <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
@@ -67,7 +67,7 @@
           <form id="sign-in" class="sign-in-panel">
             <fieldset>
               <input type="email" name="credentials[email]" placeholder="Email">
-              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
               <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
@@ -84,8 +84,8 @@
           <h4 class="modal-title" id="modalTitleChangePassword">Change Password</h4>
           <form id="change-password" class="change-password-panel">
             <fieldset>
-              <input type="password" name="passwords[old]" placeholder="Old Password">
-              <input type="password" name="passwords[new]" placeholder="New Password">
+              <input type="password" name="passwords[old]" placeholder="Old Password" autocomplete="off">
+              <input type="password" name="passwords[new]" placeholder="New Password" autocomplete="off">
               <input type="submit" class="form-button" value="submit">
             </fieldset>
           </form>
