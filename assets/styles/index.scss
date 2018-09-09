@@ -368,7 +368,7 @@ input {
 
 .modal-content {
   border-radius: 1rem;
-  padding: 3%;
+  padding: 1rem;
 }
 
 .form-button {
@@ -391,6 +391,7 @@ STATS
 
 .total-stats-div {
   font-size: 18px;
+  letter-spacing: 0.05rem;
   margin: 10px auto;
   text-align: center;
   width: 85%;
@@ -398,6 +399,7 @@ STATS
 
 .sum-stats-div {
   font-size: 14px;
+  letter-spacing: 0.1rem;
   margin: 10px auto;
   text-align: center;
   text-transform: none;
@@ -406,6 +408,8 @@ STATS
 
 .games-stats-div {
   font-size: 14px;
+  letter-spacing: 0.1rem;
+  line-height: 3rem;
   margin: 10px auto;
   overflow: auto;
   text-transform: none;
