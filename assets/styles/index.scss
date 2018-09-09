@@ -9,8 +9,11 @@ COLOR MIXES
 
 $five-percent-gray: #f2f2f2;
 $six-percent-gray: #f0f0f0;
+$ten-percent-gray: #e5e5e5;
 $thirty-percent-gray: #b3b3b3;
 $fifty-percent-gray: #7f7f7f;
+$seventy-five-percent-gray: #636466;
+$ninety-percent-gray: #191919;
 $black: #000;
 $white: #fff;
 $red: #f00;
@@ -45,19 +48,19 @@ ANIMATIONS
 ************************************/
 
 @keyframes colorchange {
-  0% { background: $sky-blue; }
-  25% { background: $rainbow-orange; }
-  50% { background: $grass-green; }
-  75% { background: $rainbow-orange; }
-  100% { background: $sky-blue; }
+  0% { background: $rainbow-blue; }
+  25% { background: $rainbow-green; }
+  50% { background: $rainbow-red; }
+  75% { background: $rainbow-green; }
+  100% { background: $rainbow-blue; }
 }
 
 @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */ {
-  0% { background: $sky-blue; }
-  25% { background: $rainbow-orange; }
-  50% { background: $grass-green; }
-  75% { background: $rainbow-orange; }
-  100% { background: $sky-blue; }
+  0% { background: $rainbow-blue; }
+  25% { background: $rainbow-green; }
+  50% { background: $rainbow-red; }
+  75% { background: $rainbow-green; }
+  100% { background: $rainbow-blue; }
 }
 
 /************************************
