@@ -7,8 +7,7 @@ const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  // console.log('sign up ran!')
-
+  $('#modalTitleSignUp').text('Signing up…')
   const data = getFormFields(this)
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -17,8 +16,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  // console.log('sign in ran!')
-
+  $('#modalTitleSignUp').text('Signing in…')
   const data = getFormFields(this)
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -27,10 +25,7 @@ const onSignIn = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  // console.log('change password ran')
-
   const data = getFormFields(this)
-
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -38,8 +33,6 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  // console.log('sign out ran!')
-
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
