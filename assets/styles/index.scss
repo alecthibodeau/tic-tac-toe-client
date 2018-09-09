@@ -159,6 +159,17 @@ h5 {
   text-align: center;
 }
 
+.intro-text {
+  font-size: 13px;
+  letter-spacing: 0.1rem;
+  margin: 5px auto;
+  overflow: visible;
+  text-align: left;
+  text-transform: none;
+  width: 250px;
+  z-index: 1;
+}
+
 /************************************
 BOARD & CELLS
 ************************************/
@@ -315,11 +326,11 @@ GAME STATUS AREA
 NAV BUTTONS
 ************************************/
 
+// Container for holding the big buttons…
 .starting-buttons,
 .gaming-buttons {
   letter-spacing: 0.3rem;
   margin: 0 auto;
-  max-height: 150px;
   max-width: 300px;
   overflow: auto;
   padding: 0;
