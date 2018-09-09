@@ -31,6 +31,14 @@ $sky-blue: #a7c5df;
 $cloud-white: #f7f0e3;
 $lines-brown: #3a2328;
 $stem-green: #358d65;
+$bg-bar-1: #b1c1d4;
+$bg-bar-2: #b8bfca;
+$bg-bar-3: #c2bbbe;
+$bg-bar-4: #ccb8b2;
+$bg-bar-5: #d8b4a4;
+$bg-bar-6: #e2b098;
+$bg-bar-7: #ecad8c;
+$bg-bar-8: #f3aa82;
 
 /************************************
 ANIMATIONS
@@ -57,27 +65,81 @@ BODY & MAIN
 ************************************/
 
 body {
-  background-color: $white;
+  background-color: $rainbow-orange;
   color: $lines-brown;
   font-family: 'Varela Round', sans-serif;
   font-size: 16px;
+  letter-spacing: 0.3rem;
   margin: 0 auto;
-  max-width: 800px;
   text-transform: uppercase;
 }
 
 main {
   margin: 0 auto;
-  max-width: 500px;
+  position: relative;
+  top: -100vh;
+  z-index: 10;
+}
+
+.background-container {
+  position: relative;
+  z-index: 2;
+}
+
+.background-bar {
+  background-color: $red;
+  border: 0;
+  display: block;
+  height: 10vh;
+  margin: 0 auto;
+  // position: absolute;
+  width: 100%;
+
+  &.bg-bar-0 {
+    background-color: $sky-blue;
+  }
+
+  &.bg-bar-1 {
+    background-color: $bg-bar-1;
+  }
+
+  &.bg-bar-2 {
+    background-color: $bg-bar-2;
+  }
+
+  &.bg-bar-3 {
+    background-color: $bg-bar-3;
+  }
+
+  &.bg-bar-4 {
+    background-color: $bg-bar-4;
+  }
+
+  &.bg-bar-5 {
+    background-color: $bg-bar-5;
+  }
+
+  &.bg-bar-6 {
+    background-color: $bg-bar-6;
+  }
+
+  &.bg-bar-7 {
+    background-color: $bg-bar-7;
+  }
+
+  &.bg-bar-8 {
+    background-color: $bg-bar-8;
+  }
+
+  &.bg-bar-9 {
+    background-color: $rainbow-orange;
+  }
 }
 
 h1 {
-  color: $rainbow-green;
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  margin-top: 15px;
+  color: $white;
+  font-size: 2.25rem;
+  margin: 15px auto 10px;
   text-align: center;
   user-select: none;
 }
@@ -90,8 +152,7 @@ h4 {
 
 h5 {
   color: $lines-brown;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   text-align: center;
 }
 
@@ -142,7 +203,7 @@ BOARD & CELLS
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
   height: 333px;
-  margin: 0 auto;
+  margin: 3px auto;
   outline: 2px solid $lines-brown;
   overflow: visible;
   position: relative;
@@ -151,11 +212,11 @@ BOARD & CELLS
   width: 333px;
 
   &.x-won {
-    outline: 4px solid $rainbow-red;
+    outline: 6px solid $rainbow-red;
   }
 
   &.o-won {
-    outline: 4px solid $rainbow-blue;
+    outline: 8px solid $rainbow-blue;
   }
 }
 
@@ -222,6 +283,7 @@ GAME STATUS AREA
   font-size: 12px;
   height: 20px;
   left: 4px;
+  letter-spacing: 0.1rem;
   margin: 0 auto;
   padding: 3px;
   position: relative;
@@ -233,7 +295,7 @@ GAME STATUS AREA
 }
 
 .new-game-area {
-  color: $rainbow-orange;
+  color: $white;
   cursor: pointer;
   display: none;
   font-size: 28px;
@@ -252,6 +314,7 @@ NAV BUTTONS
 
 .starting-buttons,
 .gaming-buttons {
+  letter-spacing: 0.3rem;
   margin: 0 auto;
   max-height: 150px;
   max-width: 300px;
@@ -268,9 +331,10 @@ NAV BUTTONS
   border-radius: 5px;
   display: block;
   font-size: 18px;
+  letter-spacing: 0.3rem;
   margin: 0 auto 10px;
   max-height: 60px;
-  max-width: 80%;
+  max-width: 90%;
   padding: 3px 7px;
   text-transform: uppercase;
 
@@ -312,6 +376,7 @@ input {
   border: 0;
   border-radius: 5px;
   font-size: 16px;
+  letter-spacing: 0.3rem;
   padding: 3px 7px;
   text-transform: uppercase;
 

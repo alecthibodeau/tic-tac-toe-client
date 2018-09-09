@@ -55,6 +55,15 @@ const createGameBoard = function (preGame) {
   }
 }
 
+const createBackground = function () {
+  for (let i = 0; i < 10; i++) {
+    const backgroundBar = document.createElement('div')
+    backgroundBar.setAttribute('class', 'background-bar')
+    $(backgroundBar).addClass(`bg-bar-${i}`)
+    document.getElementById('background-container').appendChild(backgroundBar)
+  }
+}
+
 const onClickNewGame = function (event, preGame) {
   event.preventDefault()
   preGame = false
@@ -131,6 +140,7 @@ const addGameHandlers = () => {
 }
 
 module.exports = {
+  createBackground,
   createGameBoard,
   animateGameBoard,
   addGameHandlers

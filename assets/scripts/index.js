@@ -25,6 +25,7 @@ const preGame = true
 $(() => {
   authEvents.addAuthHandlers()
   gameEvents.addGameHandlers()
+  gameEvents.createBackground()
   gameEvents.createGameBoard(preGame)
   // Code to reset modal fields to default upon close…
   $('body').on('hidden.bs.modal', '.modal', function () {

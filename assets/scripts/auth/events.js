@@ -16,7 +16,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  $('#modalTitleSignUp').text('Signing in…')
+  $('#modalTitleSignIn').text('Signing in…')
   const data = getFormFields(this)
   api.signIn(data)
     .then(ui.signInSuccess)
