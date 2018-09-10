@@ -170,6 +170,62 @@ h5 {
   z-index: 1;
 }
 
+.credit-div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.at-line {
+  color: $stem-green;
+  font-size: 1.25rem;
+  pointer-events: auto;
+  user-select: auto;
+  z-index: 12;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $stem-green;
+    text-decoration: none;
+  }
+}
+
+/************************************
+NAV BUTTONS
+************************************/
+
+// Container for holding the big buttons…
+.starting-buttons,
+.gaming-buttons {
+  letter-spacing: 0.3rem;
+  margin: 0 auto;
+  max-width: 300px;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+  text-transform: uppercase;
+  top: 0;
+}
+
+.big-button {
+  background-color: $rainbow-yellow;
+  border: 0;
+  border-radius: 5px;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.3rem;
+  margin: 0 auto 10px;
+  max-height: 60px;
+  max-width: 90%;
+  padding: 3px 7px;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 /************************************
 BOARD & CELLS
 ************************************/
@@ -272,7 +328,7 @@ GAME STATUS AREA
 
 .game-session-area {
   display: none;
-  margin: 0 auto;
+  margin: 0.75rem auto 0;
 
   &.playable {
     display: block;
@@ -284,7 +340,6 @@ GAME STATUS AREA
   font-size: 1.5rem;
   height: 1.25rem;
   letter-spacing: 0.1rem;
-  margin: 0 auto;
   text-align: center;
   user-select: none;
   vertical-align: baseline;
@@ -320,41 +375,6 @@ GAME STATUS AREA
 
   &.playable {
     display: inline;
-  }
-}
-
-/************************************
-NAV BUTTONS
-************************************/
-
-// Container for holding the big buttons…
-.starting-buttons,
-.gaming-buttons {
-  letter-spacing: 0.3rem;
-  margin: 0 auto;
-  max-width: 300px;
-  overflow: auto;
-  padding: 0;
-  position: relative;
-  text-transform: uppercase;
-  top: 0;
-}
-
-.big-button {
-  background-color: $rainbow-yellow;
-  border: 0;
-  border-radius: 5px;
-  display: block;
-  font-size: 18px;
-  letter-spacing: 0.3rem;
-  margin: 0 auto 10px;
-  max-height: 60px;
-  max-width: 90%;
-  padding: 3px 7px;
-  text-transform: uppercase;
-
-  &:focus {
-    outline: 0;
   }
 }
 
