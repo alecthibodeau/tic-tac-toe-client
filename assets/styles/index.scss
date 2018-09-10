@@ -160,13 +160,13 @@ h5 {
 }
 
 .intro-text {
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 0;
   margin: 5px auto;
   overflow: visible;
   text-align: left;
   text-transform: none;
-  width: 250px;
+  width: 265px;
   z-index: 1;
 }
 
@@ -484,5 +484,10 @@ BREAKPOINT 400PX
 
   .gaming-buttons > .big-button {
     margin: 0 auto 5px;
+  }
+
+  .intro-text {
+    font-size: 13px;
+    width: 270px;
   }
 }
