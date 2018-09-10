@@ -134,9 +134,7 @@ const onRetrieveOverGames = function () {
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
   $('#nav-game-stats').on('click', onRetrieveOverGames)
-  $('#nav-change-password').hide()
-  $('#nav-game-stats').hide()
-  $('#nav-sign-out').hide()
+  $('.gaming-buttons').hide()
 }
 
 module.exports = {
