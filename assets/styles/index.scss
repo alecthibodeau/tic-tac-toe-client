@@ -281,8 +281,8 @@ GAME STATUS AREA
 
 .session-stats {
   cursor: default;
-  font-size: 1rem;
-  height: 1.25;
+  font-size: 1.5rem;
+  height: 1.25rem;
   letter-spacing: 0.1rem;
   margin: 0 auto;
   text-align: center;
@@ -443,7 +443,7 @@ BREAKPOINT 400PX
   }
 
   h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .board-grid {
@@ -458,8 +458,7 @@ BREAKPOINT 400PX
   }
 
   .session-stats {
-    font-size: 0.9rem;
-    height: 1rem;
+    font-size: 1.25rem;
     margin: 0.5rem auto;
   }
 
