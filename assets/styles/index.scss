@@ -213,10 +213,10 @@ NAV BUTTONS
   border: 0;
   border-radius: 5px;
   display: block;
-  font-size: 18px;
+  font-size: 14px;
   letter-spacing: 0.3rem;
   margin: 0 auto 10px;
-  max-height: 60px;
+  max-height: 40px;
   max-width: 90%;
   padding: 3px 7px;
   text-transform: uppercase;
@@ -365,7 +365,7 @@ GAME STATUS AREA
 }
 
 .new-game-area {
-  color: $white;
+  color: $rainbow-yellow;
   cursor: pointer;
   display: none;
   font-size: 28px;
