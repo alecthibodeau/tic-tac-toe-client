@@ -18,9 +18,9 @@ const onClickResetSession = function () {
 const gameNotice = function (winValue, over, onClickCell) {
   if ((winValue === 'x') || (winValue === 'o')) {
     $('.board-grid').addClass(`${winValue}-won`)
-    $('.player-turn-area').text(`player ${winValue} wins!`).addClass('game-result-text-color')
+    $('.player-turn-area').text(`player ${winValue} wins!`).addClass(`${winValue}`)
   } else {
-    $('.player-turn-area').text(`it's a draw!`).addClass('game-result-text-color')
+    $('.player-turn-area').text(`it's a draw!`).addClass('its-a-draw')
   }
   $('.board-cell').off('click', onClickCell).addClass('game-over')
   // console.log(`Is game REALLY over? ${over}`)

@@ -76,7 +76,7 @@ const setNewGame = function () {
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
   createGameBoard()
-  $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
+  $('.board-grid').attr('class', 'board-grid').addClass('playable')
   $('.player-turn-area').removeClass('game-result-text-color').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
   if (store.user !== null) {
@@ -146,6 +146,9 @@ const newGamePrep = (event) => {
 }
 
 const addGameHandlers = () => {
+  $('.game-title').click((event) => {
+    $('.intro-text').toggle()
+  })
   $('#new-game').click((event) => {
     newGamePrep(event)
   })
@@ -154,7 +157,6 @@ const addGameHandlers = () => {
       newGamePrep(event)
     }
   })
-
   $('#nav-game-stats').on('click', onRetrieveOverGames)
   $('.user-buttons').hide()
 }

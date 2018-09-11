@@ -42,9 +42,7 @@ const signInSuccess = function (data) {
 const signInFailure = function (error) {
   $('#modalTitleSignIn').text('Error on sign in. Try again.').css('color', '#f27089')
   setTimeout(function () {
-    // $('#signInModal').modal('hide')
     $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')
-    // $('#sign-in').show()
   }, 5000)
   console.log('signInFailure ran. Error is :', error)
 }
@@ -63,7 +61,6 @@ const changePasswordSuccess = function (data) {
 const changePasswordFailure = function (error) {
   $('#modalTitleChangePassword').text('Error on change password. Try again.').css('color', '#f27089')
   setTimeout(function () {
-    // $('#changePasswordModal').modal('hide')
     $('#modalTitleChangePassword').text('Change password').css('color', '#fca778')
     // $('#change-password').show(1)
   }, 5000)
@@ -79,9 +76,6 @@ const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickC
   $('.user-buttons').hide()
   $('.board-cell').off('click', onClickCell).addClass('played').addClass('game-over').html('')
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
-  // $('.player-turn-area').removeClass('playable')
-  // $('.game-score-area').removeClass('playable')
-  // $('.play-new-game').removeClass('playable')
   $('#stats-total-games-over').html('Loading…')
   $('#stats-sum-games-over').html('')
   $('#stats-games-over').html('')
