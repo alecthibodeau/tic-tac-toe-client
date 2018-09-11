@@ -19,7 +19,9 @@ const onClickCell = function (event) {
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  turnCounter % 2 !== 0 ? $('#player-turn').text(`player x's turn`).removeClass('o') : $('#player-turn').text(`player o's turn`).addClass('o')
+  // turnCounter % 2 !== 0 ? $('.player-turn-area').text(`player x's turn`) : $('.player-turn-area').text(`player o's turn`)
+  // $('#player-turn-piece').text(`${playerPiece}`)
+  turnCounter % 2 !== 0 ? $('#player-turn-piece').text('x') : $('#player-turn-piece').text('o')
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
@@ -77,7 +79,7 @@ const setNewGame = function () {
   $('#game-board').html('')
   createGameBoard()
   $('.board-grid').attr('class', 'board-grid').addClass('playable')
-  $('.player-turn-area').removeClass('game-result-text-color').removeClass('o').text(`player x's turn`).addClass('playable')
+  $('.player-turn-line').attr('class', 'player-turn-line').addClass('playable').html(`Player <span id="player-turn-piece">x</span>'s turn`)
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
   if (store.user !== null) {
     api.createGame()

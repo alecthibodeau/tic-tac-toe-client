@@ -34,6 +34,9 @@ $sky-blue: #a7c5df;
 $cloud-white: #f7f0e3;
 $lines-brown: #3a2328;
 $stem-green: #358d65;
+$red-muted: #f64154;
+$green-muted: #77d283;
+$blue-muted: #7073ff;
 $bg-bar-1: #b1c1d4;
 $bg-bar-2: #b8bfca;
 $bg-bar-3: #c2bbbe;
@@ -147,7 +150,7 @@ NAV BAR
 ************************************/
 
 nav {
-  align-items: flex-start;
+  align-items: flex-end;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -182,7 +185,7 @@ nav {
 // Container for holding the big buttons…
 .starting-buttons,
 .user-buttons {
-  align-items: flex-start;
+  align-items: flex-end;
   display: flex;
   flex-direction: row;
   width: 222px;
@@ -199,7 +202,7 @@ nav {
   margin: 0 auto 0.5rem;
   max-height: 50px;
   max-width: 100px;
-  padding: 7px 7px;
+  padding: 6px 3px;
   text-transform: uppercase;
 
   &:focus {
@@ -260,6 +263,7 @@ BOARD & CELLS
   border: 0.01rem solid $lines-brown;
   font-size: 80px;
   height: 111px;
+  letter-spacing: 0;
   line-height: 118px;
   user-select: none;
   // vertical-align: middle;
@@ -335,10 +339,11 @@ p {
 }
 
 .reset-score-button {
-  background-color: $rainbow-green;
+  background-color: transparent;
+  border: 1px solid $lines-brown;
   border-radius: 5px;
   bottom: 2px;
-  color: $white;
+  color: $lines-brown;
   cursor: pointer;
   font-size: 1rem;
   height: 20px;
@@ -350,10 +355,12 @@ p {
   width: 80px;
 }
 
-.player-turn-area {
-  color: $stem-green;
-  font-size: 3rem;
-  margin: 0 auto -0.5rem;
+.player-turn-line {
+  color: $lines-brown;
+  font-size: 1.75rem;
+  letter-spacing: 0.5rem;
+  // margin: 0.5rem auto -0.5rem;
+  margin: 0.5rem auto 0;
   user-select: none;
 
   &.x {
@@ -374,7 +381,7 @@ p {
   border-radius: 1rem;
   color: $white;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin: 5px auto;
   padding-top: 3px;
   width: 250px;
@@ -477,7 +484,7 @@ BREAKPOINT 400PX
     width: 300px;
   }
 
-  .player-turn-area,
+  .player-turn-line,
   .play-new-game {
     font-size: 20px;
     margin: 0.5rem auto;
