@@ -139,14 +139,19 @@ const onRetrieveOverGames = function () {
     })
 }
 
+const newGamePrep = (event) => {
+  $('.game-information-area').show()
+  $('.intro-text').hide()
+  onClickNewGame(event)
+}
+
 const addGameHandlers = () => {
   $('#new-game').click((event) => {
-    $('.game-information-area').show()
-    onClickNewGame(event)
+    newGamePrep(event)
   })
   $('.board-grid').click((event) => {
     if (store.preGame) {
-      onClickNewGame(event)
+      newGamePrep(event)
     }
   })
 

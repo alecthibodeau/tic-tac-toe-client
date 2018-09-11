@@ -165,7 +165,7 @@ h5 {
 .intro-text {
   font-size: 16px;
   letter-spacing: 0;
-  margin: 5px auto;
+  margin: 0 auto;
   overflow: visible;
   text-align: left;
   text-transform: none;
@@ -208,7 +208,7 @@ NAV BUTTONS
   border-radius: 0.75rem;
   font-size: 14px;
   letter-spacing: 0.1rem;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem;
   max-height: 40px;
   max-width: 120px;
   padding: 3px 7px;
@@ -321,7 +321,7 @@ p {
 .player-turn-area {
   color: $rainbow-red;
   font-size: 3rem;
-  margin: 0 auto;
+  margin: 0 auto -0.5rem;
   user-select: none;
 
   &.x {
@@ -338,9 +338,9 @@ p {
 }
 
 .play-new-game {
-  border: 1px solid $rainbow-yellow;
+  border: 1px solid $cloud-white;
   border-radius: 1rem;
-  color: $rainbow-yellow;
+  color: $cloud-white;
   cursor: pointer;
   font-size: 2rem;
   margin: 5px auto;
