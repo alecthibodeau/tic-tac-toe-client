@@ -17,7 +17,17 @@
       <div class="background-container" id="background-container"></div>
       <main>
 
-        <h1 class="message">Alec T.'s Tic-Tac-Toe</h1>
+        <nav>
+          <div class="game-title">
+            <div class="first-line">Alec T.'s</div>
+            <div class="second-line">Tic-Tac-Toe</div>
+          </div>
+
+          <div class="starting-buttons">
+            <input class="nav-button" id="nav-sign-up" value="sign up" type="button" data-toggle="modal" data-target="#signUpModal">
+            <input class="nav-button" id="nav-sign-in" value="sign in" type="button" data-toggle="modal" data-target="#signInModal">
+          </div>
+        </nav>
 
         <div class="board-grid" id="game-board">
         </div>
@@ -39,15 +49,10 @@
           Play new game
         </div>
 
-        <div class="starting-buttons">
-          <input class="big-button" id="nav-sign-up" value="sign up" type="button" data-toggle="modal" data-target="#signUpModal">
-          <input class="big-button" id="nav-sign-in" value="sign in" type="button" data-toggle="modal" data-target="#signInModal">
-        </div>
-
         <div class="user-buttons">
-          <input class="big-button" id="nav-game-stats" value="see game stats" type="button" data-toggle="modal" data-target="#gameStatsModal">
-          <input class="big-button" id="nav-change-password" value="change password" type="button" data-toggle="modal" data-target="#changePasswordModal">
-          <input class="big-button" id="nav-sign-out" value="sign out" type="button" data-toggle="modal" data-target="#signOutModal">
+          <input class="nav-button" id="nav-game-stats" value="see game stats" type="button" data-toggle="modal" data-target="#gameStatsModal">
+          <input class="nav-button" id="nav-change-password" value="change password" type="button" data-toggle="modal" data-target="#changePasswordModal">
+          <input class="nav-button" id="nav-sign-out" value="sign out" type="button" data-toggle="modal" data-target="#signOutModal">
         </div>
 
         <div class="intro-text">
