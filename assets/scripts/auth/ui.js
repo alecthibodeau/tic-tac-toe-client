@@ -36,7 +36,7 @@ const signInSuccess = function (data) {
   $('.starting-buttons').hide()
   $('.user-buttons').show()
   // $('.new-game-area').addClass('playable')
-  // boardEvents.onClickNewGame()
+  boardEvents.setNewGame()
   setTimeout(function () {
     $('#signInModal').modal('hide')
     $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')

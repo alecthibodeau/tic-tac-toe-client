@@ -66,8 +66,8 @@ const createBackground = function () {
   }
 }
 
-const onClickNewGame = function (event, preGame) {
-  event.preventDefault()
+const setNewGame = function (preGame) {
+  console.log('Hi')
   preGame = false
   over = false
   turnCounter = 0
@@ -79,7 +79,6 @@ const onClickNewGame = function (event, preGame) {
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
   $('.game-status-area').addClass('playable')
   $('.game-session-area').addClass('playable')
-  // console.log('New game is ready.')
   if (store.user !== null) {
     api.createGame()
       .then((result) => {
@@ -90,6 +89,11 @@ const onClickNewGame = function (event, preGame) {
         console.log(err)
       })
   }
+}
+
+const onClickNewGame = function (event, preGame) {
+  event.preventDefault()
+  setNewGame(preGame)
 }
 
 const onRetrieveOverGames = function () {
@@ -145,6 +149,7 @@ module.exports = {
   createBackground,
   createGameBoard,
   animateGameBoard,
+  setNewGame,
   addGameHandlers
 }
 
