@@ -86,7 +86,7 @@ body {
 main {
   margin: 0 auto;
   position: relative;
-  top: -100vh;
+  top: -99.5vh;
   z-index: 5;
 }
 
@@ -165,15 +165,10 @@ nav {
   color: $white;
   cursor: pointer;
   font-size: 1.65rem;
-  // margin: 15px auto 0;
   letter-spacing: 0.4rem;
   position: relative;
   text-align: left;
   user-select: none;
-
-  // & > .first-line {
-  //   position: relative;
-  // }
 
   & > .second-line {
     bottom: 0.3rem;
@@ -219,12 +214,8 @@ NAV DRAWER
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // justify-content: center;
-  // margin: 0 auto;
-  // max-width: 333px;
-  position: absolute;
-  // right: 0;
   left: 231px;
+  position: absolute;
   top: 35px;
   z-index: 20;
 }
@@ -242,8 +233,8 @@ NAV DRAWER
   border: 1px solid $white;
   cursor: pointer;
   display: block;
-  font-size: 1rem;
-  letter-spacing: 0.25rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
   padding: 0.5rem 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -266,7 +257,7 @@ h5 {
 .intro-text {
   font-size: 16px;
   letter-spacing: 0;
-  margin: 0 auto;
+  margin: 10px auto 0;
   overflow: visible;
   text-align: left;
   text-transform: none;
@@ -400,7 +391,6 @@ p {
   color: $lines-brown;
   font-size: 2.5rem;
   letter-spacing: 0.5rem;
-  // margin: 0.5rem auto -0.5rem;
   margin: 0.25rem auto 0;
   padding-top: 0.25rem;
   user-select: none;
@@ -520,14 +510,46 @@ BREAKPOINT 400PX
     width: 300px;
   }
 
-  .board-cell {
-    height: 100px;
-    line-height: 98px;
-    width: 100px;
+  .game-title {
+    font-size: 1.38rem;
+    letter-spacing: 0.4rem;
+
+    & > .second-line {
+      bottom: 0.3rem;
+      font-size: 1rem;
+      letter-spacing: 0.3rem;
+    }
   }
 
-  h1 {
-    font-size: 2rem;
+  .starting-buttons,
+  .user-buttons {
+    width: 200px;
+  }
+
+  .nav-button {
+    font-size: 12px;
+    margin: 0 auto 0.5rem;
+    max-height: 30px;
+    max-width: 90px;
+    padding: 3px;
+  }
+
+  .nav-drawer {
+    left: 207px;
+    top: 28px;
+  }
+
+  .nav-drawer-button {
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    padding: 0.5rem 1rem;
+    width: 85px;
+  }
+
+  .board-cell {
+    height: 100px;
+    line-height: 106px;
+    width: 100px;
   }
 
   .board-grid {
@@ -535,19 +557,25 @@ BREAKPOINT 400PX
     width: 300px;
   }
 
-  .player-turn-line,
+  .player-turn-line {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    margin: 0.25rem auto 0;
+    padding-top: 0.25rem;
+    width: 290px;
+  }
+
   .play-new-game {
-    font-size: 20px;
+    font-size: 2rem;
     margin: 0.5rem auto;
+    padding-bottom: 0.2rem;
   }
 
   .score-board {
-    font-size: 1.25rem;
-    margin: 0.5rem auto;
-  }
-
-  .user-buttons > .nav-button {
-    margin: 0 auto 5px;
+    bottom: 0.05rem;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    position: relative;
   }
 
   .intro-text {
