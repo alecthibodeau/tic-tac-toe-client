@@ -13,20 +13,13 @@ const signUpSuccess = function (data) {
     $('#modalTitleSignUp').text('Sign up').css('color', '#fca778')
     $('#signInModal').modal('show')
   }, 3000)
-  // $('#message').text('Signed up successfully')
-  // $('#message').css('background-color', 'green')
-  // console.log('signUpSuccess ran. Data is :', data)
 }
 
 const signUpFailure = function (error) {
   $('#modalTitleSignUp').text('Error on sign up. Try again').css('color', '#f27089')
   setTimeout(function () {
-    // $('#signUpModal').modal('hide')
     $('#modalTitleSignUp').text('Sign up').css('color', '#fca778')
-    // $('#sign-up').show()
   }, 5000)
-  // $('#message').text('Error on sign up')
-  // $('#message').css('background-color', 'red')
   console.log('signUpFailure ran. Error is :', error)
 }
 
@@ -35,7 +28,6 @@ const signInSuccess = function (data) {
   $('#sign-in').slideToggle(200)
   $('.starting-buttons').hide()
   $('.user-buttons').show()
-  // $('.new-game-area').addClass('playable')
   boardEvents.setNewGame()
   setTimeout(function () {
     $('#signInModal').modal('hide')

@@ -150,19 +150,16 @@ h1 {
   color: $white;
   font-size: 2.25rem;
   margin: 15px auto 10px;
-  text-align: center;
   user-select: none;
 }
 
 h4 {
   color: $lines-brown;
-  text-align: center;
 }
 
 h5 {
   color: $lines-brown;
   margin: 0 auto 10px;
-  text-align: center;
 }
 
 .intro-text {
@@ -203,20 +200,12 @@ NAV BUTTONS
 // Container for holding the big buttons…
 .starting-buttons,
 .user-buttons {
-  // letter-spacing: 0.3rem;
-  // margin: 0 auto;
-  // overflow: auto;
-  // padding: 0;
-  // position: relative;
-  // text-transform: uppercase;
-  // top: 0;
 }
 
 .big-button {
   background-color: $rainbow-yellow;
   border: 0;
   border-radius: 5px;
-  // display: inline;
   font-size: 14px;
   letter-spacing: 0.1rem;
   margin: 0 auto 10px;
@@ -239,11 +228,9 @@ BOARD & CELLS
   border: 0.01rem solid $lines-brown;
   font-size: 80px;
   height: 111px;
-  line-height: 120px;
-  // outline: 1px solid $lines-brown;
-  text-align: center;
+  line-height: 118px;
   user-select: none;
-  vertical-align: middle;
+  // vertical-align: middle;
   width: 111px;
 
   &:not(.pre-game):not(.played):not(.game-over):hover {
@@ -280,7 +267,6 @@ BOARD & CELLS
   margin: 3px auto;
   outline: 2px solid $lines-brown;
   overflow: visible;
-  // position: relative;
   user-select: none; // This makes each x and o non-highlightable by the cursor
   vertical-align: middle;
   width: 333px;
@@ -294,10 +280,6 @@ BOARD & CELLS
   }
 }
 
-// p {
-//   text-align: center;
-// }
-
 /************************************
 GAME INFORMATION AREA
 ************************************/
@@ -310,15 +292,37 @@ GAME INFORMATION AREA
   // }
 }
 
+.game-session-area {
+}
+
+p {
+  margin: 0 auto;
+}
+
+.session-stats {
+  font-size: 1.5rem;
+  // height: 1.25rem;
+  letter-spacing: 0.1rem;
+  user-select: none;
+}
+
+.reset-session-button {
+  background-color: $stem-green;
+  border-radius: 5px;
+  color: $cloud-white;
+  cursor: pointer;
+  font-size: 12px;
+  height: 20px;
+  left: 4px;
+  letter-spacing: 0.1rem;
+  padding: 3px;
+  user-select: none;
+  width: 80px;
+}
+
 .game-status-area {
   color: $rainbow-red;
-  cursor: default;
-  // display: none;
   font-size: 28px;
-  // margin: 0 auto;
-  // position: relative;
-  // text-align: center;
-  top: 5px;
   user-select: none;
 
   &.x {
@@ -329,53 +333,15 @@ GAME INFORMATION AREA
     color: $rainbow-blue;
   }
 
-  &.game-result {
-    color: $stem-green;
+  &.game-result-text-color {
+    color: $cloud-white;
   }
-}
-
-.game-session-area {
-  // display: none;
-  margin: 0.75rem auto 0;
-}
-
-.session-stats {
-  cursor: default;
-  font-size: 1.5rem;
-  height: 1.25rem;
-  letter-spacing: 0.1rem;
-  // text-align: center;
-  user-select: none;
-  vertical-align: baseline;
-}
-
-.reset-session {
-  background-color: $stem-green;
-  border-radius: 5px;
-  color: $cloud-white;
-  cursor: pointer;
-  font-size: 12px;
-  height: 20px;
-  left: 4px;
-  letter-spacing: 0.1rem;
-  // margin: 0 auto;
-  padding: 3px;
-  // position: relative;
-  // text-align: center;
-  top: -2px;
-  user-select: none;
-  vertical-align: baseline;
-  width: 80px;
 }
 
 .new-game-area {
   color: $rainbow-yellow;
   cursor: pointer;
-  // display: none;
   font-size: 28px;
-  // margin: 0 auto;
-  // position: relative;
-  top: 5px;
 }
 
 /************************************

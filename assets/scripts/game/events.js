@@ -32,14 +32,16 @@ const onClickCell = function (event) {
 }
 
 const animateGameBoard = function () {
-  if (store.preGame === true) {
-    $('.board-cell').addClass('starting-blue')
-    for (let i = 0; i < 9; i++) {
-      if (i % 2 === 0) {
-        $(`#cell-${i}`).addClass('pre-game')
-      } else if (i % 2 !== 0) {
-        setTimeout(function () { $(`#cell-${i}`).addClass('pre-game') }, 1000)
-      }
+  $('.board-cell').addClass('starting-blue')
+  for (let i = 0; i < 9; i++) {
+    if (i % 2 === 0) {
+      $(`#cell-${i}`).addClass('pre-game')
+    } else if (i % 2 !== 0) {
+      setTimeout(function () {
+        if (store.preGame) {
+          $(`#cell-${i}`).addClass('pre-game')
+        }
+      }, 1000)
     }
   }
 }
@@ -52,9 +54,8 @@ const createGameBoard = function () {
     elementCell.setAttribute('id', 'cell-' + i)
     document.getElementById('game-board').appendChild(elementCell)
   }
-  $('.board-cell').addClass('played').addClass('game-over') // PUT PREGAME BACK HERE
-  // console.log('Board created.')
-  if (store.preGame === true) {
+  $('.board-cell').addClass('played').addClass('game-over')
+  if (store.preGame) {
     animateGameBoard()
   }
 }
@@ -69,7 +70,6 @@ const createBackground = function () {
 }
 
 const setNewGame = function () {
-  console.log('Hi')
   store.preGame = false
   over = false
   turnCounter = 0
@@ -77,10 +77,8 @@ const setNewGame = function () {
   $('#game-board').html('')
   createGameBoard()
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
-  $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
+  $('.game-status-area').removeClass('game-result-text-color').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
-  $('.game-status-area').addClass('playable')
-  $('.game-session-area').addClass('playable')
   if (store.user !== null) {
     api.createGame()
       .then((result) => {
@@ -143,6 +141,12 @@ const onRetrieveOverGames = function () {
 
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
+  $('.board-grid').click((event) => {
+    if (store.preGame) {
+      onClickNewGame(event)
+    }
+  })
+
   $('#nav-game-stats').on('click', onRetrieveOverGames)
   $('.user-buttons').hide()
 }
