@@ -19,8 +19,6 @@ const onClickCell = function (event) {
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  // turnCounter % 2 !== 0 ? $('.player-turn-area').text(`player x's turn`) : $('.player-turn-area').text(`player o's turn`)
-  // $('#player-turn-piece').text(`${playerPiece}`)
   turnCounter % 2 !== 0 ? $('#player-turn-piece').text('x') : $('#player-turn-piece').text('o')
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)

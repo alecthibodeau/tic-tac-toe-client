@@ -87,7 +87,7 @@ main {
   margin: 0 auto;
   position: relative;
   top: -100vh;
-  z-index: 10;
+  z-index: 5;
 }
 
 /************************************
@@ -195,7 +195,7 @@ nav {
 .nav-button {
   background-color: transparent;
   border: 1px solid $white;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: $white;
   display: inline;
   font-size: 14px;
@@ -209,6 +209,45 @@ nav {
   &:focus {
     outline: 0;
   }
+}
+
+/************************************
+NAV DRAWER
+************************************/
+
+.nav-drawer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // justify-content: center;
+  // margin: 0 auto;
+  // max-width: 333px;
+  position: absolute;
+  // right: 0;
+  left: 231px;
+  top: 35px;
+  z-index: 20;
+}
+
+.nav-menu-default,
+.nav-menu-signed-in {
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid $lines-brown;
+  position: relative;
+}
+
+.nav-drawer-button {
+  background-color: $rainbow-yellow;
+  border: 1px solid $white;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 0.25rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 94px;
 }
 
 /************************************
@@ -236,6 +275,7 @@ h5 {
 }
 
 .credit-div {
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -341,10 +381,10 @@ p {
 
 .reset-score-button {
   background-color: transparent;
-  border: 1px solid $lines-brown;
+  border: 1px solid $white;
   border-radius: 5px;
   bottom: 2px;
-  color: $lines-brown;
+  color: $white;
   cursor: pointer;
   font-size: 1rem;
   height: 20px;
@@ -358,7 +398,7 @@ p {
 
 .player-turn-line {
   color: $lines-brown;
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   letter-spacing: 0.5rem;
   // margin: 0.5rem auto -0.5rem;
   margin: 0.25rem auto 0;
@@ -384,13 +424,13 @@ p {
 
 .play-new-game {
   border: 1px solid $white;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: $white;
   cursor: pointer;
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   margin: 5px auto;
-  padding-top: 3px;
-  width: 250px;
+  padding: 3px 5px 0;
+  width: 280px;
 }
 
 /************************************
