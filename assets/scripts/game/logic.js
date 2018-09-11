@@ -2,6 +2,7 @@
 
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 
 const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell) {
   let winValue = null
@@ -23,13 +24,15 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
   } else if (turnCounter === 9) { // draw
     over = true
   }
-  api.updateGame(gameData, cellsIndex, playerPiece, over)
-    .then((result) => {
-      // console.log(result)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  if (store.user !== null) {
+    api.updateGame(gameData, cellsIndex, playerPiece, over)
+      .then((result) => {
+        // console.log(result)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   if (over === true) {
     ui.gameNotice(winValue, over, onClickCell)
   }

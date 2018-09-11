@@ -2,7 +2,9 @@
 
 const api = require('./api')
 const logic = require('./logic')
+const store = require('../store')
 
+store.user = null
 let over = false
 let turnCounter = 0
 let gameData = null
@@ -78,14 +80,16 @@ const onClickNewGame = function (event, preGame) {
   $('.game-status-area').addClass('playable')
   $('.game-session-area').addClass('playable')
   // console.log('New game is ready.')
-  api.createGame()
-    .then((result) => {
-      // console.log(result)
-      gameData = result
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  if (store.user !== null) {
+    api.createGame()
+      .then((result) => {
+        // console.log(result)
+        gameData = result
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 }
 
 const onRetrieveOverGames = function () {
@@ -134,7 +138,7 @@ const onRetrieveOverGames = function () {
 const addGameHandlers = () => {
   $('#new-game').on('click', onClickNewGame)
   $('#nav-game-stats').on('click', onRetrieveOverGames)
-  $('.gaming-buttons').hide()
+  $('.user-buttons').hide()
 }
 
 module.exports = {

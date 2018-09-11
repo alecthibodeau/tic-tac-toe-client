@@ -11,6 +11,7 @@ const signUpSuccess = function (data) {
     $('#signUpModal').modal('hide')
     $('#sign-up').show()
     $('#modalTitleSignUp').text('Sign up').css('color', '#fca778')
+    $('#signInModal').modal('show')
   }, 3000)
   // $('#message').text('Signed up successfully')
   // $('#message').css('background-color', 'green')
@@ -33,16 +34,17 @@ const signInSuccess = function (data) {
   $('#modalTitleSignIn').text('Signed in successfully').css('color', '#9ac479')
   $('#sign-in').slideToggle(200)
   $('.starting-buttons').hide()
-  $('.gaming-buttons').show()
-  $('.new-game-area').addClass('playable')
+  $('.user-buttons').show()
+  // $('.new-game-area').addClass('playable')
+  // boardEvents.onClickNewGame()
   setTimeout(function () {
     $('#signInModal').modal('hide')
     $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')
     $('#sign-in').show()
   }, 3000)
   // console.log('signInSuccess ran. Data is :', data)
-  store.user = data.user
   // store is an empty object: store = {}. We'll fill it with information. See store.js
+  store.user = data.user
 }
 
 const signInFailure = function (error) {
@@ -82,12 +84,12 @@ const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickC
   gameEvents.onClickResetSession()
   $('#modalTitleSignOut').text('Signed out successfully').css('color', '#9ac479')
   $('.starting-buttons').show()
-  $('.gaming-buttons').hide()
+  $('.user-buttons').hide()
   $('.board-cell').off('click', onClickCell).addClass('played').addClass('game-over').html('')
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
-  $('.game-status-area').removeClass('playable')
-  $('.game-session-area').removeClass('playable')
-  $('.new-game-area').removeClass('playable')
+  // $('.game-status-area').removeClass('playable')
+  // $('.game-session-area').removeClass('playable')
+  // $('.new-game-area').removeClass('playable')
   $('#stats-total-games-over').html('Loading…')
   $('#stats-sum-games-over').html('')
   $('#stats-games-over').html('')

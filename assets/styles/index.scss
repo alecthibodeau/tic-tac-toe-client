@@ -74,6 +74,8 @@ body {
   font-size: 16px;
   letter-spacing: 0.3rem;
   margin: 0 auto;
+  position: relative;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -84,18 +86,19 @@ main {
   z-index: 10;
 }
 
+/************************************
+BACKGROUND BARS
+************************************/
+
 .background-container {
-  position: relative;
   z-index: 2;
 }
 
 .background-bar {
   background-color: $red;
   border: 0;
-  display: block;
   height: 10vh;
   margin: 0 auto;
-  // position: absolute;
   width: 100%;
 
   &.bg-bar-0 {
@@ -139,6 +142,10 @@ main {
   }
 }
 
+/************************************
+TEXT
+************************************/
+
 h1 {
   color: $white;
   font-size: 2.25rem;
@@ -149,7 +156,6 @@ h1 {
 
 h4 {
   color: $lines-brown;
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -171,7 +177,6 @@ h5 {
 }
 
 .credit-div {
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -197,27 +202,26 @@ NAV BUTTONS
 
 // Container for holding the big buttons…
 .starting-buttons,
-.gaming-buttons {
-  letter-spacing: 0.3rem;
-  margin: 0 auto;
-  max-width: 300px;
-  overflow: auto;
-  padding: 0;
-  position: relative;
-  text-transform: uppercase;
-  top: 0;
+.user-buttons {
+  // letter-spacing: 0.3rem;
+  // margin: 0 auto;
+  // overflow: auto;
+  // padding: 0;
+  // position: relative;
+  // text-transform: uppercase;
+  // top: 0;
 }
 
 .big-button {
   background-color: $rainbow-yellow;
   border: 0;
   border-radius: 5px;
-  display: block;
+  // display: inline;
   font-size: 14px;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   margin: 0 auto 10px;
   max-height: 40px;
-  max-width: 90%;
+  max-width: 120px;
   padding: 3px 7px;
   text-transform: uppercase;
 
@@ -253,7 +257,7 @@ BOARD & CELLS
   }
 
   &.starting-blue {
-    background-color: $sky-blue;
+    background-color: $rainbow-blue;
   }
 
   &.played {
@@ -276,7 +280,7 @@ BOARD & CELLS
   margin: 3px auto;
   outline: 2px solid $lines-brown;
   overflow: visible;
-  position: relative;
+  // position: relative;
   user-select: none; // This makes each x and o non-highlightable by the cursor
   vertical-align: middle;
   width: 333px;
@@ -290,28 +294,32 @@ BOARD & CELLS
   }
 }
 
-p {
-  text-align: center;
-}
+// p {
+//   text-align: center;
+// }
 
 /************************************
-GAME STATUS AREA
+GAME INFORMATION AREA
 ************************************/
+
+.game-information-area {
+  // display: none;
+  //
+  // &.playable {
+  //   display: block;
+  // }
+}
 
 .game-status-area {
   color: $rainbow-red;
   cursor: default;
-  display: none;
+  // display: none;
   font-size: 28px;
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
+  // margin: 0 auto;
+  // position: relative;
+  // text-align: center;
   top: 5px;
   user-select: none;
-
-  &.playable {
-    display: block;
-  }
 
   &.x {
     color: $rainbow-red;
@@ -327,12 +335,8 @@ GAME STATUS AREA
 }
 
 .game-session-area {
-  display: none;
+  // display: none;
   margin: 0.75rem auto 0;
-
-  &.playable {
-    display: block;
-  }
 }
 
 .session-stats {
@@ -340,7 +344,7 @@ GAME STATUS AREA
   font-size: 1.5rem;
   height: 1.25rem;
   letter-spacing: 0.1rem;
-  text-align: center;
+  // text-align: center;
   user-select: none;
   vertical-align: baseline;
 }
@@ -354,10 +358,10 @@ GAME STATUS AREA
   height: 20px;
   left: 4px;
   letter-spacing: 0.1rem;
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 3px;
-  position: relative;
-  text-align: center;
+  // position: relative;
+  // text-align: center;
   top: -2px;
   user-select: none;
   vertical-align: baseline;
@@ -367,15 +371,11 @@ GAME STATUS AREA
 .new-game-area {
   color: $rainbow-yellow;
   cursor: pointer;
-  display: none;
+  // display: none;
   font-size: 28px;
-  margin: 0 auto;
-  position: relative;
+  // margin: 0 auto;
+  // position: relative;
   top: 5px;
-
-  &.playable {
-    display: inline;
-  }
 }
 
 /************************************
@@ -482,7 +482,7 @@ BREAKPOINT 400PX
     margin: 0.5rem auto;
   }
 
-  .gaming-buttons > .big-button {
+  .user-buttons > .big-button {
     margin: 0 auto 5px;
   }
 
