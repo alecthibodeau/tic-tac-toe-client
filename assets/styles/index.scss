@@ -205,10 +205,10 @@ NAV BUTTONS
 .big-button {
   background-color: $rainbow-yellow;
   border: 0;
-  border-radius: 5px;
+  border-radius: 0.75rem;
   font-size: 14px;
   letter-spacing: 0.1rem;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   max-height: 40px;
   max-width: 120px;
   padding: 3px 7px;
@@ -264,7 +264,7 @@ BOARD & CELLS
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
   height: 333px;
-  margin: 3px auto;
+  margin: 1rem auto;
   outline: 2px solid $lines-brown;
   overflow: visible;
   user-select: none; // This makes each x and o non-highlightable by the cursor
@@ -285,44 +285,43 @@ GAME INFORMATION AREA
 ************************************/
 
 .game-information-area {
-  // display: none;
-  //
-  // &.playable {
-  //   display: block;
-  // }
+  display: none;
 }
 
-.game-session-area {
+.game-score-area {
+  position: relative;
 }
 
 p {
   margin: 0 auto;
 }
 
-.session-stats {
-  font-size: 1.5rem;
-  // height: 1.25rem;
-  letter-spacing: 0.1rem;
+.score-board {
+  font-size: 1.375rem;
+  letter-spacing: 0;
   user-select: none;
 }
 
-.reset-session-button {
+.reset-score-button {
   background-color: $stem-green;
   border-radius: 5px;
+  bottom: 2px;
   color: $cloud-white;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 1rem;
   height: 20px;
-  left: 4px;
   letter-spacing: 0.1rem;
-  padding: 3px;
+  margin-left: 3px;
+  padding: 3px 5px;
+  position: relative;
   user-select: none;
   width: 80px;
 }
 
-.game-status-area {
+.player-turn-area {
   color: $rainbow-red;
-  font-size: 28px;
+  font-size: 3rem;
+  margin: 0 auto;
   user-select: none;
 
   &.x {
@@ -338,10 +337,15 @@ p {
   }
 }
 
-.new-game-area {
+.play-new-game {
+  border: 1px solid $rainbow-yellow;
+  border-radius: 1rem;
   color: $rainbow-yellow;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 2rem;
+  margin: 5px auto;
+  padding-top: 3px;
+  width: 250px;
 }
 
 /************************************
@@ -437,13 +441,13 @@ BREAKPOINT 400PX
     width: 300px;
   }
 
-  .game-status-area,
-  .new-game-area {
+  .player-turn-area,
+  .play-new-game {
     font-size: 20px;
     margin: 0.5rem auto;
   }
 
-  .session-stats {
+  .score-board {
     font-size: 1.25rem;
     margin: 0.5rem auto;
   }

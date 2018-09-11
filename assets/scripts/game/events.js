@@ -19,7 +19,7 @@ const onClickCell = function (event) {
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  turnCounter % 2 !== 0 ? $('#game-status').text(`player x's turn`).removeClass('o') : $('#game-status').text(`player o's turn`).addClass('o')
+  turnCounter % 2 !== 0 ? $('#player-turn').text(`player x's turn`).removeClass('o') : $('#player-turn').text(`player o's turn`).addClass('o')
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
@@ -77,7 +77,7 @@ const setNewGame = function () {
   $('#game-board').html('')
   createGameBoard()
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
-  $('.game-status-area').removeClass('game-result-text-color').removeClass('o').text(`player x's turn`).addClass('playable')
+  $('.player-turn-area').removeClass('game-result-text-color').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
   if (store.user !== null) {
     api.createGame()
@@ -140,7 +140,10 @@ const onRetrieveOverGames = function () {
 }
 
 const addGameHandlers = () => {
-  $('#new-game').on('click', onClickNewGame)
+  $('#new-game').click((event) => {
+    $('.game-information-area').show()
+    onClickNewGame(event)
+  })
   $('.board-grid').click((event) => {
     if (store.preGame) {
       onClickNewGame(event)

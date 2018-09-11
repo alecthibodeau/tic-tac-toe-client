@@ -5,7 +5,7 @@ let sessionGamesO = 0
 let sessionGamesDraw = 0
 
 const updateSession = function (sessionGamesX, sessionGamesO, sessionGamesDraw) {
-  $('.session-stats').html(`X wins: ${sessionGamesX} | O wins: ${sessionGamesO} | Draws: ${sessionGamesDraw} `)
+  $('.score-board').html(`X wins: ${sessionGamesX} | O wins: ${sessionGamesO} | Draws: ${sessionGamesDraw} `)
 }
 
 const onClickResetSession = function () {
@@ -18,16 +18,16 @@ const onClickResetSession = function () {
 const gameNotice = function (winValue, over, onClickCell) {
   if ((winValue === 'x') || (winValue === 'o')) {
     $('.board-grid').addClass(`${winValue}-won`)
-    $('.game-status-area').text(`player ${winValue} wins!`).addClass('game-result-text-color')
+    $('.player-turn-area').text(`player ${winValue} wins!`).addClass('game-result-text-color')
   } else {
-    $('.game-status-area').text(`it's a draw!`).addClass('game-result-text-color')
+    $('.player-turn-area').text(`it's a draw!`).addClass('game-result-text-color')
   }
   $('.board-cell').off('click', onClickCell).addClass('game-over')
   // console.log(`Is game REALLY over? ${over}`)
   if (winValue === 'x') sessionGamesX++
   if (winValue === 'o') sessionGamesO++
   if (winValue === null) sessionGamesDraw++
-  $('#session-reset-btn').on('click', onClickResetSession)
+  $('#reset-score-button').on('click', onClickResetSession)
   updateSession(sessionGamesX, sessionGamesO, sessionGamesDraw)
 }
 
