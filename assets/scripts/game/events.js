@@ -5,6 +5,8 @@ const logic = require('./logic')
 const store = require('../store')
 
 store.user = null
+store.preGame = true
+
 let over = false
 let turnCounter = 0
 let gameData = null
@@ -29,8 +31,8 @@ const onClickCell = function (event) {
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
 
-const animateGameBoard = function (preGame) {
-  if (preGame === true) {
+const animateGameBoard = function () {
+  if (store.preGame === true) {
     $('.board-cell').addClass('starting-blue')
     for (let i = 0; i < 9; i++) {
       if (i % 2 === 0) {
@@ -42,7 +44,7 @@ const animateGameBoard = function (preGame) {
   }
 }
 
-const createGameBoard = function (preGame) {
+const createGameBoard = function () {
   for (let i = 0; i < cells.length; i++) {
     const elementCell = document.createElement('div')
     elementCell.setAttribute('class', 'board-cell')
@@ -52,8 +54,8 @@ const createGameBoard = function (preGame) {
   }
   $('.board-cell').addClass('played').addClass('game-over') // PUT PREGAME BACK HERE
   // console.log('Board created.')
-  if (preGame === true) {
-    animateGameBoard(preGame)
+  if (store.preGame === true) {
+    animateGameBoard()
   }
 }
 
@@ -66,14 +68,14 @@ const createBackground = function () {
   }
 }
 
-const setNewGame = function (preGame) {
+const setNewGame = function () {
   console.log('Hi')
-  preGame = false
+  store.preGame = false
   over = false
   turnCounter = 0
   cells = ['', '', '', '', '', '', '', '', '']
   $('#game-board').html('')
-  createGameBoard(preGame)
+  createGameBoard()
   $('.board-grid').removeClass('x-won').removeClass('o-won').addClass('playable')
   $('.game-status-area').removeClass('game-result').removeClass('o').text(`player x's turn`).addClass('playable')
   $('.board-cell').on('click', onClickCell).removeClass('pre-game').removeClass('starting-blue').removeClass('played').removeClass('game-over')
@@ -91,9 +93,9 @@ const setNewGame = function (preGame) {
   }
 }
 
-const onClickNewGame = function (event, preGame) {
+const onClickNewGame = function (event) {
   event.preventDefault()
-  setNewGame(preGame)
+  setNewGame()
 }
 
 const onRetrieveOverGames = function () {
