@@ -427,10 +427,11 @@ p {
   border-radius: 0.5rem;
   color: $white;
   cursor: pointer;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
   margin: 5px auto;
   padding: 3px 5px 0;
-  width: 280px;
+  width: 290px;
 }
 
 /************************************
@@ -473,6 +474,10 @@ input {
   &:focus {
     outline: 0;
   }
+}
+
+.games-stats-div {
+  text-align: left;
 }
 
 /************************************

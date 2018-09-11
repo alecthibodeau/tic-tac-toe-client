@@ -145,6 +145,10 @@ const newGamePrep = (event) => {
   onClickNewGame(event)
 }
 
+const toggleNavDrawer = () => {
+  $('.nav-drawer').slideToggle(200)
+}
+
 const addGameHandlers = () => {
   $('.game-title').click((event) => {
     $('.intro-text').toggle()
@@ -159,6 +163,14 @@ const addGameHandlers = () => {
   })
   $('#nav-game-stats').on('click', onRetrieveOverGames)
   $('.user-buttons').hide()
+
+  $('.nav-drawer').hide()
+  $('#user-account-button').click(function () {
+    toggleNavDrawer()
+  })
+
+  $('#nav-change-password').click(toggleNavDrawer)
+  $('#nav-sign-out').click(toggleNavDrawer)
 }
 
 module.exports = {
