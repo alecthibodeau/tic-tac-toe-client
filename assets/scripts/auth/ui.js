@@ -74,6 +74,7 @@ const changePasswordFailure = function (error) {
 
 const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickCell) {
   store.preGame = true
+  boardEvents.setNewGame()
   boardEvents.animateGameBoard()
   gameEvents.onClickResetSession()
   $('#modalTitleSignOut').text('Signed out successfully').css('color', '#9ac479')
@@ -84,6 +85,8 @@ const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickC
   $('#stats-total-games-over').html('Loading…')
   $('#stats-sum-games-over').html('')
   $('#stats-games-over').html('')
+  $('.intro-text').show()
+  $('.game-information-area').hide()
   setTimeout(function () {
     $('#signOutModal').modal('hide')
     $('#modalTitleSignOut').text('Sign out').css('color', '#fca778')
