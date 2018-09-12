@@ -15,7 +15,7 @@
 
     <body>
       <main>
-
+        <!-- Nav -->
         <nav>
           <div class="game-title">
             <div class="first-line">Alec T.'s</div>
@@ -36,10 +36,10 @@
             </div>
           </div>
         </nav>
-
+        <!-- Empty Div for Background Bars (populated through JavaScript) -->
         <div class="board-grid" id="game-board">
         </div>
-
+        <!-- Game Information Area -->
         <div class="game-information-area">
           <div class="game-score-area" id="game-session">
             <span class="score-board">
@@ -56,19 +56,37 @@
         <div class="play-new-game" id="new-game">
           Play new game
         </div>
-
+        <!-- Intro Text & Credit -->
         <div class="intro-text">
           Welcome to my Tic-Tac-Toe game!
           To record your game stats sign up with any available email address: even a dummy one.
         </div>
-
         <div class="credit-div">
           <a class="at-line" href="https://alect.me" target="blank">Alec Thibodeau, 2018</a>
         </div>
-
       </main>
       <div class="background-container" id="background-container"></div>
 
+    <!-- Game Stats Modal Begins -->
+    <div class="modal fade" id="gameStatsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleGameStats">Game Stats</h4>
+          <div class="game-stats">
+            <div id="stats-title-total-games-played" class="stats-title stats-title-total-games-played">Loading…</div>
+            <div id="stats-value-total-games-played" class="stats-value stats-value-total-games-played"></div>
+            <div id="stats-title-x-wins" class="stats-title stats-title-x-wins">X Wins:</div>
+            <div id="stats-value-x-wins" class="stats-value stats-value-x-wins"></div>
+            <div id="stats-title-o-wins" class="stats-title stats-title-o-wins">O Wins:</div>
+            <div id="stats-value-o-wins" class="stats-value stats-value-o-wins"></div>
+            <div id="stats-title-draws" class="stats-title stats-title-draws">Draws:</div>
+            <div id="stats-value-draws" class="stats-value stats-value-draws"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Game Stats Modal Ends -->
 
     <!-- Sign Up Modal Begins -->
     <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -135,20 +153,6 @@
       </div>
     </div>
     <!-- Sign Out Modal Ends -->
-
-    <!-- Game Stats Modal Begins -->
-    <div class="modal fade" id="gameStatsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="modalTitleGameStats">Game Stats</h4>
-          <div id="stats-total-games-over" class="total-stats-div">Loading…</div>
-          <div id="stats-sum-games-over" class="sum-stats-div"></div>
-          <div id="stats-games-over" class="games-stats-div"></div>
-        </div>
-      </div>
-    </div>
-    <!-- Game Stats Modal Ends -->
 
     </body>
 </html>

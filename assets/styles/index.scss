@@ -72,7 +72,6 @@ BODY & MAIN
 ************************************/
 
 body {
-  // background-color: $rainbow-orange;
   color: $lines-brown;
   font-family: 'Varela Round', sans-serif;
   font-size: 16px;
@@ -87,7 +86,6 @@ main {
   background-color: transparent;
   margin: 0 auto;
   position: relative;
-  // top: -99.5vh;
   z-index: 5;
 }
 
@@ -246,17 +244,8 @@ NAV DRAWER
 }
 
 /************************************
-TEXT
+INTRO TEXT
 ************************************/
-
-h4 {
-  color: $lines-brown;
-}
-
-h5 {
-  color: $lines-brown;
-  margin: 0 auto 10px;
-}
 
 .intro-text {
   font-size: 16px;
@@ -432,6 +421,7 @@ p {
 MODALS
 ************************************/
 
+h4,
 .modal-title {
   color: $rainbow-orange;
   font-size: 20px;
@@ -470,39 +460,42 @@ input {
   }
 }
 
-.games-stats-div {
-  text-align: left;
-}
-
 /************************************
 STATS
 ************************************/
 
-.total-stats-div {
-  font-size: 18px;
-  letter-spacing: 0.05rem;
-  margin: 10px auto;
+.game-stats {
+  color: $lines-brown;
+  font-size: 20px;
+  letter-spacing: 0.3rem;
+  margin: 0.5rem auto;
   text-align: center;
   width: 85%;
-}
 
-.sum-stats-div {
-  font-size: 14px;
-  letter-spacing: 0.1rem;
-  margin: 10px auto;
-  text-align: center;
-  text-transform: none;
-  width: 85%;
-}
+  & .stats-title-total-games-played {
+    margin: 2rem auto 0;
+  }
 
-.games-stats-div {
-  font-size: 14px;
-  letter-spacing: 0.1rem;
-  line-height: 3rem;
-  margin: 10px auto;
-  overflow: auto;
-  text-transform: none;
-  width: 70%;
+  & .stats-value {
+    font-size: 4rem;
+    margin: 0 auto 1.5rem;
+
+    &.stats-value-total-games-played {
+      color: $rainbow-orange;
+    }
+
+    &.stats-value-x-wins {
+      color: $rainbow-red;
+    }
+
+    &.stats-value-o-wins {
+      color: $rainbow-blue;
+    }
+
+    &.stats-value-draws {
+      color: $stem-green;
+    }
+  }
 }
 
 /************************************

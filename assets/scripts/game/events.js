@@ -24,7 +24,6 @@ const onClickCell = function (event) {
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
   // console.log(`cell index: ${cellsIndex}`)
-  // console.log(`Win value: ${winValue}`)
   // console.log(`Cells array: ${cells}`)
   // console.log(`Game is over? ${over}`)
   turnCounter++
@@ -38,6 +37,7 @@ const animateGameBoard = function () {
       $(`#cell-${i}`).addClass('pre-game')
     } else if (i % 2 !== 0) {
       setTimeout(function () {
+        // This 'if' statement is necessary because: If a user manages to sign in and start a new game within one second the board keeps animating.
         if (store.preGame) {
           $(`#cell-${i}`).addClass('pre-game')
         }
@@ -110,12 +110,14 @@ const onRetrieveOverGames = function () {
       // console.log(statsOverGames)
       // console.log(over)
       for (let i = 0; i < statsOverGames.games.length; i++) {
-        const elementGamesOver = document.createElement('div')
-        elementGamesOver.setAttribute('id', 'stats-games-over-' + i)
-        elementGamesOver.setAttribute('class', 'states-games-over-element')
-        document.getElementById('stats-games-over').appendChild(elementGamesOver)
-        document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells
-        // console.log('Game #' + (i + 1) + '… ' + statsOverGames.games[i].id + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells)
+        // The following commented-out lines are for returning individual game results:
+        // The code runs as expected druing development, but returns unordered results from the production API.
+        // I'm leaving it out for now…
+        // const elementGamesOver = document.createElement('div')
+        // elementGamesOver.setAttribute('id', 'stats-games-over-' + i)
+        // elementGamesOver.setAttribute('class', 'states-games-over-element')
+        // document.getElementById('stats-games-over').appendChild(elementGamesOver)
+        // document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells
         if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'X won') {
           xStatsWins = (xStatsWins + 1)
         } else if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'O won') {
@@ -134,8 +136,11 @@ const onRetrieveOverGames = function () {
         drawGames = 0
       }
       const totalGamesPlayed = xStatsWins + oStatsWins + drawGames
-      document.getElementById('stats-total-games-over').innerHTML = `Total games played: ${totalGamesPlayed}`
-      document.getElementById('stats-sum-games-over').innerHTML = `Player X wins: ${xStatsWins}, Player O wins: ${oStatsWins}, Draws: ${drawGames}`
+      document.getElementById('stats-title-total-games-played').innerHTML = 'Total games played:'
+      document.getElementById('stats-value-total-games-played').innerHTML = `${totalGamesPlayed}`
+      document.getElementById('stats-value-x-wins').innerHTML = `${xStatsWins}`
+      document.getElementById('stats-value-o-wins').innerHTML = `${oStatsWins}`
+      document.getElementById('stats-value-draws').innerHTML = `${drawGames}`
     })
     .catch((err) => {
       console.log(err)
