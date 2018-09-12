@@ -74,7 +74,6 @@ const changePasswordFailure = function (error) {
 
 const signOutSuccess = function (animateGameBoard, onClickResetSession, onClickCell) {
   store.preGame = true
-  boardEvents.setNewGame()
   boardEvents.animateGameBoard()
   gameEvents.onClickResetSession()
   $('#modalTitleSignOut').text('Signed out successfully').css('color', '#9ac479')

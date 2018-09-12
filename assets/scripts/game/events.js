@@ -116,7 +116,7 @@ const onRetrieveOverGames = function () {
         document.getElementById('stats-games-over').appendChild(elementGamesOver)
         document.getElementById('stats-games-over-' + i).innerHTML = 'Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells
         // console.log(`Stats for game ${i}: ${statsOverGames.games[i].cells}`)
-        console.log('Game #' + (i + 1) + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells)
+        // console.log('Game #' + (i + 1) + '… ' + statsOverGames.games[i].id + '… ' + logic.checkStatsForMatch(statsOverGames.games[i].cells, 'Draw') + ' with these moves: ' + statsOverGames.games[i].cells)
         if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'X won') {
           xStatsWins = (xStatsWins + 1)
         } else if (logic.checkStatsForMatch(statsOverGames.games[i].cells, 'draw') === 'O won') {
