@@ -466,22 +466,22 @@ STATS
 
 .game-stats {
   color: $lines-brown;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.3rem;
   margin: 0 auto;
   text-align: center;
   width: 85%;
 
   & .stats-title {
-    margin: 1.5rem auto 0.1rem;
+    margin: 0.75rem auto 0.1rem;
 
     &.stats-title-total-games-played {
-      margin: 2.5rem auto 0.1rem;
+      margin: 2rem auto 0.1rem;
     }
   }
 
   & .stats-value {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 0.1rem auto 0;
 
     &.stats-value-total-games-played {
