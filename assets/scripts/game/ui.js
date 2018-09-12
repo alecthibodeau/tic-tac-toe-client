@@ -19,13 +19,13 @@ const gameNotice = function (winValue, over, onClickCell) {
   if ((winValue === 'x') || (winValue === 'o')) {
     $('.board-grid').addClass(`${winValue}-won`)
     $('.player-turn-line').html(`player ${winValue} wins!`).addClass(`${winValue}`)
-    console.log(`${winValue} wins!`)
+    // console.log(`${winValue} wins!`)
   } else {
     $('.player-turn-line').html(`it's a draw!`).addClass('its-a-draw')
-    console.log('Draw!')
+    // console.log('Draw!')
   }
   $('.board-cell').off('click', onClickCell).addClass('game-over')
-  console.log(`Is game REALLY over? ${over}`)
+  // console.log(`Is game REALLY over? ${over}`)
   if (winValue === 'x') sessionGamesX++
   if (winValue === 'o') sessionGamesO++
   if (winValue === null) sessionGamesDraw++
