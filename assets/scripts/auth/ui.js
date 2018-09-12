@@ -28,7 +28,6 @@ const signInSuccess = function (data) {
   $('#sign-in').slideToggle(200)
   $('.starting-buttons').hide()
   $('.user-buttons').show()
-  boardEvents.setNewGame()
   setTimeout(function () {
     $('#signInModal').modal('hide')
     $('#modalTitleSignIn').text('Sign in').css('color', '#fca778')
@@ -37,6 +36,12 @@ const signInSuccess = function (data) {
   // console.log('signInSuccess ran. Data is :', data)
   // store is an empty object: store = {}. We'll fill it with information. See store.js
   store.user = data.user
+  // console.log('Signed-in user is:')
+  // console.log(store.user)
+  $('.game-information-area').show()
+  $('.intro-text').hide()
+  gameEvents.onClickResetSession()
+  boardEvents.setNewGame()
 }
 
 const signInFailure = function (error) {

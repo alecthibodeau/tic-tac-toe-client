@@ -70,6 +70,8 @@ const createBackground = function () {
 }
 
 const setNewGame = function () {
+  // console.log('setNewGame runs.')
+  // console.log(store.user)
   store.preGame = false
   over = false
   turnCounter = 0
