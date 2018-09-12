@@ -302,7 +302,7 @@ BOARD & CELLS
   width: 111px;
 
   &:not(.pre-game):not(.played):not(.game-over):hover {
-    background-color: $rainbow-yellow;
+    // background-color: $rainbow-yellow;
     cursor: pointer;
   }
 
