@@ -10,6 +10,10 @@ Technical Specifications
 - Multiple games, one at a time
 - jQuery for DOM manipulation and event handling
 - AJAX for interacting with a provided API
+- Responsive web design with original styling
+
+## Screenshot
+![Tic-Tac-Toe Screenshot](https://i.imgur.com/5tMoK0e.jpg)
 
 ## Features
 Players can play on the same desktop or mobile device, alternating who clicks on which squares. The game visually notifies which side won, or if the game ended in a draw. When a player wins, the game board's border color changes to the color of that player's pieces.
@@ -31,4 +35,4 @@ Players can play on the same desktop or mobile device, alternating who clicks on
 ![Tic-tac-toe Wireframe](https://i.imgur.com/lebsgBj.jpg)
 
 ## Future Features
-I would like to add an AI component, so that a signed-in user can play against the computer.
+- Add an AI component, so that a signed-in user can play against the computer.
