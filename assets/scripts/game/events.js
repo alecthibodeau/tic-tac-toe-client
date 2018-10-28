@@ -58,14 +58,17 @@ const aiTurn = () => {
     console.log(cells)
   }
   turnCounter++
+  console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
 }
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
+  console.log('onClickCell')
+  console.log(`turnCounter at start of turn = ${turnCounter}`)
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  turnCounter % 2 !== 0 ? $('#player-turn-piece').text('x') : $('#player-turn-piece').text('o')
+  console.log(`It's ${playerPiece}'s turn`)
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
@@ -74,12 +77,17 @@ const onClickCell = function (event) {
   // console.log(`Game is over? ${over}`)
   // emptyCells--
   turnCounter++
+  console.log(`X just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  aiTurn()
-  logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  if (turnCounter < 9) {
+    aiTurn()
+    logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  }
+  turnCounter % 2 !== 0 ? $('#player-turn-piece').text('o') : $('#player-turn-piece').text('x')
 }
 
 const animateGameBoard = function () {
+  console.log('animateGameBoard')
   $('.board-cell').addClass('starting-blue')
   for (let i = 0; i < 9; i++) {
     if (i % 2 === 0) {
@@ -96,6 +104,7 @@ const animateGameBoard = function () {
 }
 
 const createGameBoard = function () {
+  console.log('createGameBoard')
   for (let i = 0; i < cells.length; i++) {
     const elementCell = document.createElement('div')
     elementCell.setAttribute('class', 'board-cell')
