@@ -26,7 +26,8 @@ let randomCell = null
 
 const randomCellRun = () => {
   console.log('randomCellRun')
-  randomCell = Math.floor(Math.random() * 8) + 0
+  randomCell = Math.floor(Math.random() * 9)
+  console.log(randomCell)
   cellCheck()
 }
 
@@ -73,6 +74,7 @@ const onClickCell = function (event) {
   // console.log(`Game is over? ${over}`)
   // emptyCells--
   turnCounter++
+  logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   aiTurn()
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
 }
