@@ -34,7 +34,8 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
       })
   }
   if (over === true) {
-    ui.gameNotice(winValue, over, onClickCell)
+    $('.board-cell').off('click', onClickCell).addClass('game-over')
+    ui.gameNotice(winValue)
   }
 }
 

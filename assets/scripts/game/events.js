@@ -15,15 +15,6 @@ let cellsIndex = null
 let playerPiece = null
 let cells = ['', '', '', '', '', '', '', '', '']
 // let randomCell = null
-// let emptyCells = 8
-//
-// const countEmptyCells = () => {
-//   for (let i = 0; i < cells.length; i++) {
-//     if (cells[i] === '') {
-//       emptyCells = emptyCells--
-//     }
-//   }
-// }
 
 // const randomCellRun = () => {
 //   console.log('randomCellRun')
@@ -77,11 +68,10 @@ const onClickCell = function (event) {
   // console.log(`cell index: ${cellsIndex}`)
   // console.log(`Cells array: ${cells}`)
   // console.log(`Game is over? ${over}`)
-  // emptyCells--
   turnCounter++
   console.log(`X just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  if (turnCounter < 9) {
+  if ((over === false) && (turnCounter < 9)) {
     ai.aiTurn(cells, turnCounter)
     turnCounter++
     console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
@@ -244,8 +234,6 @@ const addGameHandlers = () => {
 }
 
 module.exports = {
-  cells,
-  onClickCell,
   createBackground,
   createGameBoard,
   animateGameBoard,

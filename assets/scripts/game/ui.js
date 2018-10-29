@@ -4,7 +4,7 @@ let sessionGamesX = 0
 let sessionGamesO = 0
 let sessionGamesDraw = 0
 
-const updateSession = function (sessionGamesX, sessionGamesO, sessionGamesDraw) {
+const updateSession = function () {
   $('.score-board').html(`X wins: ${sessionGamesX} | O wins: ${sessionGamesO} | Draws: ${sessionGamesDraw} `)
 }
 
@@ -12,25 +12,24 @@ const onClickResetSession = function () {
   sessionGamesX = 0
   sessionGamesO = 0
   sessionGamesDraw = 0
-  updateSession(sessionGamesX, sessionGamesO, sessionGamesDraw)
+  updateSession()
 }
 
-const gameNotice = function (winValue, over, onClickCell) {
+const gameNotice = function (winValue) {
   if ((winValue === 'x') || (winValue === 'o')) {
     $('.board-grid').addClass(`${winValue}-won`)
     $('.player-turn-line').html(`player ${winValue} wins!`).addClass(`${winValue}`)
-    // console.log(`${winValue} wins!`)
+    if (winValue === 'x') {
+      sessionGamesX++
+      console.log(`sessionGamesX = ${sessionGamesX}`)
+    }
+    if (winValue === 'o') { sessionGamesO++ }
   } else {
     $('.player-turn-line').html(`it's a draw!`).addClass('its-a-draw')
-    // console.log('Draw!')
+    sessionGamesDraw++
   }
-  $('.board-cell').off('click', onClickCell).addClass('game-over')
-  // console.log(`Is game REALLY over? ${over}`)
-  if (winValue === 'x') sessionGamesX++
-  if (winValue === 'o') sessionGamesO++
-  if (winValue === null) sessionGamesDraw++
   $('#reset-score-button').on('click', onClickResetSession)
-  updateSession(sessionGamesX, sessionGamesO, sessionGamesDraw)
+  updateSession()
 }
 
 module.exports = {

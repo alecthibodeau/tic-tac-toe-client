@@ -1,6 +1,6 @@
 'use strict'
 
-const events = require('./events')
+// const events = require('./events')
 
 let randomCell = null
 
@@ -28,16 +28,15 @@ const cellCheck = (cells, onClickCell) => {
 const makeAiCellPlayed = (cells, onClickCell) => {
   console.log('makeAiCellPlayed')
   cells[randomCell] = 'o'
-  $(`#cell-${randomCell}`).addClass('o').addClass('played').unbind('click', events.onClickCell).html('o')
+  $(`#cell-${randomCell}`).addClass('o').addClass('played').unbind('click', onClickCell).html('o')
 }
 
 const aiTurn = (cells, onClickCell) => {
   if (cells[4] === '') {
     cells[4] = 'o'
-    $('#cell-4').addClass('o').addClass('played').unbind('click', events.onClickCell).html('o')
+    $('#cell-4').addClass('o').addClass('played').unbind('click', onClickCell).html('o')
     console.log(cells)
   } else {
-    // countEmptyCells()
     randomCellRun(cells)
     console.log(`randomCell = ${randomCell}`)
     console.log(cells)
