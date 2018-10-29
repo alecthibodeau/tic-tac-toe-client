@@ -14,6 +14,7 @@ let gameData = null
 let cellsIndex = null
 let playerPiece = null
 let cells = ['', '', '', '', '', '', '', '', '']
+let humanGame = false
 // let randomCell = null
 
 // const randomCellRun = () => {
@@ -76,7 +77,9 @@ const onClickCell = function (event) {
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
   turnCounter++
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  playerOTurn(over)
+  if (humanGame === false) {
+    playerOTurn(over)
+  }
   turnCounter % 2 !== 0 ? $('#player-turn-piece').text('o') : $('#player-turn-piece').text('x')
 }
 
@@ -122,6 +125,7 @@ const createBackground = function () {
 const setNewGame = function () {
   // console.log('setNewGame runs.')
   // console.log(store.user)
+  humanGame = false
   store.preGame = false
   store.winningX = false
   over = false
@@ -212,8 +216,11 @@ const addGameHandlers = () => {
   $('.game-title').click((event) => {
     $('.intro-text').toggle()
   })
-  $('#new-game').click((event) => {
+  $('.play-new-game').click((event) => {
     newGamePrep(event)
+  })
+  $('#new-game-human').click((event) => {
+    humanGame = true
   })
   // This handler starts a new game on clicking the animation…
   // $('.board-grid').click((event) => {
