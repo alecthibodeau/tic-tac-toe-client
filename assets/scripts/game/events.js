@@ -13,46 +13,8 @@ let turnCounter = 0
 let gameData = null
 let cellsIndex = null
 let playerPiece = null
-let cells = ['', '', '', '', '', '', '', '', '']
 let humanGame = false
-// let randomCell = null
-
-// const randomCellRun = () => {
-//   console.log('randomCellRun')
-//   randomCell = Math.floor(Math.random() * 9)
-//   console.log(randomCell)
-//   cellCheck()
-// }
-//
-// const cellCheck = () => {
-//   console.log('cellCheck')
-//   if (cells[randomCell] === '') {
-//     makeAiCellPlayed()
-//   } else {
-//     randomCellRun()
-//   }
-// }
-//
-// const makeAiCellPlayed = () => {
-//   console.log('makeAiCellPlayed')
-//   cells[randomCell] = 'o'
-//   $(`#cell-${randomCell}`).addClass('o').addClass('played').unbind('click', onClickCell).html('o')
-// }
-//
-// const aiTurn = () => {
-//   if (cells[4] === '') {
-//     cells[4] = 'o'
-//     $('#cell-4').addClass('o').addClass('played').unbind('click', onClickCell).html('o')
-//     console.log(cells)
-//   } else {
-//     // countEmptyCells()
-//     randomCellRun()
-//     console.log(randomCell)
-//     console.log(cells)
-//   }
-//   turnCounter++
-//   console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
-// }
+let cells = ['', '', '', '', '', '', '', '', '']
 
 const playerOTurn = (over) => {
   // NOTE: winningX is a value in the store that determines whether or not X has won.
@@ -216,10 +178,10 @@ const addGameHandlers = () => {
   $('.game-title').click((event) => {
     $('.intro-text').toggle()
   })
-  $('.play-new-game').click((event) => {
+  $('.play-new-game').click((event) => { // If humanGame remains false then the new game will be against the computer.
     newGamePrep(event)
   })
-  $('#new-game-human').click((event) => {
+  $('#new-game-human').click((event) => { // This handler sets the condition for a 2-person, human-to-human game.
     humanGame = true
   })
   // This handler starts a new game on clicking the animation…

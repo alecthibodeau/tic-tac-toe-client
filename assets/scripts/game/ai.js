@@ -33,7 +33,8 @@ const makeAiCellPlayed = (cells, onClickCell) => {
   console.log(cells)
 }
 
-// aiTurn runs the AI's turn with a 1-second delay…
+// aiTurn runs the AI's turn with a 4-millisecond delay…
+// NOTE: This setTimeout can be problematic if a player selects a new game imediately after playing
 const aiTurn = (cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell) => {
   console.log('aiTurn runs')
   // Play center square if it's available…
@@ -46,7 +47,7 @@ const aiTurn = (cells, over, turnCounter, gameData, cellsIndex, playerPiece, onC
       randomCellRun(cells)
     }
     logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  }, 1000)
+  }, 400)
 }
 
 module.exports = {

@@ -38,10 +38,11 @@ const signInSuccess = function (data) {
   store.user = data.user
   // console.log('Signed-in user is:')
   // console.log(store.user)
-  $('.game-information-area').show()
-  $('.intro-text').hide()
+  // $('.game-information-area').show()
+  // $('.intro-text').hide()
   gameEvents.onClickResetSession()
   boardEvents.setNewGame()
+  boardEvents.animateGameBoard()
 }
 
 const signInFailure = function (error) {
