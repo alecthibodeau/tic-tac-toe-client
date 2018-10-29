@@ -53,35 +53,34 @@ let cells = ['', '', '', '', '', '', '', '', '']
 //   console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
 // }
 
+const playerOTurn = (over) => {
+  // NOTE: winningX is a value in the store that determines whether or not X has won.
+  // This is currently needed to prevent playerOTurn from running \
+  // (and subsequently ui.gameNotice from running) after an X win.
+  // Maybe not the best solution, but it's what works for now.
+  if ((store.winningX === false) && (over === false) && (turnCounter < 9)) {
+    console.log(store.winningX)
+    ai.aiTurn(cells, turnCounter)
+    turnCounter++
+    logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  }
+}
+
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
-  console.log('onClickCell')
-  console.log(cells)
-  console.log(`turnCounter at start of turn = ${turnCounter}`)
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
   turnCounter % 2 === 0 ? playerPiece = 'x' : playerPiece = 'o'
-  console.log(`It's ${playerPiece}'s turn`)
   cells[cellsIndex] = playerPiece
   $(this).addClass(`${playerPiece}`).addClass('played').unbind('click', onClickCell)
   document.querySelector('#' + this.getAttribute('id')).innerHTML = playerPiece
-  // console.log(`cell index: ${cellsIndex}`)
-  // console.log(`Cells array: ${cells}`)
-  // console.log(`Game is over? ${over}`)
   turnCounter++
-  console.log(`X just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  if ((over === false) && (turnCounter < 9)) {
-    ai.aiTurn(cells, turnCounter)
-    turnCounter++
-    console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
-    logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
-  }
+  playerOTurn(over)
   turnCounter % 2 !== 0 ? $('#player-turn-piece').text('o') : $('#player-turn-piece').text('x')
 }
 
 const animateGameBoard = function () {
-  console.log('animateGameBoard')
   $('.board-cell').addClass('starting-blue')
   for (let i = 0; i < 9; i++) {
     if (i % 2 === 0) {
@@ -98,7 +97,6 @@ const animateGameBoard = function () {
 }
 
 const createGameBoard = function () {
-  console.log('createGameBoard')
   for (let i = 0; i < cells.length; i++) {
     const elementCell = document.createElement('div')
     elementCell.setAttribute('class', 'board-cell')
@@ -125,6 +123,7 @@ const setNewGame = function () {
   // console.log('setNewGame runs.')
   // console.log(store.user)
   store.preGame = false
+  store.winningX = false
   over = false
   turnCounter = 0
   cells = ['', '', '', '', '', '', '', '', '']
@@ -234,6 +233,7 @@ const addGameHandlers = () => {
 }
 
 module.exports = {
+  over,
   createBackground,
   createGameBoard,
   animateGameBoard,

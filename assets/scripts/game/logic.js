@@ -1,6 +1,7 @@
 'use strict'
 
 const api = require('./api')
+const events = require('./events')
 const ui = require('./ui')
 const store = require('../store')
 
@@ -34,8 +35,9 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
       })
   }
   if (over === true) {
+    events.true = true
     $('.board-cell').off('click', onClickCell).addClass('game-over')
-    ui.gameNotice(winValue)
+    ui.gameNotice(over, winValue)
   }
 }
 
