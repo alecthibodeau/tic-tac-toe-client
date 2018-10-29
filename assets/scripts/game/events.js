@@ -1,5 +1,6 @@
 'use strict'
 
+const ai = require('./ai')
 const api = require('./api')
 const logic = require('./logic')
 const store = require('../store')
@@ -13,7 +14,7 @@ let gameData = null
 let cellsIndex = null
 let playerPiece = null
 let cells = ['', '', '', '', '', '', '', '', '']
-let randomCell = null
+// let randomCell = null
 // let emptyCells = 8
 //
 // const countEmptyCells = () => {
@@ -24,46 +25,47 @@ let randomCell = null
 //   }
 // }
 
-const randomCellRun = () => {
-  console.log('randomCellRun')
-  randomCell = Math.floor(Math.random() * 9)
-  console.log(randomCell)
-  cellCheck()
-}
-
-const cellCheck = () => {
-  console.log('cellCheck')
-  if (cells[randomCell] === '') {
-    makeAiCellPlayed()
-  } else {
-    randomCellRun()
-  }
-}
-
-const makeAiCellPlayed = () => {
-  console.log('makeAiCellPlayed')
-  cells[randomCell] = 'o'
-  $(`#cell-${randomCell}`).addClass('o').addClass('played').unbind('click', onClickCell).html('o')
-}
-
-const aiTurn = () => {
-  if (cells[4] === '') {
-    cells[4] = 'o'
-    $('#cell-4').addClass('o').addClass('played').unbind('click', onClickCell).html('o')
-    console.log(cells)
-  } else {
-    // countEmptyCells()
-    randomCellRun()
-    console.log(randomCell)
-    console.log(cells)
-  }
-  turnCounter++
-  console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
-}
+// const randomCellRun = () => {
+//   console.log('randomCellRun')
+//   randomCell = Math.floor(Math.random() * 9)
+//   console.log(randomCell)
+//   cellCheck()
+// }
+//
+// const cellCheck = () => {
+//   console.log('cellCheck')
+//   if (cells[randomCell] === '') {
+//     makeAiCellPlayed()
+//   } else {
+//     randomCellRun()
+//   }
+// }
+//
+// const makeAiCellPlayed = () => {
+//   console.log('makeAiCellPlayed')
+//   cells[randomCell] = 'o'
+//   $(`#cell-${randomCell}`).addClass('o').addClass('played').unbind('click', onClickCell).html('o')
+// }
+//
+// const aiTurn = () => {
+//   if (cells[4] === '') {
+//     cells[4] = 'o'
+//     $('#cell-4').addClass('o').addClass('played').unbind('click', onClickCell).html('o')
+//     console.log(cells)
+//   } else {
+//     // countEmptyCells()
+//     randomCellRun()
+//     console.log(randomCell)
+//     console.log(cells)
+//   }
+//   turnCounter++
+//   console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
+// }
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
 const onClickCell = function (event) {
   console.log('onClickCell')
+  console.log(cells)
   console.log(`turnCounter at start of turn = ${turnCounter}`)
   event.preventDefault()
   cellsIndex = this.getAttribute('data-id')
@@ -80,7 +82,9 @@ const onClickCell = function (event) {
   console.log(`X just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   if (turnCounter < 9) {
-    aiTurn()
+    ai.aiTurn(cells, turnCounter)
+    turnCounter++
+    console.log(`O just played and turnCounter = ${turnCounter} and playerPiece = ${playerPiece}`)
     logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   }
   turnCounter % 2 !== 0 ? $('#player-turn-piece').text('o') : $('#player-turn-piece').text('x')
@@ -240,6 +244,8 @@ const addGameHandlers = () => {
 }
 
 module.exports = {
+  cells,
+  onClickCell,
   createBackground,
   createGameBoard,
   animateGameBoard,
