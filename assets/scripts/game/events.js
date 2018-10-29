@@ -18,14 +18,16 @@ let cells = ['', '', '', '', '', '', '', '', '']
 
 const playerOTurn = (over) => {
   // NOTE: winningX is a value in the store that determines whether or not X has won.
-  // This is currently needed to prevent playerOTurn from running \
+  // This is currently needed to prevent checkForMatch from running \
   // (and subsequently ui.gameNotice from running) after an X win.
   // Maybe not the best solution, but it's what works for now.
   if ((store.winningX === false) && (over === false) && (turnCounter < 9)) {
     console.log(store.winningX)
     ai.aiTurn(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   }
-  logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  if (store.winningX === false) { // Check for match during human play…
+    logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  }
   turnCounter++
 }
 

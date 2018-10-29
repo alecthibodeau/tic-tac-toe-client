@@ -24,6 +24,7 @@ const addWinValue = (winValue) => {
 }
 
 const gameNotice = function (over, winValue) {
+  console.log('gameNotice runs')
   $('#reset-score-button').on('click', onClickResetSession)
   if (winValue === 'x') {
     addWinValue(winValue)
