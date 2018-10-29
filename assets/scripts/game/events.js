@@ -60,10 +60,10 @@ const playerOTurn = (over) => {
   // Maybe not the best solution, but it's what works for now.
   if ((store.winningX === false) && (over === false) && (turnCounter < 9)) {
     console.log(store.winningX)
-    ai.aiTurn(cells, turnCounter)
-    turnCounter++
-    logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+    ai.aiTurn(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   }
+  logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
+  turnCounter++
 }
 
 // Game logic is now in separate file: logic.js. Game ui is now in separate file: ui.js
@@ -215,11 +215,12 @@ const addGameHandlers = () => {
   $('#new-game').click((event) => {
     newGamePrep(event)
   })
-  $('.board-grid').click((event) => {
-    if (store.preGame) {
-      newGamePrep(event)
-    }
-  })
+  // This handler starts a new game on clicking the animation…
+  // $('.board-grid').click((event) => {
+  //   if (store.preGame) {
+  //     newGamePrep(event)
+  //   }
+  // })
   $('#nav-game-stats').on('click', onRetrieveOverGames)
   $('.user-buttons').hide()
 

@@ -1,12 +1,13 @@
 'use strict'
 
 const api = require('./api')
-const events = require('./events')
+// const events = require('./events')
 const ui = require('./ui')
 const store = require('../store')
 
 const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell) {
   let winValue = null
+  console.log('checkForMatch runs')
   for (let i = 0; i <= 6; i = i + 3) {
     if ((cells[i] !== '') && (cells[i] === cells[i + 1]) && (cells[i] === cells[i + 2])) {
       winValue = cells[i] // rows win
@@ -25,6 +26,7 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
   } else if (turnCounter === 9) { // draw
     over = true
   }
+  console.log(cells)
   if (store.user !== null) {
     api.updateGame(gameData, cellsIndex, playerPiece, over)
       .then((result) => {
@@ -35,7 +37,7 @@ const checkForMatch = function (cells, over, turnCounter, gameData, cellsIndex, 
       })
   }
   if (over === true) {
-    events.true = true
+    // events.true = true
     $('.board-cell').off('click', onClickCell).addClass('game-over')
     ui.gameNotice(over, winValue)
   }
