@@ -16,7 +16,7 @@ let playerPiece = null
 let humanGame = false
 let cells = ['', '', '', '', '', '', '', '', '']
 
-const playerOTurn = (over) => {
+const playerOAiTurn = (over) => {
   // NOTE: winningX is a value in the store that determines whether or not X has won.
   // This is currently needed to prevent checkForMatch from running \
   // (and subsequently ui.gameNotice from running) after an X win.
@@ -42,7 +42,7 @@ const onClickCell = function (event) {
   turnCounter++
   logic.checkForMatch(cells, over, turnCounter, gameData, cellsIndex, playerPiece, onClickCell)
   if (humanGame === false) {
-    playerOTurn(over)
+    playerOAiTurn(over)
   }
   turnCounter % 2 !== 0 ? $('#player-turn-piece').text('o') : $('#player-turn-piece').text('x')
 }
