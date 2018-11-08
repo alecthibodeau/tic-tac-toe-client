@@ -4,10 +4,20 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const api = require('./api')
 const ui = require('./ui')
+let textTitle = null
+let textMessage = null
+
+// The goal is for ellipticalWait to show animated ellipses while user waits for API
+const ellipticalWait = function () {
+  textTitle.text(textMessage)
+}
 
 const onSignUp = function (event) {
   event.preventDefault()
-  $('#modalTitleSignUp').text('Signing up…')
+  // $('#modalTitleSignUp').text('Signing up…')
+  textTitle = $('#modalTitleSignUp')
+  textMessage = 'Signing up…'
+  ellipticalWait()
   const data = getFormFields(this)
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -16,7 +26,10 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  $('#modalTitleSignIn').text('Signing in…')
+  // $('#modalTitleSignIn').text('Signing in…')
+  textTitle = $('#modalTitleSignIn')
+  textMessage = 'Signing in…'
+  ellipticalWait()
   const data = getFormFields(this)
   api.signIn(data)
     .then(ui.signInSuccess)
