@@ -22,8 +22,8 @@
             <div class="second-line">Tic-Tac-Toe</div>
           </div>
           <div class="starting-buttons">
-            <input class="nav-button" id="nav-sign-up" value="sign up" type="button" data-toggle="modal" data-target="#signUpModal">
-            <input class="nav-button" id="nav-sign-in" value="sign in" type="button" data-toggle="modal" data-target="#signInModal">
+            <input class="nav-button validation-related-button" id="nav-sign-up" value="sign up" type="button" data-toggle="modal" data-target="#signUpModal">
+            <input class="nav-button validation-related-button" id="nav-sign-in" value="sign in" type="button" data-toggle="modal" data-target="#signInModal">
           </div>
           <div class="user-buttons">
             <input class="nav-button" id="nav-game-stats" value="stats" type="button" data-toggle="modal" data-target="#gameStatsModal">
@@ -31,7 +31,7 @@
           </div>
           <div class="nav-drawer">
             <div class="nav-menu" id="nav-menu-signed-in">
-              <button class="nav-drawer-button" id="nav-change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+              <button class="nav-drawer-button validation-related-button" id="nav-change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
               <button class="nav-drawer-button" id="nav-sign-out" data-toggle="modal" data-target="#signOutModal">Sign Out</button>
             </div>
           </div>
@@ -62,7 +62,7 @@
         <!-- Intro Text & Credit -->
         <div class="intro-text">
           Welcome to my Tic-Tac-Toe game!
-          To record your game stats sign up with any available email address: even a dummy one.
+          To record your game stats sign up with any available email address.
         </div>
         <div class="credit-div">
           <a class="at-line" href="https://alect.me" target="blank">Alec Thibodeau, 2018</a>
@@ -102,9 +102,12 @@
               <input type="email" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
               <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" autocomplete="off">
-              <input type="submit" class="form-button" value="submit">
+              <input type="submit" class="form-button validation-related-button" value="submit">
             </fieldset>
           </form>
+          <div class="password-validation-message">
+            Password must be a minimum of 12 characters long, containing at least one letter and one number.
+          </div>
         </div>
       </div>
     </div>
@@ -120,9 +123,12 @@
             <fieldset>
               <input type="email" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
-              <input type="submit" class="form-button" value="submit">
+              <input type="submit" class="form-button validation-related-button" value="submit">
             </fieldset>
           </form>
+          <div class="password-validation-message">
+            Password must be a minimum of 12 characters long, containing at least one letter and one number.
+          </div>
         </div>
       </div>
     </div>
@@ -138,9 +144,12 @@
             <fieldset>
               <input type="password" name="passwords[old]" placeholder="Old Password" autocomplete="off">
               <input type="password" name="passwords[new]" placeholder="New Password" autocomplete="off">
-              <input type="submit" class="form-button" value="submit">
+              <input type="submit" class="form-button validation-related-button" value="submit">
             </fieldset>
           </form>
+          <div class="password-validation-message">
+            Password must be a minimum of 12 characters long, containing at least one letter and one number.
+          </div>
         </div>
       </div>
     </div>
