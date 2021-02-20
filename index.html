@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Alec T.'s Tic-Tac-Toe</title>
+      <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+      <!-- Do not add `link` tags-->
+      <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
+
+      <!-- Do not add `script` tags-->
+      <script src='public/vendor.js' type='text/javascript' charset='utf-8' defer></script>
+      <script src='public/application.js' type='text/javascript' charset='utf-8' defer></script>
+
+    </head>
+
+    <body>
+      <main>
+        <!-- Nav -->
+        <nav>
+          <div class="game-title">
+            <div class="first-line">Alec T.'s</div>
+            <div class="second-line">Tic-Tac-Toe</div>
+          </div>
+          <div class="starting-buttons">
+            <input class="nav-button validation-related-button" id="nav-sign-up" value="sign up" type="button" data-toggle="modal" data-target="#signUpModal">
+            <input class="nav-button validation-related-button" id="nav-sign-in" value="sign in" type="button" data-toggle="modal" data-target="#signInModal">
+          </div>
+          <div class="user-buttons">
+            <input class="nav-button" id="nav-game-stats" value="stats" type="button" data-toggle="modal" data-target="#gameStatsModal">
+            <input class="nav-button" id="user-account-button" value="user" type="button">
+          </div>
+          <div class="nav-drawer">
+            <div class="nav-menu" id="nav-menu-signed-in">
+              <button class="nav-drawer-button validation-related-button" id="nav-change-password" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+              <button class="nav-drawer-button" id="nav-sign-out" data-toggle="modal" data-target="#signOutModal">Sign Out</button>
+            </div>
+          </div>
+        </nav>
+        <!-- Empty Div for Background Bars (populated through JavaScript) -->
+        <div class="board-grid" id="game-board">
+        </div>
+        <!-- Game Information Area -->
+        <div class="game-information-area">
+          <div class="game-score-area" id="game-session">
+            <span class="score-board">
+              X wins: 0 | O wins: 0 | Draws: 0
+            </span>
+            <span class="reset-score-button" id="reset-score-button">
+              RESET SCORE
+            </span>
+          </div>
+          <div class="player-turn-line">
+            Player <span id="player-turn-piece">?</span>'s turn
+          </div>
+        </div>
+        <div class="play-new-game" id="new-game-computer">
+          Play new game<BR><span class="versus-text">versus computer</span>
+        </div>
+        <div class="play-new-game" id="new-game-human">
+          Play new game<BR><span class="versus-text">versus human</span>
+        </div>
+        <!-- Intro Text & Credit -->
+        <div class="intro-text">
+          Welcome to my Tic-Tac-Toe game!
+          To record your game stats sign up with any available email address.
+        </div>
+        <div class="credit-div">
+          <a class="at-line" href="https://alect.me" target="blank">Alec Thibodeau, 2021</a>
+        </div>
+      </main>
+      <div class="background-container" id="background-container"></div>
+
+    <!-- Game Stats Modal Begins -->
+    <div class="modal fade" id="gameStatsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleGameStats">Game Stats</h4>
+          <div class="game-stats">
+            <div id="stats-title-total-games-played" class="stats-title stats-title-total-games-played">Loading…</div>
+            <div id="stats-value-total-games-played" class="stats-value stats-value-total-games-played"></div>
+            <div id="stats-title-x-wins" class="stats-title stats-title-x-wins">X Wins:</div>
+            <div id="stats-value-x-wins" class="stats-value stats-value-x-wins"></div>
+            <div id="stats-title-o-wins" class="stats-title stats-title-o-wins">O Wins:</div>
+            <div id="stats-value-o-wins" class="stats-value stats-value-o-wins"></div>
+            <div id="stats-title-draws" class="stats-title stats-title-draws">Draws:</div>
+            <div id="stats-value-draws" class="stats-value stats-value-draws"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Game Stats Modal Ends -->
+
+    <!-- Sign Up Modal Begins -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignUp">Sign Up</h4>
+          <form id="sign-up" class="sign-up-panel">
+            <fieldset>
+              <input type="email" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" autocomplete="off">
+              <input type="submit" class="form-button validation-related-button" value="submit">
+            </fieldset>
+          </form>
+          <div class="password-validation-message">
+            Password must be a minimum of 8 characters long, containing at least one letter and one number.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sign Up Modal Ends -->
+
+    <!-- Sign In Modal Begins -->
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignIn">Sign In</h4>
+          <form id="sign-in" class="sign-in-panel">
+            <fieldset>
+              <input type="email" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password" autocomplete="off">
+              <input type="submit" class="form-button validation-related-button" value="submit">
+            </fieldset>
+          </form>
+          <div class="password-validation-message">
+            Password must be a minimum of 8 characters long, containing at least one letter and one number.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sign In Modal Ends -->
+
+    <!-- Change Password Modal Begins -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleChangePassword">Change Password</h4>
+          <form id="change-password" class="change-password-panel">
+            <fieldset>
+              <input type="password" name="passwords[old]" placeholder="Old Password" autocomplete="off">
+              <input type="password" name="passwords[new]" placeholder="New Password" autocomplete="off">
+              <input type="submit" class="form-button validation-related-button" value="submit">
+            </fieldset>
+          </form>
+          <div class="password-validation-message">
+            New password must be a minimum of 8 characters long, containing at least one letter and one number.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Change Password Modal Ends -->
+
+    <!-- Sign Out Modal Begins -->
+    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalTitleSignOut">Sign Out</h4>
+        </div>
+      </div>
+    </div>
+    <!-- Sign Out Modal Ends -->
+
+    </body>
+</html>
